@@ -453,3 +453,8 @@ R38. **Lattice run and report** (20:42-21:17, one job, nothing cut): 190 instanc
     instances are LB-referenced, and win/tie/loss and Wilcoxon compare W directly. Figures: W / W_exact uses CP-SAT's
     best value as W_exact (the exact line stays at 1); points where CP-SAT did not prove optimality are drawn hollow.
     An earlier draft divided by the LB, which pushed the "exact" line above 1; it was replaced before committing.
+R39. **Final push failed (authentication).** Commit 191c591 was made locally. `git push origin main` hung until a
+    300 s timeout twice (git was waiting for an interactive credential prompt); with prompts disabled it reports
+    "fatal: could not read Username for 'https://github.com': terminal prompts disabled". The cached GitHub credential
+    used by the earlier pushes (497c40c, e358d2c) is no longer accepted or available. No credentials were entered.
+    origin/main stays at e358d2c; local main is ahead (this entry is in a further local commit).
