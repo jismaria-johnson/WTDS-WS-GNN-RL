@@ -421,3 +421,35 @@ R33. **Final pass** (20:30): 8 of 10 runs trained (A1, A2, A3 x seeds 0-1; A4, A
     640-instance grid; 100% valid after RR (and raw) for every variant. Tests: 26 passed (test_ablations,
     test_guided_restarts, test_env). Ablation best.pt files stay local in checkpoints/ablations/ (git-ignored);
     their training curves are copied to results/ablations/val_curves/.
+
+## Lattice experiment (2026-10-22, 2-hour box from 20:41 IST)
+R34. **Graphs.** Existing generators only: grid = nx.grid_2d_graph (make_graph family "grid"), tri / hex =
+    generators.tri_lattice / hex_lattice with generators.lattice_dims(kind, n_target) choosing the near-square size.
+    Exact sizes (n, m): grid 5x5 (25, 40), 8x8 (64, 112), 10x10 (100, 180), 15x15 (225, 420), 20x20 (400, 760),
+    30x30 (900, 1740); tri 4x8 (25, 56), 7x14 (64, 161), 9x18 (100, 261), 14x28 (225, 616), 19x38 (400, 1121),
+    29x58 (900, 2581); hex 1x6 (26, 31), 3x7 (62, 82), 4x9 (98, 133), 7x13 (222, 312), 13x13 (390, 558),
+    20x20 (880, 1279). lattice_dims picks the count closest to the target within a 3% tolerance and only then the
+    most square shape, so for n ~ 25 the hexagonal patch is a 1 x 6 strip (n = 26); kept as the existing generator's
+    choice. Asserted per lattice: n = r c (grid) or generators._lattice_count; m = n + faces - 1 (Euler's formula for a
+    plane patch; faces = (r-1)(c-1) squares, a b triangles, a b hexagons): all pass. G(m, k) table: 28 grids,
+    4 <= m <= k <= 10.
+R35. **Weights.** unit (all 1, exact_validation.with_scheme), degree, inverse (deterministic: 1 instance each),
+    random and mixed with 3 weight seeds each from the fresh stream MASTER_SEEDS["test"] + 7000 (test range; asserted
+    disjoint from every seed column in results/ and from data/rev2_large.json); every seed is stored in
+    results/lattices/raw.csv (weight_seed).
+R36. **Methods.** Ours = the 5 main-model checkpoints (seed 0 checkpoints/best.pt, seed 1 checkpoints/seed1_best.pt,
+    seeds 2-4 checkpoints/ws_seed{s}/best.pt), greedy rollout (multi_select auto) + RR, then + 1 s LS (LS seed = model
+    seed); weighted greedy + RR and + 1 s LS (seed 0). Exact = baselines.ilp CP-SAT, 60 s, 8 workers, greedy warm
+    start, random seed 0; the one-retry rule of decision 41 is not applied (time box), so an unproven instance is
+    reported against its lower bound. GNN device: CPU for n <= 200, CUDA above (revision measurements). The G(m, k)
+    grids run ours + RR, greedy + RR and CP-SAT only (the table asks for nothing else).
+R37. **Closed form.** gamma_t(n x n) = (2a+1)(2a+r), n = 4a + r (tests/test_closed_forms.gt_grid); lat_run.py
+    asserts CP-SAT == closed form on every proven unit square grid (G(m, m), m = 4..10, and the 5x5 ... 30x30
+    lattices); the run would stop on a mismatch.
+R38. **Lattice run and report** (20:42-21:17, one job, nothing cut): 190 instances (28 G(m, k) + 162 lattice instances).
+    Closed form: 13 proven unit square grids (4x4 ... 10x10, 15x15, 20x20, 30x30), 0 mismatches. All 28 G(m, k) grids
+    proven. 21 lattice instances unproven at 60 s (mostly triangular n >= 225, plus grid 20x20 / 30x30 inverse and
+    hex 13x13 mixed seed 1): their gaps are to the CP-SAT lower bound, every pooled line states how many of its
+    instances are LB-referenced, and win/tie/loss and Wilcoxon compare W directly. Figures: W / W_exact uses CP-SAT's
+    best value as W_exact (the exact line stays at 1); points where CP-SAT did not prove optimality are drawn hollow.
+    An earlier draft divided by the LB, which pushed the "exact" line above 1; it was replaced before committing.
