@@ -169,22 +169,23 @@ def greedy_random_restart(graph: Graph, budget: float = 0.16, eps: float = 0.05,
                              "greedy_random_restart_rr" + ("_ls" if ls_time else ""), restarts=k)
 
 
-def lp_values(graph: Graph) -> np.ndarray:
+def lp_values(graph: Graph, method: str = "highs", time_limit: float = None) -> np.ndarray:
     from scipy.optimize import linprog
     from scipy.sparse import csr_matrix
     n = graph.n
     A = csr_matrix((np.ones(len(graph.indices)), graph.indices, graph.indptr), shape=(n, n))
     lb = np.zeros(n)
     lb[preselected_vertices(graph)] = 1.0
-    res = linprog(c=graph.w, A_ub=-A, b_ub=-np.ones(n), bounds=list(zip(lb, np.ones(n))), method="highs")
+    res = linprog(c=graph.w, A_ub=-A, b_ub=-np.ones(n), bounds=list(zip(lb, np.ones(n))), method=method,
+                  options={} if time_limit is None else {"time_limit": float(time_limit)})
     if res.status != 0:
         raise RuntimeError(f"LP relaxation failed: {res.message}")
     return res.x
 
 
-def lp_construct(graph: Graph):
+def lp_construct(graph: Graph, method: str = "highs", time_limit: float = None):
     st = _State(graph)
-    x = lp_values(graph)
+    x = lp_values(graph, method, time_limit)
     lp_obj = float(graph.w @ x)
     order = sorted(range(st.n), key=lambda v: (-round(x[v], 9), -st.ratio(v), v))
     for v in order:

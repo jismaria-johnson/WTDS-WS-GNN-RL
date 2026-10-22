@@ -65,7 +65,7 @@ def is_minimal(graph: Graph, S) -> bool:
 
 
 def local_search(graph: Graph, S, time_limit: float = 1.0, seed: int = 0, tabu_tenure: int = 7,
-                 debug: bool = False, max_iters: Optional[int] = None) -> list:
+                 debug: bool = False, max_iters: Optional[int] = None, on_improve=None) -> list:
     """Time-limited local search on a feasible S (Section 5). Never returns a worse
     or infeasible set.
 
@@ -75,6 +75,7 @@ def local_search(graph: Graph, S, time_limit: float = 1.0, seed: int = 0, tabu_t
     "1-for-1": replace a non-preselected a ∈ S by the cheapest c ∉ S covering all of a's
       private neighbours, accepted iff w(c) < w(a).
     Redundancy removal (most expensive first) runs around c after each move.
+    on_improve(S): optional callback with every new best set (sorted list, unverified), for anytime traces.
     """
     import random
     import time as _time
@@ -190,6 +191,8 @@ def local_search(graph: Graph, S, time_limit: float = 1.0, seed: int = 0, tabu_t
         moved = try_two_for_one() or swap_move()
         if cur_w < best_w - 1e-12:
             best_w, best = cur_w, {v for v in range(n) if in_s[v]}
+            if on_improve is not None:
+                on_improve(sorted(best))
         if not moved:
             break
     out = sorted(best)

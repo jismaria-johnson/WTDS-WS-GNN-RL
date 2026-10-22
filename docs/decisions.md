@@ -287,3 +287,90 @@ R11. Final pass (01:58, 2026-10-22, 2 h 40 min into the box): all steps 0-7 comp
     the 1 s and 5 s budgets were met within 8%. (b) CPU-only inference is FASTER than the GPU for n <= 200 (batch of one
     small graph: kernel-launch overhead dominates) and equal at n = 500; the old "GPU vs CPU" runtime comparison should
     use the CPU numbers. (c) Equal-time results use 62 of 64 instances (2 unproven ILP optima excluded).
+
+## Revision 2 sprint (2026-10-22, 4-hour box from 11:54 IST; steps 1-2 of the revision plan)
+Rules: work only in this project; no paper edits; every solution checked with `is_total_dominating_set` (and the fast
+checker) with W(S) recomputed; tuning on the validation set only; main-grid graphs and seeds reused for step 1.
+
+R12. **Guided restarts** (`wtdsws/baselines/guided_restarts.py`). One code path for all three variants; only p(v)
+    changes. p = rank of Q(s0, v) over the valid vertices, (rank - 1) / (count - 1), ties averaged; invalid vertices 0.
+    score(v) = gain/w * exp(beta p + tau eps), eps ~ N(0, 1) per vertex and restart; ties as weighted greedy (lower w,
+    higher degree, index). Restart 0 uses eps = 0, so plain restart 0 = `greedy_construct` exactly (tested). RR scores =
+    gain at selection (as greedy_random_restart). Refresh "10%" = after every ceil(0.1 n) non-preselected picks, the
+    env is set to the partial solution, one forward pass gives a new p, the heap is rebuilt.
+R13. **plain_restarts = the guided code with beta = 0**, not the old `greedy_random_restart`: the old function uses
+    multiplicative uniform noise (1 + eps U(-1, 1)) and a random tie rank, so it is not "the identical code path".
+    The brief's equality test is therefore guided(beta = 0) == plain_restarts for the same seed (tested on 60 graphs,
+    with and without LS). Common random numbers: eps from rng([seed, 0]), random priors from rng([seed, 1]), so the three
+    variants see identical eps for the same instance seed (seed = instance index). This makes the key test paired.
+R14. **Anytime LS.** The brief says "LS on the best solution at the end, inside the budget", but the timing rules ask for
+    one run up to the maximum budget with a trace. A single end-of-run LS would make the trace at 0.16 s / 1 s
+    LS-free. Adopted: whenever a restart gives a new best RR set, LS (1 s cap, min with time left) is run on it; the
+    incumbent is the cheapest RR or LS set. At the end of the budget this is "LS on the best restart solution". The
+    same anytime rule is used for every method: ours_bok_ls (existing code: LS min(1 s, left) on every candidate),
+    greedy/LP/ours-greedy + RR then LS in the rest of the budget (stops at a local optimum). `local_search` got an
+    optional `on_improve` callback for the trace (default behaviour unchanged).
+R15. **Verification outside the timed region.** Every set in every trace (not only the final ones) is checked with
+    both checkers and W recomputed after the method returns (`rev2_anytime.verify_trace`); RR runs with check=False
+    inside the timed loop for every method (the old equal-time script checked inside ours' loop, which charged ours
+    for the checker). A trace must be strictly improving, and no value may be below a proven optimum (step 1) or the
+    LP bound (step 2): asserted.
+R16. **CP-SAT** as the earlier equal-time study: same model as `baselines.ilp` (forced x = 1), 8 workers
+    (`num_workers` recorded per row), random_seed 0, no warm start; a solution callback records (time, W, S). Time
+    counts from before model building; the solver limit is the budget minus the build time, so the whole run fits.
+R17. **ours_bok_ls batch rule**: a batch of 8 sampled rollouts is only started if the previous batch's duration fits in
+    the time left; before the first batch the estimate is the greedy-rollout time x picks per forward pass (the greedy
+    rollout adds ceil(n / 1000) vertices per pass, sampling adds 1). Prevents long overruns at large n; any overrun that
+    still happens is recorded as is (times in the trace are real).
+R18. **Tuning (step 1c)**: 48 validation graphs (first 3 per class x scheme of data/val_ws.npz, validation seed range,
+    proven optima). Grids: guided beta {0.5,1,2,4} x tau {0.05,0.1,0.2} x refresh {never, 10%} (24); random_prior the
+    same 24 (refresh = redraw ranks); plain tau {0.02,0.05,0.1,0.2,0.3,0.5} (6: plain has only tau, so it gets a wider
+    tau grid instead of the same config count). Objective = mean gap at 1 s; ties -> first in grid order. To fit the
+    20-minute cap the 54 configs ran in 4 parallel worker processes (1 torch thread each, round-robin over configs), so
+    all configs ran under the same load; these are selection runs, not reported timings. The step-2 graph build
+    (no timing) overlapped with tuning.
+R19. **Tuned values** (checkpoints/guided_restarts.json; all 54 configs in results/revision2/tuning/tuning_summary.csv):
+    guided beta 0.5, tau 0.2, refresh never (val gap 0.035% at 1 s); random_prior beta 0.5, tau 0.05, never (0.043%);
+    plain tau 0.3 (0.077%). The guided optimum is at a corner of the prescribed grid (smallest beta, largest tau); the
+    grid was NOT extended (the brief fixes it, and extending it only for ours would break equal tuning effort).
+    Refreshing the prior every 10% of n never won for guided at the chosen beta/tau.
+R20. **LP solver.** `lp_values` (scipy linprog "highs" = dual simplex) took ~370 s for one n = 5000 ER graph (both
+    schemes). HiGHS interior point ("highs-ipm", with crossover) took 17 s on the same graph. `lp_values` /
+    `lp_construct` got optional `method` and `time_limit` arguments (defaults unchanged, so earlier results and tests
+    are unaffected). Revision 2 uses "highs-ipm" both for the LP lower bound (x (1 - 1e-7) safety margin) and inside
+    the lp_rounding baseline, with the LP time limit = the method's budget (LP not solved -> no set). The faster solver
+    can only help that baseline.
+R21. **Step-2 graph build** (data/rev2_large.npz|json, `rev2_run.py --make-large`): 48 structures x {degree, random},
+    built in 8 parallel processes (no timed run was active). The existing chordal_gnp generator (G(n, p) + chordal
+    completion) is extremely slow just above the giant-component threshold (avg degree 1.4-1.8: 224 s at n = 2000,
+    > 360 s at n = 5000). Rule: a structure not built within 360 s is replaced by a fresh spec of the same class and n
+    (subtype redrawn) from the replacement stream MASTER_SEEDS["test"] + 6001; the replaced specs are stored in the json
+    (`replaced`). Only chordal n = 5000 g2 (chordal_gnp, avg degree 1.72) was affected. A first build attempt
+    (sequential, one save at the end) was killed after 25 min and its output discarded (never saved). The first
+    replacement stream (MASTER + 6001, subtype redrawn uniformly) gave chordal_gnp five times in a row (avg degree
+    1.44-2.86), and the first three timed out; that build was killed (nothing saved). Final rule: replacement stream
+    MASTER + 6002, and a chordal replacement draws its subtype from {ktree, unit_interval} only (chordal_gnp at
+    n = 5000 is not buildable in reasonable time with the existing generator). Result: chordal n = 5000 g2 = random
+    3-tree (seed 1258580344). The other 47 structures are the first draws of stream MASTER + 6000. Total build cost
+    about 45 min of the box (no timed work was running meanwhile).
+R22. **Step 1 run** (13:12-14:06, alone on the machine): 160 instances x 6 methods, 5 s traces, GNN on the CPU (seed-0
+    checkpoint), torch default threads. 7 of the 160 ILP optima in raw_grid.csv are unproven; those instances are
+    excluded from every gap/test (153 used). An untimed warm-up of every code path runs before the first instance
+    (the smoke run showed a 2.4 s first-call cost from importing scipy.stats inside the prior; the prior now uses a
+    numpy rank instead).
+R23. **Device choice** (results/revision2/device_bench.json, one greedy rollout of the seed-0 model on the first ER
+    degree graph per n, after warm-up): GPU faster at n = 500, 1000, 2000 and 5000, so step 2 uses CUDA for every GNN
+    method; n <= 200 uses the CPU (revision-1 measurement).
+R24. **Report while step 2 ran.** The step-1 report (`rev2_report.py`, < 1 min, single thread) was run once during
+    step 2 at Windows "Idle" process priority, so it only used otherwise idle cores; no other work ran during timed runs.
+R25. **Cuts.** The graph-build problems (R21) cost ~45 min. Cut (1), seed 1 for guided restarts, was applied (not
+    run). Step 2 processes degree weights first (all n; n = 5000 only gidx 0-1), then random weights, then n = 5000
+    gidx 2, and is stopped at a fixed wall-clock time to keep 20 min for the report; whatever was not reached is cut
+    in exactly the brief's order (2) then (3) and is listed in SUMMARY.md.
+R26. **Step 2 run and final pass** (14:07-15:26, alone on the machine, GNN on CUDA): all 96 instances x 8 methods
+    finished, so of the brief's cuts only (1) applied (seed 1 for guided restarts was not run). Reference values: the
+    mean (best-known - best LB) / LB is 9.06%, so the LP / CP-SAT lower bounds are weak at large n and gaps to LB mostly
+    reflect the bound. Overruns were recorded, not hidden: the first GNN rollout at n = 2000-5000 sometimes finished
+    after 1 s (ours_greedy_ls first solution at n = 5000: mean 2.17 s, max 5.23 s), so those methods count as "no set"
+    at the 1 s budget there. "Best method" tables only rank methods that had a set on every instance of the cell.
+    Tests: 29 passed (test_guided_restarts, test_greedy_plus, test_postprocess, test_checker).

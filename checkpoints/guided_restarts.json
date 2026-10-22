@@ -1,0 +1,36 @@
+{
+ "ours_guided_restarts": {
+  "beta": 0.5,
+  "tau": 0.2,
+  "refresh": 0.0,
+  "val_mean_gap_1s": 0.034786641929499075,
+  "val_mean_gap_016s": 0.20956480601687366
+ },
+ "random_prior_restarts": {
+  "beta": 0.5,
+  "tau": 0.05,
+  "refresh": 0.0,
+  "val_mean_gap_1s": 0.04277394276263416,
+  "val_mean_gap_016s": 0.29125861469122655
+ },
+ "plain_restarts": {
+  "beta": 0.0,
+  "tau": 0.3,
+  "refresh": 0.0,
+  "val_mean_gap_1s": 0.07681397280307663,
+  "val_mean_gap_016s": 0.15746019195792682
+ },
+ "_meta": {
+  "objective": "mean gap (%) at 1 s on 48 validation graphs (data/val_ws.npz, first 3 per class x scheme)",
+  "checkpoint": "checkpoints/best.pt",
+  "device": "cpu, 1 torch thread per tuning worker",
+  "ls_time_cap": 1.0,
+  "grid": {
+   "guided": "beta {0.5,1,2,4} x tau {0.05,0.1,0.2} x refresh {0, 0.1}",
+   "random_prior": "same 24 configs",
+   "plain": "tau {0.02,0.05,0.1,0.2,0.3,0.5}"
+  },
+  "summary": "results/revision2/tuning/tuning_summary.csv",
+  "script": "scripts/rev2_tune.py"
+ }
+}
