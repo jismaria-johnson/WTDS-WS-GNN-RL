@@ -1,0 +1,4 @@
+# Ablation reference = the main model's config (ws_finetune_seed1.yaml: 78,000 steps, no time box).
+# Every ablation inherits this file and changes exactly ONE thing (docs/decisions.md R27+).
+inherit: ../ws_finetune_seed1.yaml
+out: {name: abl_ref, ckpt_dir: checkpoints/ablations, run_dir: runs}

@@ -1,0 +1,4 @@
+# A2 degree-1 rule off: no forced pre-selection (training and inference).
+inherit: ref.yaml
+env: {use_forced: false}
+out: {name: abl_a2}

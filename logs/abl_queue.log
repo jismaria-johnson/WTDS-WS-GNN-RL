@@ -1,0 +1,27 @@
+[16:36:49] eval ref
+[16:38:02] train a1 seed 0 (free RAM 3.18 GB)
+[17:02:52] done a1 seed 0: [abl_a1_seed0] step   78000 ep   7341 eps 0.050 loss 0.0480 val gap raw 0.0632 rr 0.0518 opt% 0.26 (1.9s) wall 1480s
+[17:03:38] evaluated a1
+[17:03:39] train a1 seed 1 (free RAM 3.46 GB)
+[17:28:53] done a1 seed 1: [abl_a1_seed1] step   78000 ep   7297 eps 0.050 loss 0.0623 val gap raw 0.0766 rr 0.0580 opt% 0.25 (1.4s) wall 1502s
+[17:30:10] evaluated a1
+[17:30:11] train a2 seed 0 (free RAM 2.61 GB)
+[17:54:54] done a2 seed 0: [abl_a2_seed0] step   78000 ep   5412 eps 0.050 loss 0.1001 val gap raw 0.0743 rr 0.0572 opt% 0.27 (1.9s) wall 1471s
+[17:55:45] evaluated a2
+[17:55:46] train a2 seed 1 (free RAM 4.02 GB)
+[18:19:55] done a2 seed 1: [abl_a2_seed1] step   78000 ep   5238 eps 0.050 loss 0.1169 val gap raw 0.0882 rr 0.0579 opt% 0.21 (1.7s) wall 1438s *best*
+[18:21:24] evaluated a2
+[18:21:26] train a3 seed 0 (free RAM 3.68 GB)
+[18:46:02] done a3 seed 0: [abl_a3_seed0] step   78000 ep   8803 eps 0.050 loss 0.0490 val gap raw 0.3161 rr 0.3110 opt% 0.05 (1.0s) wall 1464s
+[18:46:41] evaluated a3
+[18:46:42] train a3 seed 1 (free RAM 3.5 GB)
+[19:38:00] done a3 seed 1: [abl_a3_seed1] step   78000 ep   8870 eps 0.050 loss 0.0648 val gap raw 0.2902 rr 0.2844 opt% 0.04 (1.1s) wall 3065s
+[19:39:11] evaluated a3
+[19:39:12] train a4 seed 0 (free RAM 3.2 GB)
+[20:03:11] done a4 seed 0: [abl_a4_seed0] step   78000 ep   7336 eps 0.050 loss 0.0338 val gap raw 0.0550 rr 0.0466 opt% 0.29 (1.2s) wall 1427s
+[20:03:47] evaluated a4
+[20:03:48] train a5 seed 0 (free RAM 3.62 GB)
+[20:28:36] done a5 seed 0: [abl_a5_seed0] step   78000 ep   7045 eps 0.050 loss 0.1079 val gap raw 0.0858 rr 0.0624 opt% 0.23 (1.2s) wall 1476s *best*
+[20:29:16] evaluated a5
+[20:29:16] stop file found
+[20:29:16] queue finished

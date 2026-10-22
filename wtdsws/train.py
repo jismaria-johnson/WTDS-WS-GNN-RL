@@ -100,8 +100,14 @@ def train(cfg: dict, seed: int, resume: bool = False) -> dict:
     if init and not (resume and resume_path_exists(cfg, seed)):
         init = str(init).format(seed=seed)
         ck = torch.load(init, map_location=device, weights_only=False)
-        res = agent.online.load_state_dict(ck["online"], strict=True)       # raises on missing/unexpected keys
-        agent.target.load_state_dict(ck["online"], strict=True)
+        if t.get("init_keys") == "encoder":   # ablation A4: load the encoder only, the Q head is re-initialised
+            enc = {k: w for k, w in ck["online"].items() if k.startswith(("inp.", "layers."))}
+            res = agent.online.load_state_dict(enc, strict=False)
+            agent.target.load_state_dict(agent.online.state_dict(), strict=True)
+            assert not res.unexpected_keys and all(not k.startswith(("inp.", "layers.")) for k in res.missing_keys)
+        else:
+            res = agent.online.load_state_dict(ck["online"], strict=True)   # raises on missing/unexpected keys
+            agent.target.load_state_dict(ck["online"], strict=True)
         print(f"[{name}] initialised from {init}: missing keys {list(res.missing_keys)}, "
               f"unexpected keys {list(res.unexpected_keys)}", flush=True)
     pool = GraphPool(use_forced=ec["use_forced"])

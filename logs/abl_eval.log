@@ -1,0 +1,18 @@
+[ref] seed 0: 640 instances (32s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "gain"}
+[ref] seed 1: 640 instances (63s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "gain"}
+[a1] seed 0: 640 instances (33s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "notin"}
+skip seed 1: D:\project s7\wtds-ws-gnn-rl\checkpoints\ablations\abl_a1_seed1\best.pt missing
+[a1] seed 0: 640 instances (32s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "notin"}
+[a1] seed 1: 640 instances (65s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "notin"}
+[a2] seed 0: 640 instances (40s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": false, "mask_mode": "gain"}
+skip seed 1: D:\project s7\wtds-ws-gnn-rl\checkpoints\ablations\abl_a2_seed1\best.pt missing
+[a2] seed 0: 640 instances (39s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": false, "mask_mode": "gain"}
+[a2] seed 1: 640 instances (77s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": false, "mask_mode": "gain"}
+[a3] seed 0: 640 instances (29s); env {"reward_mode": "unit", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "gain"}
+skip seed 1: D:\project s7\wtds-ws-gnn-rl\checkpoints\ablations\abl_a3_seed1\best.pt missing
+[a3] seed 0: 640 instances (30s); env {"reward_mode": "unit", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "gain"}
+[a3] seed 1: 640 instances (60s); env {"reward_mode": "unit", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "gain"}
+[a4] seed 0: 640 instances (26s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "gain"}
+skip seed 1: D:\project s7\wtds-ws-gnn-rl\checkpoints\ablations\abl_a4_seed1\best.pt missing
+[a5] seed 0: 640 instances (30s); env {"reward_mode": "weighted", "shaped_beta": 0.5, "paper_alpha": 1.0, "use_forced": true, "mask_mode": "gain"}
+skip seed 1: D:\project s7\wtds-ws-gnn-rl\checkpoints\ablations\abl_a5_seed1\best.pt missing

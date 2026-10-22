@@ -1,0 +1,4 @@
+# A5 training from scratch: random initialisation, same 78,000 steps and config.
+inherit: ref.yaml
+train: {init_checkpoint: null}
+out: {name: abl_a5}

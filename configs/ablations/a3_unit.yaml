@@ -1,0 +1,4 @@
+# A3 unit reward: -1 per vertex (the old TDS reward, ignores weights).
+inherit: ref.yaml
+env: {reward_mode: unit}
+out: {name: abl_a3}

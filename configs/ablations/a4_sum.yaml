@@ -1,0 +1,5 @@
+# A4 sum readout instead of mean || max; encoder loaded from the start checkpoint, Q head re-initialised.
+inherit: ref.yaml
+model: {readout: sum}
+train: {init_keys: encoder}
+out: {name: abl_a4}

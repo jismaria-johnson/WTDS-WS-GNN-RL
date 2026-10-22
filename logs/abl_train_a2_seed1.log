@@ -1,0 +1,42 @@
+[abl_a2_seed1] device=cuda val: greedy_rr gap 0.0573, random+RR gap 0.6691, ILP proven 100.00%
+[abl_a2_seed1] initialised from checkpoints/pretrained/wtds_seed1_best.pt: missing keys [], unexpected keys []
+[abl_a2_seed1] step       0 ep      0 eps 0.200 loss nan val gap raw 0.1177 rr 0.0699 opt% 0.21 (2.2s) wall 2s *best*
+[abl_a2_seed1] step    2000 ep    133 eps 0.183 loss nan val gap raw 0.1177 rr 0.0699 opt% 0.21 (1.8s) wall 7s
+[abl_a2_seed1] step    4000 ep    247 eps 0.167 loss 0.0865 val gap raw 0.1588 rr 0.0696 opt% 0.24 (2.2s) wall 44s *best*
+[abl_a2_seed1] step    6000 ep    363 eps 0.150 loss 0.1081 val gap raw 0.1478 rr 0.0741 opt% 0.23 (2.1s) wall 81s
+[abl_a2_seed1] step    8000 ep    471 eps 0.133 loss 0.1264 val gap raw 0.1381 rr 0.0733 opt% 0.22 (2.2s) wall 118s
+[abl_a2_seed1] step   10000 ep    601 eps 0.117 loss 0.1423 val gap raw 0.1355 rr 0.0746 opt% 0.24 (2.1s) wall 155s
+[abl_a2_seed1] step   12000 ep    729 eps 0.100 loss 0.1472 val gap raw 0.1471 rr 0.0774 opt% 0.21 (2.0s) wall 192s
+[abl_a2_seed1] step   14000 ep    863 eps 0.083 loss 0.1543 val gap raw 0.1366 rr 0.0789 opt% 0.23 (2.0s) wall 231s
+[abl_a2_seed1] step   16000 ep    999 eps 0.067 loss 0.1462 val gap raw 0.1342 rr 0.0774 opt% 0.23 (1.9s) wall 269s
+[abl_a2_seed1] step   18000 ep   1127 eps 0.050 loss 0.1448 val gap raw 0.1383 rr 0.0828 opt% 0.23 (1.9s) wall 307s
+[abl_a2_seed1] step   20000 ep   1269 eps 0.050 loss 0.1449 val gap raw 0.1418 rr 0.0782 opt% 0.22 (2.0s) wall 345s
+[abl_a2_seed1] step   22000 ep   1393 eps 0.050 loss 0.1469 val gap raw 0.1294 rr 0.0754 opt% 0.23 (1.9s) wall 381s
+[abl_a2_seed1] step   24000 ep   1521 eps 0.050 loss 0.1474 val gap raw 0.1212 rr 0.0740 opt% 0.24 (1.9s) wall 418s
+[abl_a2_seed1] step   26000 ep   1648 eps 0.050 loss 0.1466 val gap raw 0.1357 rr 0.0783 opt% 0.21 (2.0s) wall 456s
+[abl_a2_seed1] step   28000 ep   1791 eps 0.050 loss 0.1443 val gap raw 0.1080 rr 0.0711 opt% 0.22 (1.9s) wall 493s
+[abl_a2_seed1] step   30000 ep   1926 eps 0.050 loss 0.1396 val gap raw 0.1124 rr 0.0662 opt% 0.23 (1.8s) wall 532s *best*
+[abl_a2_seed1] step   32000 ep   2060 eps 0.050 loss 0.1397 val gap raw 0.1121 rr 0.0707 opt% 0.23 (1.9s) wall 571s
+[abl_a2_seed1] step   34000 ep   2198 eps 0.050 loss 0.1380 val gap raw 0.1123 rr 0.0725 opt% 0.23 (1.9s) wall 608s
+[abl_a2_seed1] step   36000 ep   2323 eps 0.050 loss 0.1399 val gap raw 0.1220 rr 0.0742 opt% 0.21 (1.8s) wall 645s
+[abl_a2_seed1] step   38000 ep   2461 eps 0.050 loss 0.1414 val gap raw 0.1181 rr 0.0754 opt% 0.19 (1.7s) wall 682s
+[abl_a2_seed1] step   40000 ep   2577 eps 0.050 loss 0.1395 val gap raw 0.1195 rr 0.0719 opt% 0.22 (1.8s) wall 722s
+[abl_a2_seed1] step   42000 ep   2713 eps 0.050 loss 0.1425 val gap raw 0.1135 rr 0.0676 opt% 0.23 (1.7s) wall 760s
+[abl_a2_seed1] step   44000 ep   2849 eps 0.050 loss 0.1442 val gap raw 0.1237 rr 0.0785 opt% 0.21 (1.7s) wall 801s
+[abl_a2_seed1] step   46000 ep   3000 eps 0.050 loss 0.1392 val gap raw 0.1182 rr 0.0799 opt% 0.19 (1.8s) wall 840s
+[abl_a2_seed1] step   48000 ep   3150 eps 0.050 loss 0.1411 val gap raw 0.1186 rr 0.0791 opt% 0.20 (1.8s) wall 878s
+[abl_a2_seed1] step   50000 ep   3282 eps 0.050 loss 0.1395 val gap raw 0.1145 rr 0.0780 opt% 0.21 (1.8s) wall 915s
+[abl_a2_seed1] step   52000 ep   3402 eps 0.050 loss 0.1374 val gap raw 0.1169 rr 0.0754 opt% 0.23 (1.8s) wall 952s
+[abl_a2_seed1] step   54000 ep   3543 eps 0.050 loss 0.1317 val gap raw 0.1158 rr 0.0701 opt% 0.25 (1.8s) wall 991s
+[abl_a2_seed1] step   56000 ep   3671 eps 0.050 loss 0.1326 val gap raw 0.1101 rr 0.0707 opt% 0.23 (1.9s) wall 1028s
+[abl_a2_seed1] step   58000 ep   3811 eps 0.050 loss 0.1341 val gap raw 0.1094 rr 0.0716 opt% 0.23 (1.8s) wall 1069s
+[abl_a2_seed1] step   60000 ep   3957 eps 0.050 loss 0.1271 val gap raw 0.1015 rr 0.0676 opt% 0.23 (1.7s) wall 1106s
+[abl_a2_seed1] step   62000 ep   4089 eps 0.050 loss 0.1235 val gap raw 0.1007 rr 0.0652 opt% 0.24 (1.8s) wall 1142s *best*
+[abl_a2_seed1] step   64000 ep   4237 eps 0.050 loss 0.1223 val gap raw 0.0970 rr 0.0662 opt% 0.23 (1.8s) wall 1179s
+[abl_a2_seed1] step   66000 ep   4367 eps 0.050 loss 0.1272 val gap raw 0.1029 rr 0.0651 opt% 0.23 (1.9s) wall 1216s *best*
+[abl_a2_seed1] step   68000 ep   4505 eps 0.050 loss 0.1246 val gap raw 0.0967 rr 0.0660 opt% 0.21 (1.7s) wall 1254s
+[abl_a2_seed1] step   70000 ep   4656 eps 0.050 loss 0.1250 val gap raw 0.0908 rr 0.0620 opt% 0.21 (1.7s) wall 1291s *best*
+[abl_a2_seed1] step   72000 ep   4806 eps 0.050 loss 0.1221 val gap raw 0.0961 rr 0.0638 opt% 0.19 (1.7s) wall 1327s
+[abl_a2_seed1] step   74000 ep   4947 eps 0.050 loss 0.1180 val gap raw 0.0916 rr 0.0663 opt% 0.22 (1.7s) wall 1365s
+[abl_a2_seed1] step   76000 ep   5090 eps 0.050 loss 0.1206 val gap raw 0.0987 rr 0.0667 opt% 0.21 (1.7s) wall 1402s
+[abl_a2_seed1] step   78000 ep   5238 eps 0.050 loss 0.1169 val gap raw 0.0882 rr 0.0579 opt% 0.21 (1.7s) wall 1438s *best*

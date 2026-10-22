@@ -374,3 +374,50 @@ R26. **Step 2 run and final pass** (14:07-15:26, alone on the machine, GNN on CU
     after 1 s (ours_greedy_ls first solution at n = 5000: mean 2.17 s, max 5.23 s), so those methods count as "no set"
     at the 1 s budget there. "Best method" tables only rank methods that had a set on every instance of the cell.
     Tests: 29 passed (test_guided_restarts, test_greedy_plus, test_postprocess, test_checker).
+
+## Ablation sprint (2026-10-22, 4.5-hour box from 16:32 IST; guide's review page 4)
+R27. **Step 0 push.** .gitignore now also excludes data/rev2_large_cache/, results/revision2/smoke/,
+    results/ablations/smoke/, logs/*smoke* and checkpoints/ablations/ (ablation best.pt files stay local). Largest
+    tracked file 20 MB. Commit 497c40c pushed to https://github.com/jismaria-johnson/WTDS-WS-GNN-RL.git (main);
+    `git ls-remote origin` = local HEAD.
+R28. **Setup.** Reference = checkpoints/best.pt (seed 0) and checkpoints/seed1_best.pt (seed 1), not retrained.
+    configs/ablations/ref.yaml inherits configs/ws_finetune_seed1.yaml (78,000 steps, no time box) and differs from it
+    only in the output folder (asserted in tests/test_ablations.py). Seed 0's reference run used the 20-min time box,
+    which stopped it at exactly 78,000 steps; the ablations use stop_at = 78,000 for both seeds (same step count,
+    same epsilon horizon total_steps = 90,000). Start checkpoint mapping as R1 (seed s <- wtds_seed{s}), sampler
+    TRAIN_MASTER * (s + 1), validation set data/val_ws.npz, best.pt = lowest validation gap after RR (step 0 included).
+    Each ablation config changes exactly one setting (asserted): A1 env.mask_mode = notin; A2 env.use_forced = false
+    (zero-weight vertices would still be pre-selected, but no scheme produces weight 0); A3 env.reward_mode = unit;
+    A4 model.readout = sum, plus train.init_keys = encoder: the encoder (inp, layers) is loaded from the start
+    checkpoint and the whole Q head (w5, w6, w7) is re-initialised, because w6's input size changes (2d + 3 -> d + 3);
+    A5 train.init_checkpoint = null (random initialisation, torch seed = run seed). Validation during training uses
+    each variant's own environment (so checkpoint selection follows the same rule under the ablated setting).
+    Test reference value: proven ILP optimum, or CP-SAT's lower bound for the unproven grid instances (as R9).
+    Evaluation reuses the grid's exact inference path (greedy rollout, multi_select auto, RR with Q scores, CPU);
+    for the reference it reproduces results/raw_grid.csv's ours_rr W on 80 of 80 checked (instance, seed) pairs.
+R29. **Sequential training.** Free RAM at the start was 2.25 GB (< 6 GB), so runs go one at a time on the GPU
+    (`scripts/abl_run_all.sh`, --resume on). Reference runs took 20-32 min each (runs/ws_seed*/summary.json), so
+    10 runs (~4.2 h) cannot fit the box with evaluation and reporting. Cuts (1) and (2) are applied up front: A4 and
+    A5 are trained for seed 0 first; their seed-1 runs are queued last and run only if time allows. Queue order:
+    A1 s0, A1 s1, A2 s0, A2 s1, A3 s0, A3 s1, A4 s0, A5 s0, A4 s1, A5 s1. Each run is evaluated right after it
+    finishes (the evaluation runs between trainings, never during one).
+R30. **A2 metric.** "% of raw solutions missing a vertex the degree-1 rule would have forced" is 0 by construction:
+    a support vertex of a leaf is the only neighbour of that leaf, so every TDS (and every finished episode) contains
+    it. It is measured anyway, together with the informative quantity: the number of policy picks spent on those
+    vertices (picks the rule would have made for free).
+R31. **Cuts and run notes.** Runs took 24-26 min (+ ~1 min evaluation) except A3 seed 1: its first 52,000 steps
+    ran at about half speed (51 min in total, back to normal speed afterwards; no other job of mine was running, cause
+    not identified; free RAM fell to 1.7 GB at one check, so the queue stayed sequential as required). With A5 seed 0
+    starting at 20:04, A4 seed 1 and A5 seed 1 could not finish inside the box with time for reporting and the push,
+    so a STOP file ended the queue after A5 seed 0: cuts (1) A4 down to 1 seed and (2) A5 down to 1 seed. The
+    1-seed variants are tested against reference seed 0 only (same seeds, see abl_report.py). Evaluation stayed on
+    the full grid (n = 20-200). Inference times were measured between trainings (nothing else running), the
+    reference's at the start.
+R32. **Test statistics** (scripts/abl_report.py): per-instance value = mean over the variant's seeds; Wilcoxon on W
+    after RR vs the reference on the same seeds; Holm over A1-A5 for the main table, and over the 20 variant x scheme
+    tests for the by-scheme table. W/T/L = % of the 640 instances where the ablation's W after RR is lower / equal /
+    higher than the reference's.
+R33. **Final pass** (20:30): 8 of 10 runs trained (A1, A2, A3 x seeds 0-1; A4, A5 seed 0), all evaluated on the full
+    640-instance grid; 100% valid after RR (and raw) for every variant. Tests: 26 passed (test_ablations,
+    test_guided_restarts, test_env). Ablation best.pt files stay local in checkpoints/ablations/ (git-ignored);
+    their training curves are copied to results/ablations/val_curves/.

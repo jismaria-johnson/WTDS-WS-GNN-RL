@@ -1,0 +1,4 @@
+# A1 no mask: legal actions = any vertex not in S (gain may be 0).
+inherit: ref.yaml
+env: {mask_mode: notin}
+out: {name: abl_a1}
