@@ -1,0 +1,264 @@
+{
+  "plot1_cardinality_unit (|S|, unit)": {
+    "tree": {
+      "beats_pct": 25.5,
+      "ties_pct": 61.5,
+      "pairs": 200,
+      "beats_exact": 25.5
+    },
+    "unit_interval": {
+      "beats_pct": 22.0,
+      "ties_pct": 25.5,
+      "pairs": 200,
+      "beats_exact": 22.0
+    },
+    "convex_bip": {
+      "beats_pct": 26.0,
+      "ties_pct": 31.5,
+      "pairs": 200,
+      "beats_exact": 26.0
+    },
+    "two_tree": {
+      "beats_pct": 3.5,
+      "ties_pct": 67.5,
+      "pairs": 200,
+      "beats_exact": 3.5000000000000004
+    }
+  },
+  "plot2_cardinality_weighted (box: W, degree)": {
+    "tree": {
+      "beats_pct": 74.0,
+      "ties_pct": 7.0,
+      "pairs": 200,
+      "beats_exact": 74.0
+    },
+    "unit_interval": {
+      "beats_pct": 92.0,
+      "ties_pct": 0.0,
+      "pairs": 200,
+      "beats_exact": 92.0
+    },
+    "convex_bip": {
+      "beats_pct": 79.0,
+      "ties_pct": 0.0,
+      "pairs": 200,
+      "beats_exact": 79.0
+    },
+    "two_tree": {
+      "beats_pct": 86.0,
+      "ties_pct": 2.5,
+      "pairs": 200,
+      "beats_exact": 86.0
+    }
+  },
+  "plot3_total_weight (W, degree)": {
+    "tree": {
+      "beats_pct": 74.0,
+      "ties_pct": 7.0,
+      "pairs": 200,
+      "beats_exact": 74.0
+    },
+    "unit_interval": {
+      "beats_pct": 92.0,
+      "ties_pct": 0.0,
+      "pairs": 200,
+      "beats_exact": 92.0
+    },
+    "convex_bip": {
+      "beats_pct": 79.0,
+      "ties_pct": 0.0,
+      "pairs": 200,
+      "beats_exact": 79.0
+    },
+    "two_tree": {
+      "beats_pct": 86.0,
+      "ties_pct": 2.5,
+      "pairs": 200,
+      "beats_exact": 86.0
+    }
+  },
+  "plot5_ratio (W, degree)": {
+    "tree": {
+      "beats_pct": 74.0,
+      "ties_pct": 7.0,
+      "pairs": 200,
+      "beats_exact": 74.0
+    },
+    "unit_interval": {
+      "beats_pct": 92.0,
+      "ties_pct": 0.0,
+      "pairs": 200,
+      "beats_exact": 92.0
+    },
+    "convex_bip": {
+      "beats_pct": 79.0,
+      "ties_pct": 0.0,
+      "pairs": 200,
+      "beats_exact": 79.0
+    },
+    "two_tree": {
+      "beats_pct": 86.0,
+      "ties_pct": 2.5,
+      "pairs": 200,
+      "beats_exact": 86.0
+    }
+  },
+  "paper_table_n100_500_1000": [
+    {
+      "cls": "tree",
+      "n": 100,
+      "W_exact": 2198.9,
+      "W_ours": 2206.55,
+      "W_greedy": 2220.4,
+      "ratio_ours": 1.0036078094475553,
+      "ratio_greedy": 1.0095620870774966,
+      "beats_pct": 55.0,
+      "ties_pct": 25.0,
+      "pairs": 20,
+      "beats_exact": 55.00000000000001
+    },
+    {
+      "cls": "tree",
+      "n": 500,
+      "W_exact": 9268.0,
+      "W_ours": 9307.8,
+      "W_greedy": 9335.5,
+      "ratio_ours": 1.0043424606869564,
+      "ratio_greedy": 1.0070196554199153,
+      "beats_pct": 65.0,
+      "ties_pct": 5.0,
+      "pairs": 20,
+      "beats_exact": 65.0
+    },
+    {
+      "cls": "tree",
+      "n": 1000,
+      "W_exact": 17869.9,
+      "W_ours": 17938.65,
+      "W_greedy": 18014.8,
+      "ratio_ours": 1.003854783867002,
+      "ratio_greedy": 1.0080066179635276,
+      "beats_pct": 100.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 100.0
+    },
+    {
+      "cls": "unit_interval",
+      "n": 100,
+      "W_exact": 1077.4,
+      "W_ours": 1157.85,
+      "W_greedy": 1207.6,
+      "ratio_ours": 1.0779497897967905,
+      "ratio_greedy": 1.1219940580803276,
+      "beats_pct": 85.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 85.0
+    },
+    {
+      "cls": "unit_interval",
+      "n": 500,
+      "W_exact": 4609.6,
+      "W_ours": 5006.6,
+      "W_greedy": 5213.7,
+      "ratio_ours": 1.087361530768265,
+      "ratio_greedy": 1.1311294594866943,
+      "beats_pct": 95.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 95.0
+    },
+    {
+      "cls": "unit_interval",
+      "n": 1000,
+      "W_exact": 7938.4,
+      "W_ours": 8852.5,
+      "W_greedy": 9161.3,
+      "ratio_ours": 1.119191880799321,
+      "ratio_greedy": 1.1562549063617873,
+      "beats_pct": 90.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 90.0
+    },
+    {
+      "cls": "convex_bip",
+      "n": 100,
+      "W_exact": 947.3,
+      "W_ours": 990.95,
+      "W_greedy": 995.8,
+      "ratio_ours": 1.0503977801363804,
+      "ratio_greedy": 1.0551190630745328,
+      "beats_pct": 60.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 60.0
+    },
+    {
+      "cls": "convex_bip",
+      "n": 500,
+      "W_exact": 2984.1,
+      "W_ours": 3181.65,
+      "W_greedy": 3253.8,
+      "ratio_ours": 1.0750701153274491,
+      "ratio_greedy": 1.097148596427934,
+      "beats_pct": 75.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 75.0
+    },
+    {
+      "cls": "convex_bip",
+      "n": 1000,
+      "W_exact": 5502.2,
+      "W_ours": 5917.65,
+      "W_greedy": 6078.7,
+      "ratio_ours": 1.0896143190954415,
+      "ratio_greedy": 1.1134825554886725,
+      "beats_pct": 80.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 80.0
+    },
+    {
+      "cls": "two_tree",
+      "n": 100,
+      "W_exact": 587.1,
+      "W_ours": 608.95,
+      "W_greedy": 638.7,
+      "ratio_ours": 1.035883598509518,
+      "ratio_greedy": 1.0891016673243203,
+      "beats_pct": 80.0,
+      "ties_pct": 5.0,
+      "pairs": 20,
+      "beats_exact": 80.0
+    },
+    {
+      "cls": "two_tree",
+      "n": 500,
+      "W_exact": 1241.2,
+      "W_ours": 1292.1,
+      "W_greedy": 1316.7,
+      "ratio_ours": 1.041166843046655,
+      "ratio_greedy": 1.0594015771253822,
+      "beats_pct": 80.0,
+      "ties_pct": 5.0,
+      "pairs": 20,
+      "beats_exact": 80.0
+    },
+    {
+      "cls": "two_tree",
+      "n": 1000,
+      "W_exact": 2171.1,
+      "W_ours": 2268.7,
+      "W_greedy": 2313.4,
+      "ratio_ours": 1.0455416299323614,
+      "ratio_greedy": 1.0651719649844849,
+      "beats_pct": 90.0,
+      "ties_pct": 0.0,
+      "pairs": 20,
+      "beats_exact": 90.0
+    }
+  ]
+}

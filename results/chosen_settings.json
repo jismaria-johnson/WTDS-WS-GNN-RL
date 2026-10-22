@@ -1,0 +1,153 @@
+{
+  "rule": "1. candidates = (param, grid); a candidate is eligible iff every ours solution is valid and the exact method is\n     proven optimal on >= 95% of its instances;\n  2. score = mean SEPARATION over all proven instances of the candidate (its n values x 5 graphs x 5 weightings);\n     the eligible candidate with the largest score is chosen (ties: larger grid B, then the parameter listed first);\n  3. weighting for Plots 2-5 = the non-unit weighting with the largest mean SEPARATION within the chosen candidate.",
+  "min_proven": 0.95,
+  "pilot_instances": 3265,
+  "pilot_graphs": 653,
+  "pilot_unproven": 59,
+  "chosen": {
+    "tree": {
+      "param": "random_tree",
+      "param_label": "random labelled",
+      "grid": "A",
+      "ns": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000
+      ],
+      "weighting": "degree",
+      "separation": 0.12369100514369137,
+      "separation_by_weighting": {
+        "unit": 0.08739510428691039,
+        "degree": 0.4104255708721975,
+        "inverse": 0.08110424303792019,
+        "random": 0.09211722639677372,
+        "mixed": -0.05258711887534499
+      },
+      "proven_pct": 100.0,
+      "gap_greedy": 0.46901993730646285,
+      "gap_ours": 0.34532893216277144,
+      "dW": 9.024,
+      "dS": 1.584,
+      "runner_up": {
+        "param": "random_tree",
+        "grid": "B",
+        "separation": 0.10943047760168607
+      }
+    },
+    "unit_interval": {
+      "param": "deg6",
+      "param_label": "avg deg 6",
+      "grid": "A",
+      "ns": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000
+      ],
+      "weighting": "degree",
+      "separation": 1.1362712707267428,
+      "separation_by_weighting": {
+        "unit": -0.13331394616951675,
+        "degree": 5.381521897417905,
+        "inverse": -1.356795355282227,
+        "random": 0.1193616415575184,
+        "mixed": 1.6705821161100334
+      },
+      "proven_pct": 100.0,
+      "gap_greedy": 6.148873041651227,
+      "gap_ours": 5.012601770924484,
+      "dW": 57.38,
+      "dS": 2.14,
+      "runner_up": {
+        "param": "deg3",
+        "grid": "A",
+        "separation": 0.9762193241870297
+      }
+    },
+    "convex_bip": {
+      "param": "deg6",
+      "param_label": "avg deg 6",
+      "grid": "A",
+      "ns": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000
+      ],
+      "weighting": "degree",
+      "separation": 0.1725361312351092,
+      "separation_by_weighting": {
+        "unit": 0.15550043018460008,
+        "degree": 2.549847603876794,
+        "inverse": -1.1136459311813516,
+        "random": -0.7429858189820727,
+        "mixed": 0.10905683118324319
+      },
+      "proven_pct": 99.2,
+      "gap_greedy": 3.7429171656259705,
+      "gap_ours": 3.570381034390861,
+      "dW": 23.403225806451612,
+      "dS": 0.8346774193548387,
+      "runner_up": {
+        "param": "deg3",
+        "grid": "B",
+        "separation": 0.0996838769237056
+      }
+    },
+    "two_tree": {
+      "param": "k2",
+      "param_label": "as generated",
+      "grid": "A",
+      "ns": [
+        100,
+        200,
+        300,
+        400,
+        500,
+        600,
+        700,
+        800,
+        900,
+        1000
+      ],
+      "weighting": "degree",
+      "separation": 0.47602146705039017,
+      "separation_by_weighting": {
+        "unit": 0.03999128563395542,
+        "degree": 2.7587956089478705,
+        "inverse": 0.030568709141882394,
+        "random": -0.07848151917149057,
+        "mixed": -0.37076674930026726
+      },
+      "proven_pct": 100.0,
+      "gap_greedy": 2.0007001867577165,
+      "gap_ours": 1.5246787197073264,
+      "dW": 2.492,
+      "dS": 5.424,
+      "runner_up": {
+        "param": "k2",
+        "grid": "B",
+        "separation": 0.21988900037276812
+      }
+    }
+  }
+}

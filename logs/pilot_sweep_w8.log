@@ -1,0 +1,2 @@
+5 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+done in 1463s -> results\pilot_sweep_w8.csv

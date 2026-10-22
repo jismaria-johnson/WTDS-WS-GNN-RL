@@ -1,0 +1,26 @@
+240 graphs x 5 weightings on cuda; seeds in the test range (1200000000, 1300000000), none shared with earlier test runs
+  10/240 graphs (tree, n=20) elapsed 4s
+  20/240 graphs (tree, n=50) elapsed 7s
+  30/240 graphs (tree, n=100) elapsed 13s
+  40/240 graphs (tree, n=200) elapsed 24s
+  50/240 graphs (tree, n=500) elapsed 52s
+  60/240 graphs (tree, n=1000) elapsed 97s
+  70/240 graphs (unit_interval, n=20) elapsed 100s
+  80/240 graphs (unit_interval, n=50) elapsed 106s
+  90/240 graphs (unit_interval, n=100) elapsed 116s
+  100/240 graphs (unit_interval, n=200) elapsed 135s
+  110/240 graphs (unit_interval, n=500) elapsed 200s
+  120/240 graphs (unit_interval, n=1000) elapsed 386s
+  130/240 graphs (convex_bip, n=20) elapsed 388s
+  140/240 graphs (convex_bip, n=50) elapsed 391s
+  150/240 graphs (convex_bip, n=100) elapsed 396s
+  160/240 graphs (convex_bip, n=200) elapsed 405s
+  170/240 graphs (convex_bip, n=500) elapsed 428s
+  180/240 graphs (convex_bip, n=1000) elapsed 502s
+  190/240 graphs (two_tree, n=20) elapsed 505s
+  200/240 graphs (two_tree, n=50) elapsed 511s
+  210/240 graphs (two_tree, n=100) elapsed 523s
+  220/240 graphs (two_tree, n=200) elapsed 544s
+  230/240 graphs (two_tree, n=500) elapsed 596s
+  240/240 graphs (two_tree, n=1000) elapsed 702s
+done in 702s -> D:\project s7\wtds-ws-gnn-rl\results\exact_vs_ours.csv

@@ -1,0 +1,3 @@
+seed 0 zero-shot: gap raw 0.0757  gap +RR 0.0569  opt% 0.25  (1.0s on cuda)
+seed 1 zero-shot: gap raw 0.0967  gap +RR 0.0628  opt% 0.24  (0.5s on cuda)
+weighted greedy + RR gap on the same set: 0.0573

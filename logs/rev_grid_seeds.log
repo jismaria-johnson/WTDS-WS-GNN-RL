@@ -1,0 +1,27 @@
+  20/160 structures, 160 rows, 4s
+  40/160 structures, 320 rows, 18s
+  60/160 structures, 480 rows, 21s
+  80/160 structures, 640 rows, 32s
+  100/160 structures, 800 rows, 36s
+  120/160 structures, 960 rows, 52s
+  140/160 structures, 1120 rows, 56s
+  160/160 structures, 1280 rows, 68s
+[seeds] 1280 new rows -> D:\project s7\wtds-ws-gnn-rl\results\revision\raw_grid_rev_seeds.csv (68s)
+  20/160 structures, 160 rows, 3s
+  40/160 structures, 320 rows, 16s
+  60/160 structures, 480 rows, 18s
+  80/160 structures, 640 rows, 27s
+  100/160 structures, 800 rows, 31s
+  120/160 structures, 960 rows, 44s
+  140/160 structures, 1120 rows, 47s
+  160/160 structures, 1280 rows, 57s
+[seeds] 1280 new rows -> D:\project s7\wtds-ws-gnn-rl\results\revision\raw_grid_rev_seeds.csv (57s)
+  20/160 structures, 160 rows, 3s
+  40/160 structures, 320 rows, 16s
+  60/160 structures, 480 rows, 18s
+  80/160 structures, 640 rows, 27s
+  100/160 structures, 800 rows, 30s
+  120/160 structures, 960 rows, 44s
+  140/160 structures, 1120 rows, 47s
+  160/160 structures, 1280 rows, 58s
+[seeds] 1280 new rows -> D:\project s7\wtds-ws-gnn-rl\results\revision\raw_grid_rev_seeds.csv (58s)

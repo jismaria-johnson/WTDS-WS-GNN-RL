@@ -1,0 +1,6 @@
+# Seed 1: identical to ws_finetune.yaml, stopped at seed 0's final step count (no time box).
+inherit: ws_finetune.yaml
+seed: 1
+train:
+  stop_at: 78000
+  time_box_s: 0

@@ -1,0 +1,9 @@
+# Seed 3 (revision): identical to ws_finetune_seed1.yaml (same algorithm, reward, step count 78,000, no time box).
+# Only two wtds checkpoints exist (seeds 0, 1), so seed 3 starts from wtds_seed1_best.pt (seed mod 2);
+# its replay buffer, epsilon draws, torch init RNG and training-graph stream all use seed 3 (decisions.md, R1).
+inherit: ws_finetune.yaml
+seed: 3
+train:
+  init_checkpoint: checkpoints/pretrained/wtds_seed1_best.pt
+  stop_at: 78000
+  time_box_s: 0

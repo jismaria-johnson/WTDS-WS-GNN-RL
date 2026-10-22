@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Mean runtime per instance vs n}
+\begin{tabular}{llrrrrrr}
+\toprule
+n & weighted\_greedy (s) & weighted\_greedy\_rr (s) & weighted\_greedy\_rr\_ls (s) & wtds\_zero\_shot+RR (s) & ours+RR (s) & ours+RR+LS (s) & ILP (30 s) (s) \\
+\midrule
+20 & 0.0002 & 0.0002 & 0.0005 & 0.0194 & 0.0193 & 0.0197 & 0.0229 \\
+50 & 0.0003 & 0.0003 & 0.0011 & 0.0545 & 0.0509 & 0.0517 & 0.0371 \\
+100 & 0.0004 & 0.0006 & 0.0026 & 0.0968 & 0.0855 & 0.0875 & 0.8298 \\
+200 & 0.0006 & 0.0009 & 0.0066 & 0.1792 & 0.1617 & 0.1683 & 3.5409 \\
+500 & 0.0016 & 0.0024 & 0.0306 & 0.4163 & 0.3817 & 0.4205 & not run \\
+\bottomrule
+\end{tabular}
+\end{table}

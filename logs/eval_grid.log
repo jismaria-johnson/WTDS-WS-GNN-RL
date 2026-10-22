@@ -1,0 +1,22 @@
+[grid] 200 graph structures x 4 schemes on cuda; all graph/weight seeds in the test range (1200000000, 1300000000)
+  10/200 structures (er, n=20) rows 400 elapsed 5s
+  20/200 structures (er, n=50) rows 800 elapsed 17s
+  30/200 structures (er, n=100) rows 1200 elapsed 158s
+  40/200 structures (er, n=200) rows 1600 elapsed 531s
+  50/200 structures (er, n=500) rows 1960 elapsed 610s
+  60/200 structures (ba, n=20) rows 2360 elapsed 613s
+  70/200 structures (ba, n=50) rows 2760 elapsed 623s
+  80/200 structures (ba, n=100) rows 3160 elapsed 642s
+  90/200 structures (ba, n=200) rows 3560 elapsed 769s
+  100/200 structures (ba, n=500) rows 3920 elapsed 831s
+  110/200 structures (chordal, n=20) rows 4320 elapsed 835s
+  120/200 structures (chordal, n=50) rows 4720 elapsed 845s
+  130/200 structures (chordal, n=100) rows 5120 elapsed 860s
+  140/200 structures (chordal, n=200) rows 5520 elapsed 890s
+  150/200 structures (chordal, n=500) rows 5880 elapsed 960s
+  160/200 structures (bipartite, n=20) rows 6280 elapsed 964s
+  170/200 structures (bipartite, n=50) rows 6680 elapsed 974s
+  180/200 structures (bipartite, n=100) rows 7080 elapsed 992s
+  190/200 structures (bipartite, n=200) rows 7480 elapsed 1144s
+  200/200 structures (bipartite, n=500) rows 7840 elapsed 1227s
+[grid] done: 7840 new rows in 1227s -> D:\project s7\wtds-ws-gnn-rl\results\raw_grid.csv

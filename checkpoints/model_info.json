@@ -1,0 +1,67 @@
+{
+  "encoder": "mpnn",
+  "hidden": 64,
+  "layers": 3,
+  "readout": "meanmax",
+  "parameters": 88129,
+  "reward": "weighted: r = -w(v) / mean weight (unchanged from wtds-gnn-rl)",
+  "device": "cuda",
+  "train": {
+    "lr": 5e-05,
+    "eps_start": 0.2,
+    "eps_end": 0.05,
+    "eps_frac": 0.2,
+    "total_steps": 90000,
+    "time_box_s": 1200,
+    "buffer_size": 20000,
+    "batch_size": 64,
+    "sampler": "class_scheme",
+    "curriculum": [
+      [
+        1.0,
+        20,
+        100
+      ]
+    ]
+  },
+  "val_gap_weighted_greedy_rr": 0.057313945053815506,
+  "seeds": [
+    {
+      "seed": 0,
+      "checkpoint": "checkpoints/best.pt",
+      "pretrained_from": "checkpoints/pretrained/wtds_seed0_best.pt",
+      "finetune_steps": 78000,
+      "best_step": 50000,
+      "shipped": "fine-tuned, step 50000",
+      "zero_shot_val_gap_rr": 0.05694384381086278,
+      "zero_shot_val_gap_raw": 0.07567633427567373,
+      "zero_shot_val_frac_optimal_rr": 0.25,
+      "finetuned_best_val_gap_rr": 0.04685633043621793,
+      "finetuned_best_step": 50000,
+      "finetuned_last_val_gap_rr": 0.050747874770162384,
+      "shipped_val_gap_rr": 0.04685633043621793,
+      "shipped_val_gap_raw": 0.05712228221937218,
+      "shipped_val_frac_optimal_rr": 0.33125,
+      "wall_s": 1228.8553948402405
+    },
+    {
+      "seed": 1,
+      "checkpoint": "checkpoints/seed1_best.pt",
+      "pretrained_from": "checkpoints/pretrained/wtds_seed1_best.pt",
+      "finetune_steps": 78000,
+      "best_step": 68000,
+      "shipped": "fine-tuned, step 68000",
+      "zero_shot_val_gap_rr": 0.06275683074645254,
+      "zero_shot_val_gap_raw": 0.09670625019962936,
+      "zero_shot_val_frac_optimal_rr": 0.2375,
+      "finetuned_best_val_gap_rr": 0.05176421034922133,
+      "finetuned_best_step": 68000,
+      "finetuned_last_val_gap_rr": 0.06306234795000513,
+      "shipped_val_gap_rr": 0.05176421034922133,
+      "shipped_val_gap_raw": 0.06626546106745637,
+      "shipped_val_frac_optimal_rr": 0.2625,
+      "wall_s": 1556.7654025554657
+    }
+  ],
+  "validation_note": "Validation: 160 fixed graphs (10 per class \u00d7 scheme; ER, BA, chordal, bipartite \u00d7 degree, inverse, random, mixed; n = 50\u2013100), all optima proven by CP-SAT (30 s). Gap = mean (W(S) \u2212 W*) / W* after redundancy removal. Both seeds were fine-tuned for the same number of steps from the copied wtds-gnn-rl checkpoints; best.pt = lowest gap, step 0 included."
+}

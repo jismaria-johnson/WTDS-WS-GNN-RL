@@ -1,0 +1,9 @@
+  20/160 structures, 560 rows, 17s
+  40/160 structures, 1120 rows, 47s
+  60/160 structures, 1680 rows, 63s
+  80/160 structures, 2240 rows, 91s
+  100/160 structures, 2800 rows, 106s
+  120/160 structures, 3360 rows, 129s
+  140/160 structures, 3920 rows, 144s
+  160/160 structures, 4480 rows, 168s
+[baselines] 4480 new rows -> D:\project s7\wtds-ws-gnn-rl\results\revision\raw_grid_rev_baselines.csv (168s)

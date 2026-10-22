@@ -1,0 +1,22 @@
+seed-range check:
+  train graph/weight seeds in [0, 1,000,000,000)
+  val   graph/weight seeds in [1,000,000,000, 1,100,000,000)
+  test  graph/weight seeds in [1,200,000,000, 1,300,000,000)
+  seed ranges are pairwise disjoint: OK
+  val er        degree   done: 10 graphs, 0 replaced (14s)
+  val er        inverse  done: 20 graphs, 0 replaced (15s)
+  val er        random   done: 30 graphs, 0 replaced (15s)
+  val er        mixed    done: 40 graphs, 0 replaced (17s)
+  val ba        degree   done: 50 graphs, 0 replaced (18s)
+  val ba        inverse  done: 60 graphs, 0 replaced (18s)
+  val ba        random   done: 70 graphs, 0 replaced (18s)
+  val ba        mixed    done: 80 graphs, 0 replaced (19s)
+  val chordal   degree   done: 90 graphs, 0 replaced (19s)
+  val chordal   inverse  done: 100 graphs, 0 replaced (19s)
+  val chordal   random   done: 110 graphs, 0 replaced (20s)
+  val chordal   mixed    done: 120 graphs, 0 replaced (20s)
+  val bipartite degree   done: 130 graphs, 0 replaced (20s)
+  val bipartite inverse  done: 140 graphs, 0 replaced (21s)
+  val bipartite random   done: 150 graphs, 0 replaced (21s)
+  val bipartite mixed    done: 160 graphs, 0 replaced (21s)
+160 graphs, all proven optimal; replaced (not proven in 30 s): 0; ILP time mean 0.13s max 5.27s

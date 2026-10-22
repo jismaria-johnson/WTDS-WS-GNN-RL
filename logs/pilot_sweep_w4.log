@@ -1,0 +1,7 @@
+75 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+re-solving 3 graphs with an unproven ILP row
+75 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+  25/75 (convex_bip/deg6, n=500) elapsed 126s
+  50/75 (convex_bip/deg6, n=1000) elapsed 660s
+  75/75 (convex_bip/deg6, n=2000) elapsed 2430s
+done in 2430s -> results\pilot_sweep_w4.csv

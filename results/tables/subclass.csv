@@ -1,0 +1,17 @@
+subclass,scheme,n,ours+RR gap %,greedy+RR gap %,proven / ILP runs
+unit interval,Degree,50,8.76 ± 1.55,12.25,10 / 10
+unit interval,Inverse,50,3.91 ± 1.95,3.58,10 / 10
+unit interval,Random,50,0.70 ± 0.14,1.55,10 / 10
+unit interval,Mixed,50,4.69 ± 1.18,6.03,10 / 10
+unit interval,Degree,100,8.40 ± 0.24,11.05,10 / 10
+unit interval,Inverse,100,4.48 ± 0.43,3.36,10 / 10
+unit interval,Random,100,3.43 ± 0.39,3.10,10 / 10
+unit interval,Mixed,100,3.98 ± 0.66,7.64,10 / 10
+convex bipartite,Degree,50,3.74 ± 0.56,7.37,10 / 10
+convex bipartite,Inverse,50,1.02 ± 0.04,1.03,10 / 10
+convex bipartite,Random,50,1.40 ± 0.87,0.52,10 / 10
+convex bipartite,Mixed,50,4.34 ± 0.82,5.95,10 / 10
+convex bipartite,Degree,100,5.17 ± 2.03,9.17,10 / 10
+convex bipartite,Inverse,100,4.60 ± 0.72,0.95,10 / 10
+convex bipartite,Random,100,1.73 ± 1.16,0.83,10 / 10
+convex bipartite,Mixed,100,4.85 ± 2.13,4.76,10 / 10

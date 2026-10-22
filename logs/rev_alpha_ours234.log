@@ -1,0 +1,30 @@
+80 fresh graphs (test range, unused) x 9 alphas, part ours
+  10/80 graphs, 5s
+  20/80 graphs, 14s
+  30/80 graphs, 18s
+  40/80 graphs, 23s
+  50/80 graphs, 28s
+  60/80 graphs, 39s
+  70/80 graphs, 43s
+  80/80 graphs, 51s
+done -> D:\project s7\wtds-ws-gnn-rl\results\revision\alpha_sweep_ours.csv (51s)
+80 fresh graphs (test range, unused) x 9 alphas, part ours
+  10/80 graphs, 4s
+  20/80 graphs, 13s
+  30/80 graphs, 16s
+  40/80 graphs, 21s
+  50/80 graphs, 26s
+  60/80 graphs, 35s
+  70/80 graphs, 39s
+  80/80 graphs, 48s
+done -> D:\project s7\wtds-ws-gnn-rl\results\revision\alpha_sweep_ours.csv (48s)
+80 fresh graphs (test range, unused) x 9 alphas, part ours
+  10/80 graphs, 5s
+  20/80 graphs, 13s
+  30/80 graphs, 16s
+  40/80 graphs, 21s
+  50/80 graphs, 26s
+  60/80 graphs, 35s
+  70/80 graphs, 38s
+  80/80 graphs, 47s
+done -> D:\project s7\wtds-ws-gnn-rl\results\revision\alpha_sweep_ours.csv (47s)

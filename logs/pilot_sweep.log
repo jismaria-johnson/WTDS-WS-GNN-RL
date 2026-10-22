@@ -1,0 +1,18 @@
+675 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+  25/675 (tree/random_tree, n=500) elapsed 22s
+  50/675 (tree/random_tree, n=1000) elapsed 107s
+  75/675 (tree/random_tree, n=2000) elapsed 212s
+  100/675 (tree/ba_m1, n=500) elapsed 222s
+  125/675 (tree/ba_m1, n=1000) elapsed 248s
+  150/675 (tree/ba_m1, n=2000) elapsed 280s
+  175/675 (unit_interval/deg3, n=500) elapsed 332s
+  200/675 (unit_interval/deg3, n=1000) elapsed 581s
+  225/675 (unit_interval/deg3, n=2000) elapsed 1281s
+  250/675 (unit_interval/deg6, n=500) elapsed 1318s
+  275/675 (unit_interval/deg6, n=1000) elapsed 1583s
+re-solving 1 graphs with an unproven ILP row
+75 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+re-solving 1 graphs with an unproven ILP row
+75 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+  75/75 (unit_interval/deg6, n=2000) elapsed 1389s
+done in 1389s -> results\pilot_sweep.csv

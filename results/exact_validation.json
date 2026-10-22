@@ -1,0 +1,32 @@
+{
+  "tree": {
+    "bruteforce": {
+      "instances": 500,
+      "weight_mismatches": 0,
+      "size_mismatches": 0
+    },
+    "ilp": {
+      "instances": 300,
+      "not_proven": 0,
+      "weight_mismatches": 0,
+      "size_mismatches": 0
+    }
+  },
+  "interval": {
+    "bruteforce": {
+      "instances": 500,
+      "weight_mismatches": 0,
+      "size_mismatches": 0
+    },
+    "ilp": {
+      "instances": 300,
+      "not_proven": 0,
+      "weight_mismatches": 0,
+      "size_mismatches": 0
+    }
+  },
+  "total_instances": 1600,
+  "total_mismatches": 0,
+  "ilp_not_proven": 0,
+  "seconds": 63.3
+}

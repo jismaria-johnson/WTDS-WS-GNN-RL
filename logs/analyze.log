@@ -1,0 +1,3 @@
+re-verifying every stored solution ...
+  9440 solutions re-verified: all valid, all weights recomputed
+wrote results/summary.json, 6 tables (CSV + LaTeX), 5 figures; ILP proven 624/640

@@ -1,0 +1,28 @@
+# wtds-ws fine-tuning: same algorithm and reward as wtds-gnn-rl (r = -w(v) / mean weight, gamma = 1),
+# started from the copied wtds best.pt of the same seed. Only the training distribution changes:
+# class ~ U{ER, BA, chordal, bipartite}, scheme ~ U{degree, inverse, random, mixed}, n ~ U[20, 100].
+seed: 0
+device: auto
+model: {hidden: 64, layers: 3, encoder: mpnn, readout: meanmax}
+env: {reward_mode: weighted, use_forced: true, mask_mode: gain}
+train:
+  init_checkpoint: checkpoints/pretrained/wtds_seed{seed}_best.pt
+  sampler: class_scheme
+  total_steps: 90000          # epsilon horizon (measured ~70 steps/s on the GPU); seed 0 stops at the 20-min box
+  time_box_s: 1200
+  stop_at: null               # seed 1: set to seed 0's final step count
+  num_envs: 8
+  buffer_size: 20000          # fresh buffer: 30000 planned, 20000 because < 3 GB RAM was free (decisions.md #9)
+  batch_size: 64
+  warmup: 2000
+  train_every: 2
+  lr: 5.0e-5
+  gamma: 1.0
+  loss: huber
+  tau: 0.005
+  eps_start: 0.2
+  eps_end: 0.05
+  eps_frac: 0.2
+  curriculum: [[1.0, 20, 100]]
+val: {kind: ws, every: 2000, path: data/val_ws.npz, per_cell: 10, n_min: 50, n_max: 100, ilp_time: 30, batch_size: 20}
+out: {name: ws, ckpt_dir: checkpoints, run_dir: runs}

@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{The 16 grid instances whose 30 s ILP was not proven optimal: gap to the CP-SAT lower bound (an upper bound on the true gap), and the mean over all 640 instances using the optimum where proven and the lower bound otherwise. Ours = mean over model seeds.}
+\label{tab:unproven_lb}
+\scriptsize
+\begin{tabular}{llrrr}
+\toprule
+method & unproven inst & mean gap to LB \% & max gap to LB \% & all 640: gap to opt or LB \% \\
+\midrule
+ours\_rr & 16 & 34.70 & 45.40 & 5.37 \\
+ours\_rr\_ls & 16 & 32.23 & 43.21 & 3.04 \\
+greedy\_rr & 16 & 37.58 & 51.42 & 6.31 \\
+greedy\_rr\_ls & 16 & 34.54 & 50.92 & 3.56 \\
+greedy\_tiebreak\_rr & 16 & 38.17 & 51.42 & 6.39 \\
+greedy\_lookahead\_rr & 16 & 41.79 & 58.20 & 10.77 \\
+lp\_rounding\_rr & 16 & 49.76 & 74.23 & 6.99 \\
+greedy\_random\_restart\_rr & 16 & 28.79 & 39.38 & 2.62 \\
+ilp\_incumbent\_30s & 16 & 22.31 & 35.02 & 0.56 \\
+\bottomrule
+\end{tabular}
+\end{table}

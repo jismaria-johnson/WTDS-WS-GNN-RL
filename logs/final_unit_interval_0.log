@@ -1,0 +1,7 @@
+50 fresh graphs x 5 weightings on cuda; seeds in the test range (1200000000, 1300000000), none shared with earlier runs or the pilot
+  10/50 (unit_interval, n=200) elapsed 19s
+  20/50 (unit_interval, n=400) elapsed 66s
+  30/50 (unit_interval, n=600) elapsed 136s
+  40/50 (unit_interval, n=800) elapsed 231s
+  50/50 (unit_interval, n=1000) elapsed 388s
+done in 388s -> results\exact_vs_ours_final_part_unit_interval_0.csv

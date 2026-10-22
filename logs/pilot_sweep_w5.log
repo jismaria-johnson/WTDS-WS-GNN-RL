@@ -1,0 +1,7 @@
+75 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+re-solving 2 graphs with an unproven ILP row
+75 pilot graphs x 5 weightings on cuda; seeds in (1400000000, 1500000000)
+  25/75 (two_tree/k2, n=500) elapsed 69s
+  50/75 (two_tree/k2, n=1000) elapsed 368s
+  75/75 (two_tree/k2, n=2000) elapsed 1060s
+done in 1060s -> results\pilot_sweep_w5.csv

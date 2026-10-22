@@ -1,0 +1,13 @@
+method,seeds,gap %,95% CI (instances),95% CI (seeds),optimal %
+ours+RR,5,4.62,"[4.25, 4.99]","[3.95, 5.29]",32.0
+ours+RR+LS,5,2.29,"[2.04, 2.56]","[1.89, 2.70]",54.9
+zero+RR,2,6.02,"[5.48, 6.58]","[-2.79, 14.83]",29.0
+greedy_rr,-,5.51,"[4.96, 6.08]",-,34.8
+greedy_rr_ls,-,2.76,"[2.41, 3.13]",-,54.8
+greedy_tiebreak_rr,-,5.57,"[5.02, 6.15]",-,34.9
+greedy_tiebreak_rr_ls,-,2.81,"[2.45, 3.19]",-,54.5
+greedy_lookahead_rr,-,9.98,"[8.96, 11.05]",-,29.0
+greedy_lookahead_rr_ls,-,3.05,"[2.67, 3.44]",-,52.9
+lp_rounding_rr,-,5.89,"[5.18, 6.63]",-,51.8
+lp_rounding_rr_ls,-,1.93,"[1.63, 2.24]",-,66.7
+greedy_random_restart_rr,-,1.95,"[1.64, 2.28]",-,53.5

@@ -1,0 +1,10 @@
+80 fresh graphs (test range, unused) x 9 alphas, part ours
+  10/80 graphs, 11s
+  20/80 graphs, 35s
+  30/80 graphs, 43s
+  40/80 graphs, 56s
+  50/80 graphs, 67s
+  60/80 graphs, 89s
+  70/80 graphs, 99s
+  80/80 graphs, 120s
+done -> D:\project s7\wtds-ws-gnn-rl\results\revision\alpha_sweep_ours.csv (120s)

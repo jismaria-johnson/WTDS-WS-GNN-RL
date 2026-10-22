@@ -1,0 +1,105 @@
+{
+ "graphs": 240,
+ "solutions_checked": 7800,
+ "exact_not_proven": [],
+ "ilp_crosscheck": {
+  "runs": 600,
+  "proven": 600,
+  "agree": 600
+ }
+}
+{
+ "tree": {
+  "unit_opt_pct": 91.66666666666666,
+  "weighted_opt_W_pct": 59.375,
+  "weighted_same_S_pct": 79.375,
+  "per_scheme_opt_W_pct": {
+   "degree": 59.166666666666664,
+   "inverse": 87.5,
+   "random": 49.166666666666664,
+   "mixed": 41.66666666666667
+  },
+  "unit_opt_pct_ours_ls": 96.66666666666667,
+  "weighted_opt_W_pct_ours_ls": 85.41666666666666,
+  "unit_opt_pct_greedy": 86.66666666666667,
+  "weighted_opt_W_pct_greedy": 71.25,
+  "mean_gap_unit_pct": 0.028212403635270798,
+  "mean_gap_weighted_pct": 0.19027702939007254,
+  "mean_gap_unit_greedy_pct": 0.05684048297631309,
+  "mean_gap_weighted_greedy_pct": 0.2307740368754277
+ },
+ "unit_interval": {
+  "unit_opt_pct": 32.5,
+  "weighted_opt_W_pct": 17.5,
+  "weighted_same_S_pct": 28.749999999999996,
+  "per_scheme_opt_W_pct": {
+   "degree": 11.666666666666666,
+   "inverse": 20.0,
+   "random": 22.5,
+   "mixed": 15.833333333333332
+  },
+  "unit_opt_pct_ours_ls": 45.83333333333333,
+  "weighted_opt_W_pct_ours_ls": 31.458333333333332,
+  "unit_opt_pct_greedy": 35.0,
+  "weighted_opt_W_pct_greedy": 17.916666666666668,
+  "mean_gap_unit_pct": 5.363847686078533,
+  "mean_gap_weighted_pct": 4.875374982577979,
+  "mean_gap_unit_greedy_pct": 4.311424304172806,
+  "mean_gap_weighted_greedy_pct": 6.014926228621874
+ },
+ "convex_bip": {
+  "unit_opt_pct": 52.5,
+  "weighted_opt_W_pct": 24.166666666666668,
+  "weighted_same_S_pct": 37.291666666666664,
+  "per_scheme_opt_W_pct": {
+   "degree": 16.666666666666664,
+   "inverse": 30.0,
+   "random": 28.333333333333332,
+   "mixed": 21.666666666666668
+  },
+  "unit_opt_pct_ours_ls": 69.16666666666667,
+  "weighted_opt_W_pct_ours_ls": 53.125,
+  "unit_opt_pct_greedy": 55.00000000000001,
+  "weighted_opt_W_pct_greedy": 32.916666666666664,
+  "mean_gap_unit_pct": 2.0970170043836713,
+  "mean_gap_weighted_pct": 3.4321054292107886,
+  "mean_gap_unit_greedy_pct": 1.8278790404334633,
+  "mean_gap_weighted_greedy_pct": 3.4066365727774532
+ },
+ "two_tree": {
+  "unit_opt_pct": 89.16666666666667,
+  "weighted_opt_W_pct": 37.5,
+  "weighted_same_S_pct": 55.00000000000001,
+  "per_scheme_opt_W_pct": {
+   "degree": 15.0,
+   "inverse": 73.33333333333333,
+   "random": 30.0,
+   "mixed": 31.666666666666664
+  },
+  "unit_opt_pct_ours_ls": 95.83333333333334,
+  "weighted_opt_W_pct_ours_ls": 65.41666666666667,
+  "unit_opt_pct_greedy": 96.66666666666667,
+  "weighted_opt_W_pct_greedy": 38.75,
+  "mean_gap_unit_pct": 0.23143101853396628,
+  "mean_gap_weighted_pct": 1.8991686576879308,
+  "mean_gap_unit_greedy_pct": 0.05215123859191657,
+  "mean_gap_weighted_greedy_pct": 2.5912506926900467
+ }
+}
+              cls  scheme     n  S_exact  S_ours  W_exact    W_ours  gap_W_pct  opt_W_pct
+0            tree    unit   100     40.3   40.30     40.3     40.30      0.000      100.0
+1            tree    unit  1000    397.4  397.80    397.4    397.80      0.086       65.0
+2            tree  random   100     41.0   40.95   1959.6   1964.45      0.236       55.0
+3            tree  random  1000    402.4  403.25  18841.5  18882.15      0.205        0.0
+4   unit_interval    unit   100     23.6   24.70     23.6     24.70      5.222       35.0
+5   unit_interval    unit  1000    176.8  191.60    176.8    191.60      8.562        0.0
+6   unit_interval  random   100     26.8   27.95    730.1    747.50      2.448       25.0
+7   unit_interval  random  1000    204.3  213.65   4348.9   4493.00      3.288        0.0
+8      convex_bip    unit   100     16.1   16.35     16.1     16.35      1.402       75.0
+9      convex_bip    unit  1000    127.0  132.40    127.0    132.40      4.735        0.0
+10     convex_bip  random   100     17.3   18.05    606.1    618.90      3.336       20.0
+11     convex_bip  random  1000    140.4  144.35   4132.7   4219.60      2.290        0.0
+12       two_tree    unit   100     19.7   19.70     19.7     19.70      0.000      100.0
+13       two_tree    unit  1000    181.3  182.15    181.3    182.15      0.463       55.0
+14       two_tree  random   100     20.2   21.45    854.5    870.70      1.980       30.0
+15       two_tree  random  1000    194.5  200.35   7350.2   7505.40      2.106        0.0

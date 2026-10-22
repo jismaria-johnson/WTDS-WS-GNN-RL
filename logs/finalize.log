@@ -1,0 +1,4 @@
+seed 0: steps 78000; zero-shot gap+RR 0.0569; best fine-tuned 0.0469 (step 50000); shipped 0.0469 [fine-tuned, step 50000]
+seed 1: steps 78000; zero-shot gap+RR 0.0628; best fine-tuned 0.0518 (step 68000); shipped 0.0518 [fine-tuned, step 68000]
+weighted greedy + RR gap on the same set: 0.0573
+wrote checkpoints/model_info.json

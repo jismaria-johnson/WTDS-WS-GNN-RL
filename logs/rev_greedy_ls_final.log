@@ -1,0 +1,21 @@
+  20/400 graphs, 100 rows, 0s
+  40/400 graphs, 200 rows, 2s
+  60/400 graphs, 300 rows, 4s
+  80/400 graphs, 400 rows, 6s
+  100/400 graphs, 500 rows, 9s
+  120/400 graphs, 600 rows, 11s
+  140/400 graphs, 700 rows, 17s
+  160/400 graphs, 800 rows, 31s
+  180/400 graphs, 900 rows, 60s
+  200/400 graphs, 1000 rows, 113s
+  220/400 graphs, 1100 rows, 114s
+  240/400 graphs, 1200 rows, 120s
+  260/400 graphs, 1300 rows, 132s
+  280/400 graphs, 1400 rows, 145s
+  300/400 graphs, 1500 rows, 166s
+  320/400 graphs, 1600 rows, 167s
+  340/400 graphs, 1700 rows, 174s
+  360/400 graphs, 1800 rows, 187s
+  380/400 graphs, 1900 rows, 210s
+  400/400 graphs, 2000 rows, 242s
+[final] 2000 greedy_rr_ls rows, all valid, -> D:\project s7\wtds-ws-gnn-rl\results\revision\greedy_rr_ls_final.csv (242s)

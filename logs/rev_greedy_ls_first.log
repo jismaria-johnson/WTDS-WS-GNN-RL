@@ -1,0 +1,13 @@
+  20/240 graphs, 100 rows, 0s
+  40/240 graphs, 200 rows, 1s
+  60/240 graphs, 300 rows, 3s
+  80/240 graphs, 400 rows, 3s
+  100/240 graphs, 500 rows, 6s
+  120/240 graphs, 600 rows, 42s
+  140/240 graphs, 700 rows, 43s
+  160/240 graphs, 800 rows, 44s
+  180/240 graphs, 900 rows, 56s
+  200/240 graphs, 1000 rows, 56s
+  220/240 graphs, 1100 rows, 58s
+  240/240 graphs, 1200 rows, 82s
+[first] 1200 greedy_rr_ls rows, all valid, -> D:\project s7\wtds-ws-gnn-rl\results\revision\greedy_rr_ls_first.csv (82s)

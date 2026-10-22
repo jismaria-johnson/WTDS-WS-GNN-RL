@@ -1,0 +1,10 @@
+80 fresh graphs (test range, unused) x 9 alphas, part cpu
+  10/80 graphs, 13s
+  20/80 graphs, 473s
+  30/80 graphs, 477s
+  40/80 graphs, 486s
+  50/80 graphs, 489s
+  60/80 graphs, 494s
+  70/80 graphs, 498s
+  80/80 graphs, 538s
+done -> D:\project s7\wtds-ws-gnn-rl\results\revision\alpha_sweep_cpu.csv (538s)

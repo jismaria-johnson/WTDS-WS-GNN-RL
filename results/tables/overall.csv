@@ -1,0 +1,7 @@
+method,mean gap %,optimal found %,mean runtime (s)
+weighted_greedy,8.81,22.8,0.0004
+weighted_greedy_rr,5.51,34.8,0.0005
+weighted_greedy_rr_ls,2.76,54.8,0.0027
+wtds_zero_shot+RR,6.02 ± 0.98,29.0,0.0875
+ours+RR,4.51 ± 0.89,32.5,0.0793
+ours+RR+LS,2.24 ± 0.36,54.3,0.0818

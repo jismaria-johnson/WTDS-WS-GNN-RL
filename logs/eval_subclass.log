@@ -1,0 +1,6 @@
+[subclass] 40 graph structures x 4 schemes on cuda; all graph/weight seeds in the test range (1200000000, 1300000000)
+  10/40 structures (chordal, n=50) rows 400 elapsed 12s
+  20/40 structures (chordal, n=100) rows 800 elapsed 34s
+  30/40 structures (bipartite, n=50) rows 1200 elapsed 41s
+  40/40 structures (bipartite, n=100) rows 1600 elapsed 54s
+[subclass] done: 1600 new rows in 54s -> D:\project s7\wtds-ws-gnn-rl\results\raw_subclass.csv

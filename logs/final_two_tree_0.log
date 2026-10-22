@@ -1,0 +1,12 @@
+100 fresh graphs x 5 weightings on cuda; seeds in the test range (1200000000, 1300000000), none shared with earlier runs or the pilot
+  10/100 (two_tree, n=100) elapsed 6s
+  20/100 (two_tree, n=200) elapsed 15s
+  30/100 (two_tree, n=300) elapsed 30s
+  40/100 (two_tree, n=400) elapsed 52s
+  50/100 (two_tree, n=500) elapsed 78s
+  60/100 (two_tree, n=600) elapsed 113s
+  70/100 (two_tree, n=700) elapsed 155s
+  80/100 (two_tree, n=800) elapsed 206s
+  90/100 (two_tree, n=900) elapsed 265s
+  100/100 (two_tree, n=1000) elapsed 301s
+done in 301s -> results\exact_vs_ours_final_part_two_tree_0.csv

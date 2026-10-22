@@ -1,0 +1,25 @@
+{
+  "device": "cuda",
+  "val_graphs": 160,
+  "val_gap_weighted_greedy_rr": 0.057313945053815506,
+  "seeds": {
+    "0": {
+      "checkpoint": "checkpoints/pretrained/wtds_seed0_best.pt",
+      "gap_raw": 0.07567633427567373,
+      "gap_rr": 0.05694384381086278,
+      "size_raw": 589.21875,
+      "size_rr": 582.55625,
+      "frac_opt_rr": 0.25,
+      "time": 0.9647119045257568
+    },
+    "1": {
+      "checkpoint": "checkpoints/pretrained/wtds_seed1_best.pt",
+      "gap_raw": 0.09670625019962936,
+      "gap_rr": 0.06275683074645254,
+      "size_raw": 597.9,
+      "size_rr": 584.71875,
+      "frac_opt_rr": 0.2375,
+      "time": 0.525242805480957
+    }
+  }
+}
