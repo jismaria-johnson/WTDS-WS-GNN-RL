@@ -9,3 +9,10 @@ runs/
 checkpoints/ws_seed*/
 results/smoke/
 results/*.log
+
+# graph cache, smoke-run outputs, ablation checkpoints (kept local)
+data/rev2_large_cache/
+results/revision2/smoke/
+results/ablations/smoke/
+logs/*smoke*
+checkpoints/ablations/
