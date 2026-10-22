@@ -1,11 +1,11 @@
 \begin{table}[t]
 \centering
-\caption{Lattices, mixed weights: mean W(S) (ours = mean ± std over 5 model seeds; random/mixed also averaged over 3 weight seeds), gap (%) to the CP-SAT optimum (gap_ref = LB when some instance was not proven: gap to the lower bound).}
+\caption{Lattices, mixed weights: mean W(S) (Proposed = mean ± std over 5 model seeds; random/mixed also averaged over 3 weight seeds), gap (%) to the CP-SAT optimum (gap_ref = LB when some instance was not proven: gap to the lower bound).}
 \label{tab:lattices_mixed}
 \scriptsize
 \begin{tabular}{llrrrrrrrrrrrr}
 \toprule
-lattice & n & m & W\_exact & proven & ours\_rr & greedy\_rr & ours\_rr\_ls & greedy\_rr\_ls & gap\_ours\_rr & gap\_greedy\_rr & gap\_ours\_rr\_ls & gap\_greedy\_rr\_ls & gap\_ref \\
+lattice & n & m & W exact & proven & Proposed + RR & Greedy + RR & Proposed + RR + LS & Greedy + RR + LS & gap Proposed + RR & gap Greedy + RR & gap Proposed + RR + LS & gap Greedy + RR + LS & gap\_ref \\
 \midrule
 Grid (square) & 25 & 40 & 539.0 & 3/3 & 547.4 $\pm$ 7.9 & 559.0 & 540.0 $\pm$ 1.0 & 540.0 & 1.51 & 3.77 & 0.18 & 0.19 & opt \\
 Grid (square) & 64 & 112 & 1189.0 & 3/3 & 1268.3 $\pm$ 12.7 & 1306.7 & 1223.3 $\pm$ 10.1 & 1249.0 & 6.67 & 9.90 & 2.87 & 5.04 & opt \\

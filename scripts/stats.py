@@ -18,6 +18,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats as st
 
+from labels import DISP
+
 ROOT = Path(__file__).resolve().parents[1]
 REV = ROOT / "results" / "revision"
 TAB = REV / "tables"
@@ -151,7 +153,7 @@ def main():
     ref = opt["ilp_w"]
     seeds = sorted(S["ours_rr"].columns)
     full = S["ours_rr"].notna().all(axis=1)
-    print(f"model seeds available for ours: {seeds}; instances with all seeds: {int(full.sum())}/{len(full)}")
+    print(f"model seeds available for Proposed: {seeds}; instances with all seeds: {int(full.sum())}/{len(full)}")
     out = {"seeds": [int(s) for s in seeds], "n_proven": int(proven.sum())}
 
     # ---- pooled main table: every method, gap with CIs
@@ -167,7 +169,7 @@ def main():
         opt_pct = 100 * np.nanmean(np.abs(W.values - ref[proven].values[:, None]) < 1e-9)
         pooled[m] = dict(gap=gm.mean(), ci_inst=boot_ci(gm), ci_seed=seed_ci(per), per_seed=per.tolist(),
                          opt=opt_pct, seeds=list(map(int, W.columns)))
-        rows.append([m.replace("_rr", "+RR").replace("+RR_ls", "+RR+LS"), len(W.columns), f"{gm.mean():.2f}",
+        rows.append([DISP.get(m, m), len(W.columns), f"{gm.mean():.2f}",
                      ci(boot_ci(gm)), ci(seed_ci(per)), f"{opt_pct:.1f}"])
     for m in methods:
         if m not in U:
@@ -175,7 +177,7 @@ def main():
         g = 100 * (U[m][proven] - ref[proven]) / ref[proven]
         opt_pct = 100 * np.mean(np.abs(U[m][proven] - ref[proven]) < 1e-9)
         pooled[m] = dict(gap=float(g.mean()), ci_inst=boot_ci(g.values), opt=float(opt_pct))
-        rows.append([m, "-", f"{g.mean():.2f}", ci(boot_ci(g.values)), "-", f"{opt_pct:.1f}"])
+        rows.append([DISP.get(m, m), "-", f"{g.mean():.2f}", ci(boot_ci(g.values)), "-", f"{opt_pct:.1f}"])
     df = pd.DataFrame(rows, columns=["method", "seeds", "gap %", "95% CI (instances)", "95% CI (seeds)", "optimal %"])
     tex_table(df, TAB / "main_pooled.tex",
               f"Mean gap to the proven ILP optimum, all classes, schemes and n = 20--200 ({int(proven.sum())} "
@@ -207,13 +209,13 @@ def main():
         allcmp[f"{o} vs {b}"] = res
         for k in ["pooled"] + SCH:
             r = res[k]
-            rows.append([o, b, k, r["n"], f"{r['ours']:.2f}", f"{r['base']:.2f}", f"{r['diff']:+.2f}",
+            rows.append([DISP.get(o, o), DISP.get(b, b), k, r["n"], f"{r['ours']:.2f}", f"{r['base']:.2f}", f"{r['diff']:+.2f}",
                          ci(r["diff_ci"]), fmt_p(r["p"]), f"{r['win']:.1f}/{r['tie']:.1f}/{r['loss']:.1f}"])
-    df = pd.DataFrame(rows, columns=["ours", "baseline", "subset", "inst", "ours gap %", "base gap %",
+    df = pd.DataFrame(rows, columns=["Proposed", "baseline", "subset", "inst", "Proposed gap %", "base gap %",
                                      "diff (pp)", "95% CI diff", "Wilcoxon p", "W/T/L %"])
     tex_table(df, TAB / "ours_vs_baselines.tex",
-              "Ours (mean over model seeds) vs each baseline on the main grid: mean gap, paired difference "
-              "(negative = ours better) with bootstrap 95% CI, two-sided Wilcoxon signed-rank p, and win/tie/loss "
+              "Proposed (mean over model seeds) vs each baseline on the main grid: mean gap, paired difference "
+              "(negative = Proposed better) with bootstrap 95% CI, two-sided Wilcoxon signed-rank p, and win/tie/loss "
               "over (instance, seed) pairs.", "tab:ours_vs_baselines")
     out["compare"] = allcmp
 
@@ -233,12 +235,12 @@ def main():
         rows.append([lab, "all", f"{x['ours']:.2f} {ci(x['ours_ci_inst'])}", f"{x['base']:.2f}", fmt_p(x["p"]),
                      f"{x['win']:.0f}/{x['tie']:.0f}/{x['loss']:.0f}", f"{y['ours']:.2f} {ci(y['ours_ci_inst'])}",
                      f"{y['base']:.2f}", fmt_p(y["p"]), f"{y['win']:.0f}/{y['tie']:.0f}/{y['loss']:.0f}"])
-    df = pd.DataFrame(rows, columns=["class", "scheme", "ours+RR [95% CI]", "greedy+RR", "p", "W/T/L %",
-                                     "ours+RR+LS [95% CI]", "greedy+RR+LS", "p (LS)", "W/T/L % (LS)"])
+    df = pd.DataFrame(rows, columns=["class", "scheme", "Proposed + RR [95% CI]", "Greedy + RR", "p", "W/T/L %",
+                                     "Proposed + RR + LS [95% CI]", "Greedy + RR + LS", "p (LS)", "W/T/L % (LS)"])
     tex_table(df, TAB / "table3_fair.tex",
-              f"Mean gap (\\%) to the proven ILP optimum by class and scheme, n = 20--200, ours = mean over "
-              f"{len(seeds)} model seeds. Both columns pairs are comparable: ours+RR vs greedy+RR and ours+RR+LS vs "
-              f"greedy+RR+LS (same 1 s LS). p = paired Wilcoxon signed-rank; W/T/L over (instance, seed) pairs.",
+              f"Mean gap (\\%) to the proven ILP optimum by class and scheme, n = 20--200, Proposed = mean over "
+              f"{len(seeds)} model seeds. Both columns pairs are comparable: Proposed + RR vs Greedy + RR and Proposed + RR + LS vs "
+              f"Greedy + RR + LS (same 1 s LS). p = paired Wilcoxon signed-rank; W/T/L over (instance, seed) pairs.",
               "tab:table3_fair")
 
     # ---- counts of cells won (by mean) and significant

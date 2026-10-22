@@ -1,11 +1,11 @@
 \begin{table}[t]
 \centering
-\caption{Exact cross-check (first study): mean gap (\%) to the exact optimum, all n. Comparable pairs: ours+RR vs greedy+RR and ours+RR+LS vs greedy+RR+LS (same 1 s LS). Ours = model seeds 0 and 1; p = paired Wilcoxon; W/T/L over (graph, seed) pairs.}
+\caption{Exact cross-check (first study): mean gap (\%) to the exact optimum, all n. Comparable pairs: Proposed + RR vs Greedy + RR and Proposed + RR + LS vs Greedy + RR + LS (same 1 s LS). Proposed = model seeds 0 and 1; p = paired Wilcoxon; W/T/L over (graph, seed) pairs.}
 \label{tab:exact_fair_first}
 \scriptsize
 \begin{tabular}{llrrrrrrrrr}
 \toprule
-class & weights & inst & ours+RR & greedy+RR & p & W/T/L \% & ours+RR+LS & greedy+RR+LS & p (LS) & W/T/L \% (LS) \\
+class & weights & inst & Proposed + RR & Greedy + RR & p & W/T/L \% & Proposed + RR + LS & Greedy + RR + LS & p (LS) & W/T/L \% (LS) \\
 \midrule
 Trees & unit & 60 & 0.03 & 0.06 & 0.1022 & 8/89/2 & 0.01 & 0.03 & 0.0977 & 6/93/1 \\
 Trees & degree & 60 & 0.18 & 0.38 & 0.0187 & 28/54/18 & 0.07 & 0.13 & 0.0121 & 18/76/7 \\

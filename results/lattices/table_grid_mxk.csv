@@ -1,4 +1,4 @@
-m,k,n,gamma_t (CP-SAT),closed form,ours+RR,greedy+RR,D ours,D greedy
+m,k,n,gamma_t (CP-SAT),closed form,Proposed + RR,Greedy + RR,D Proposed,D greedy
 4,4,16,6,6,6.0,6,+0.0,+0
 4,5,20,8,,8.0,8,+0.0,+0
 4,6,24,8,,8.6,8,+0.6,+0
@@ -28,4 +28,4 @@ m,k,n,gamma_t (CP-SAT),closed form,ours+RR,greedy+RR,D ours,D greedy
 9,10,90,28,,29.2,31,+1.2,+3
 10,10,100,30,30,33.4,34,+3.4,+4
 mean,,,,,,,+0.90,+1.29
-ours optimal,,,,,21% (all 5 seeds),greedy 32%,,
+Proposed optimal,,,,,21% (all 5 seeds),greedy 32%,,

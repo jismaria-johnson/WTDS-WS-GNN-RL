@@ -5,7 +5,7 @@
 Reference per instance = CP-SAT W if proven optimal, otherwise CP-SAT's lower bound (column ref_kind = "opt" / "LB";
 gaps to an LB are always labelled). Ours: per instance, mean over the 5 model seeds; "± std" = std over model seeds
 (of the per-seed mean over weight seeds for random / mixed); 95% CI = t-interval over the 5 seed means.
-"Ours beats Greedy in X%": strict W_ours < W_greedy over (instance, model seed) pairs. Wilcoxon (two-sided, scipy
+"Proposed beats Greedy in X%": strict W_ours < W_greedy over (instance, model seed) pairs. Wilcoxon (two-sided, scipy
 default) per lattice type on per-instance seed-mean W vs greedy W.
 """
 import json
@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
+from labels import DISP  # noqa: E402
 from stats import fmt_p, seed_ci, tex_table, wilcoxon_p  # noqa: E402
 
 LT = ROOT / "results" / "lattices"
@@ -106,16 +107,16 @@ def main():
                       ours_better_than_greedy_pct=float(100 * (g.ours < g.greedy - 1e-9).mean()),
                       ours_worse_than_greedy_pct=float(100 * (g.ours > g.greedy + 1e-9).mean()))
     gt = g.assign(**{"gamma_t (CP-SAT)": g.exact.astype(str) + np.where(g.proven, "", "*"),
-                     "closed form": g.closed_form, "ours+RR": g.ours.map("{:.1f}".format),
-                     "greedy+RR": g.greedy, "D ours": g.d_ours.map("{:+.1f}".format), "D greedy": g.d_greedy.map("{:+d}".format)})
-    gt = gt[["m", "k", "n", "gamma_t (CP-SAT)", "closed form", "ours+RR", "greedy+RR", "D ours", "D greedy"]]
+                     "closed form": g.closed_form, "Proposed + RR": g.ours.map("{:.1f}".format),
+                     "Greedy + RR": g.greedy, "D Proposed": g.d_ours.map("{:+.1f}".format), "D greedy": g.d_greedy.map("{:+d}".format)})
+    gt = gt[["m", "k", "n", "gamma_t (CP-SAT)", "closed form", "Proposed + RR", "Greedy + RR", "D Proposed", "D greedy"]]
     s = rep["gmk"]
     gt.loc[len(gt)] = ["mean", "", "", "", "", "", "", f"{s['mean_d_ours']:+.2f}", f"{s['mean_d_greedy']:+.2f}"]
-    gt.loc[len(gt)] = ["ours optimal", "", "", "", "", f"{s['pct_ours_optimal_all_seeds']:.0f}% (all 5 seeds)",
+    gt.loc[len(gt)] = ["Proposed optimal", "", "", "", "", f"{s['pct_ours_optimal_all_seeds']:.0f}% (all 5 seeds)",
                        f"greedy {s['pct_greedy_optimal']:.0f}%", "", ""]
     tex_table(gt, LT / "table_grid_mxk.tex", "Rectangular grids G(m, k), 4 <= m <= k <= 10, unit weights (base-paper "
               "style). gamma_t = CP-SAT (60 s; * = not proven); closed form (2a+1)(2a+r), n = 4a+r, for square grids. "
-              "Ours+RR = mean over 5 model seeds. D = |S| - gamma_t.", "tab:grid_mxk")
+              "Proposed + RR = mean over 5 model seeds. D = |S| - gamma_t.", "tab:grid_mxk")
     # ---- per lattice x n x scheme
     trows, rep["cells"] = [], {}
     for (kind, n, sch), x in lat.groupby(["kind", "n", "scheme"]):
@@ -156,12 +157,15 @@ def main():
                           gap_ours_rr_ls=(f"{c['gap_ours_rr_ls']:.2f}" if "gap_ours_rr_ls" in c else "--"),
                           gap_greedy_rr_ls=(f"{c['gap_greedy_rr_ls']:.2f}" if "gap_greedy_rr_ls" in c else "--"),
                           gap_ref=c["ref_kind"]))
-    tl = pd.DataFrame(trows)
+    tl = pd.DataFrame(trows).rename(columns={
+        "ours_rr": "Proposed + RR", "greedy_rr": "Greedy + RR", "ours_rr_ls": "Proposed + RR + LS",
+        "greedy_rr_ls": "Greedy + RR + LS", "gap_ours_rr": "gap Proposed + RR", "gap_greedy_rr": "gap Greedy + RR",
+        "gap_ours_rr_ls": "gap Proposed + RR + LS", "gap_greedy_rr_ls": "gap Greedy + RR + LS", "W_exact": "W exact"})
     tl.to_csv(LT / "table_lattices.csv", index=False)
     parts = []
     for sch in SCH:
         sub = tl[tl.scheme == sch].drop(columns=["scheme"])
-        tex_table(sub, LT / f"table_lattices_{sch}.tex", f"Lattices, {sch} weights: mean W(S) (ours = mean ± std over 5 "
+        tex_table(sub, LT / f"table_lattices_{sch}.tex", f"Lattices, {sch} weights: mean W(S) (Proposed = mean ± std over 5 "
                   "model seeds; random/mixed also averaged over 3 weight seeds), gap (%) to the CP-SAT optimum "
                   "(gap_ref = LB when some instance was not proven: gap to the lower bound).", f"tab:lattices_{sch}")
         parts.append((LT / f"table_lattices_{sch}.tex").read_text(encoding="utf-8"))
@@ -220,11 +224,11 @@ def panel(ax, x, kind, scheme, metric, rep, ylabel):
     if un.any():
         ax.plot(s[un, 0], s[un, 1], ls="none", marker="o", ms=6, mfc="white", mec=EXACT,
                 label="CP-SAT best, not proven")
-    ax.errorbar(s[:, 0], s[:, 2], yerr=s[:, 3], color=OURS, marker="s", ms=4, lw=1.6, capsize=2, label="Ours + RR")
+    ax.errorbar(s[:, 0], s[:, 2], yerr=s[:, 3], color=OURS, marker="s", ms=4, lw=1.6, capsize=2, label="Proposed + RR")
     ax.errorbar(s[:, 0], s[:, 4], yerr=s[:, 5], color=GREEDY, marker="^", ms=4, lw=1.4, ls="--", capsize=2,
                 label="Greedy + RR")
     bt = rep["pooled"][f"{kind}|{scheme}"]["ours_rr"]
-    ax.text(0.03, 0.97, f"Ours beats Greedy in {np.floor(10 * bt['win']) / 10:.1f}% of instances"
+    ax.text(0.03, 0.97, f"Proposed beats Greedy in {np.floor(10 * bt['win']) / 10:.1f}% of instances"
             + (f"\n(ties {bt['tie']:.1f}%)" if bt["tie"] > 0 else ""), transform=ax.transAxes, va="top", fontsize=7,
             bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=GRID))
     ax.set_title(KLAB[kind], color=INK, fontsize=9)
@@ -271,19 +275,19 @@ def summary(rep, g):
                               for r in c["rows"]))
     s = rep["gmk"]
     L += ["", "## G(m, k), 4 <= m <= k <= 10, unit weights (table_grid_mxk.tex)", "",
-          f"- {s['grids']} grids ({s['unproven']} unproven). Mean Delta ours (mean over 5 seeds) = {s['mean_d_ours']:+.3f}, "
+          f"- {s['grids']} grids ({s['unproven']} unproven). Mean Delta Proposed (mean over 5 seeds) = {s['mean_d_ours']:+.3f}, "
           f"mean Delta greedy = {s['mean_d_greedy']:+.3f}.",
-          f"- Ours optimal on all 5 seeds in {s['pct_ours_optimal_all_seeds']:.1f}% of grids; optimal in "
+          f"- Proposed optimal on all 5 seeds in {s['pct_ours_optimal_all_seeds']:.1f}% of grids; optimal in "
           f"{s['pct_ours_optimal_seed_runs']:.1f}% of (grid, seed) runs; greedy optimal in {s['pct_greedy_optimal']:.1f}%.",
-          f"- Seed-mean |S| of ours below greedy in {s['ours_better_than_greedy_pct']:.1f}% of grids, above in "
+          f"- Seed-mean |S| of Proposed below greedy in {s['ours_better_than_greedy_pct']:.1f}% of grids, above in "
           f"{s['ours_worse_than_greedy_pct']:.1f}%.", "",
-          "| m | k | gamma_t | closed form | ours+RR (mean) | greedy+RR | D ours | D greedy |", "|---|---|---|---|---|---|---|---|"]
+          "| m | k | gamma_t | closed form | Proposed + RR (mean) | Greedy + RR | D Proposed | D greedy |", "|---|---|---|---|---|---|---|---|"]
     for _, r in g.iterrows():
         L.append(f"| {r.m} | {r.k} | {r.exact}{'' if r.proven else '*'} | {r.closed_form} | {r.ours:.1f} | {r.greedy} | "
                  f"{r.d_ours:+.1f} | {r.d_greedy:+d} |")
     L += ["", "## Lattices (n ~ 25-900): per lattice x n x scheme", "",
-          "| lattice | n | m | scheme | proven | W exact | W ours+RR (± std) | W greedy+RR | W ours+RR+LS | W greedy+RR+LS | "
-          "gap ours+RR | gap greedy+RR | gap ours+LS | gap greedy+LS | ref | device | time ours+RR s | time CP-SAT s |",
+          "| lattice | n | m | scheme | proven | W exact | W Proposed + RR (± std) | W Greedy + RR | W Proposed + RR + LS | W Greedy + RR + LS | "
+          "gap Proposed + RR | gap Greedy + RR | gap Proposed+LS | gap greedy+LS | ref | device | time Proposed + RR s | time CP-SAT s |",
           "|" + "---|" * 18]
     for k, c in rep["cells"].items():
         L.append(f"| {c['kind']} | {c['n']} | {c['m']} | {c['scheme']} | {c['proven']} | {c['W_exact']:.1f} | "
@@ -292,13 +296,13 @@ def summary(rep, g):
                  f"{c['gap_ours_rr']:.3f} | {c['gap_greedy_rr']:.3f} | {c.get('gap_ours_rr_ls', float('nan')):.3f} | "
                  f"{c.get('gap_greedy_rr_ls', float('nan')):.3f} | {c['ref_kind']} | {c.get('device', '')} | "
                  f"{c['time_ours_rr']:.3f} | {c['time_ilp']:.2f} |")
-    L += ["", "## Ours vs greedy per lattice type (beats = strict wins over (instance, model seed) pairs; Wilcoxon on "
-          "per-instance seed-mean W)", "", "| lattice | scheme | pair | beats % | ties % | loses % | gap ours % | gap greedy % | "
+    L += ["", "## Proposed vs Greedy per lattice type (beats = strict wins over (instance, model seed) pairs; Wilcoxon on "
+          "per-instance seed-mean W)", "", "| lattice | scheme | pair | beats % | ties % | loses % | gap Proposed % | gap greedy % | "
           "Wilcoxon p | instances | of which gap to LB |", "|---|---|---|---|---|---|---|---|---|---|---|"]
     for k, r in rep["pooled"].items():
         kind, sch = k.split("|")
         for o, x in r.items():
-            L.append(f"| {kind} | {sch} | {o} vs greedy | {x['win']:.1f} | {x['tie']:.1f} | {x['loss']:.1f} | "
+            L.append(f"| {kind} | {sch} | {DISP[o]} vs {DISP[o.replace('ours', 'greedy')]} | {x['win']:.1f} | {x['tie']:.1f} | {x['loss']:.1f} | "
                      f"{x['gap_ours']:.3f} | {x['gap_greedy']:.3f} | {fmt_p(x['p'])} | {x['n_inst']} | {x['n_lb']} |")
     L += ["", "## Unproven CP-SAT instances (60 s)", ""]
     if rep["unproven"]:
@@ -314,8 +318,8 @@ def summary(rep, g):
         sent = []
         for sch in SCH:
             x = rep["pooled"][f"{kind}|{sch}"]["ours_rr"]
-            verdict = ("ours better" if x["win"] > x["loss"] else "greedy better" if x["loss"] > x["win"] else "even")
-            sent.append(f"{sch}: ours+RR wins {x['win']:.0f}% / ties {x['tie']:.0f}% / loses {x['loss']:.0f}% "
+            verdict = ("Proposed better" if x["win"] > x["loss"] else "greedy better" if x["loss"] > x["win"] else "even")
+            sent.append(f"{sch}: Proposed + RR wins {x['win']:.0f}% / ties {x['tie']:.0f}% / loses {x['loss']:.0f}% "
                         f"(gap {x['gap_ours']:.2f}% vs {x['gap_greedy']:.2f}%"
                         + (f", {x['n_lb']} of {x['n_inst']} instances vs LB" if x["n_lb"] else "")
                         + f", p {fmt_p(x['p'])}; {verdict})")

@@ -1,0 +1,4 @@
+plot1_cardinality_unit (|S|, unit) {'tree': (25.5, np.float64(61.5)), 'unit_interval': (22.0, np.float64(25.5)), 'convex_bip': (26.0, np.float64(31.5)), 'two_tree': (3.5, np.float64(67.5))}
+plot2_cardinality_weighted (box: W, degree) {'tree': (74.0, np.float64(7.0)), 'unit_interval': (92.0, np.float64(0.0)), 'convex_bip': (79.0, np.float64(0.0)), 'two_tree': (86.0, np.float64(2.5))}
+plot3_total_weight (W, degree) {'tree': (74.0, np.float64(7.0)), 'unit_interval': (92.0, np.float64(0.0)), 'convex_bip': (79.0, np.float64(0.0)), 'two_tree': (86.0, np.float64(2.5))}
+plot5_ratio (W, degree) {'tree': (74.0, np.float64(7.0)), 'unit_interval': (92.0, np.float64(0.0)), 'convex_bip': (79.0, np.float64(0.0)), 'two_tree': (86.0, np.float64(2.5))}

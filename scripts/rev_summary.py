@@ -54,12 +54,12 @@ def main():
                  ", ".join(f"{x:.2f}" for x in v["per_seed"])
         s += f"; optimal in {v['opt']:.1f}% of instances"
         L.append(s)
-    L += ["", "Paired tests, pooled (ours = seed mean; W/T/L over (instance, seed) pairs; diff < 0 = ours better):", ""]
+    L += ["", "Paired tests, pooled (Proposed = seed mean; W/T/L over (instance, seed) pairs; diff < 0 = Proposed better):", ""]
     for k, v in sm.get("compare", {}).items():
         r = v["pooled"]
         L.append(f"* {k}: {r['ours']:.2f}% vs {r['base']:.2f}%, diff {r['diff']:+.2f} pp {ci(r['diff_ci'])}, "
                  f"Wilcoxon p {p_(r['p'])}, W/T/L = {r['win']:.1f}/{r['tie']:.1f}/{r['loss']:.1f}%")
-    L += ["", "Per scheme, ours vs greedy (same post-processing):", ""]
+    L += ["", "Per scheme, Proposed vs Greedy (same post-processing):", ""]
     for k in ("ours_rr vs greedy_rr", "ours_rr_ls vs greedy_rr_ls", "ours_rr vs greedy_tiebreak_rr",
               "ours_rr vs greedy_random_restart_rr"):
         v = sm.get("compare", {}).get(k)
@@ -67,7 +67,7 @@ def main():
             L.append(f"* {k}: " + "; ".join(f"{s} {v[s]['ours']:.2f} vs {v[s]['base']:.2f} (p {p_(v[s]['p'])}, "
                                             f"W/T/L {v[s]['win']:.0f}/{v[s]['tie']:.0f}/{v[s]['loss']:.0f})"
                                             for s in ("degree", "inverse", "random", "mixed")))
-    L += ["", "Class x scheme cells (16): ours lower mean / significant for ours / significant for baseline "
+    L += ["", "Class x scheme cells (16): Proposed lower mean / significant for Proposed / significant for baseline "
           "(p < 0.05, raw; Holm in brackets):", ""]
     for k, v in sm.get("cell_counts", {}).items():
         L.append(f"* {k}: {v['ours_lower']} / {v['sig_ours']} ({v['sig_ours_holm']}) / {v['sig_base']} "
@@ -75,7 +75,7 @@ def main():
     L += ["", "## 2. Fair Table III (`scripts/stats.py` -> `tables/table3_fair.tex`)", "", table("table3_fair.csv"),
           "## 3. Fair exact cross-check, Table V format (`scripts/rev_greedy_ls_exact.py`, `scripts/rev_table_exact.py`"
           " -> `tables/exact_fair_n1000_degree.tex`, `exact_fair_final.tex`, `exact_fair_first.tex`)", "",
-          "greedy + RR + LS added on the same 400 + 240 graphs x 5 weightings (2,000 + 1,200 new solutions). Ours = "
+          "greedy + RR + LS added on the same 400 + 240 graphs x 5 weightings (2,000 + 1,200 new solutions). Proposed = "
           "model seeds 0 and 1.", "", table("exact_fair_n1000_degree.csv"), "",
           "## 4. Stronger greedy baselines (`wtdsws/baselines/greedy_plus.py`, `scripts/rev_eval_grid.py` -> "
           "`raw_grid_rev_baselines.csv`; `tables/ours_vs_baselines.tex`)", "",
@@ -92,7 +92,7 @@ def main():
         for k in ("pos", "neg", "all"):
             v = al.get(f"spearman_adv_alpha_{k}")
             if v:
-                L.append(f"* Spearman(alpha, per-instance advantage greedy+RR - ours+RR), alpha {k}: "
+                L.append(f"* Spearman(alpha, per-instance advantage Greedy + RR - Proposed + RR), alpha {k}: "
                          f"rho = {v['rho']:.3f}, p {p_(v['p'])}")
         L.append("")
     L += [table("alpha_sweep.csv"), "## 7. Coverage fixes (`scripts/rev_coverage.py`)", "",

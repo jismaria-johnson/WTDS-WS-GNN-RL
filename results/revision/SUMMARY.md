@@ -16,7 +16,7 @@ Model seeds: [0, 1, 2, 3, 4]. Proven instances (n = 20-200): 624.
 * **lp_rounding_rr**: gap 5.89%, 95% CI over instances [5.18, 6.63]; optimal in 51.8% of instances
 * **zero_rr**: gap 6.02%, 95% CI over instances [5.48, 6.58], 95% CI over seeds [-2.79, 14.83], per-seed means 5.33, 6.72; optimal in 29.0% of instances
 
-Paired tests, pooled (ours = seed mean; W/T/L over (instance, seed) pairs; diff < 0 = ours better):
+Paired tests, pooled (Proposed = seed mean; W/T/L over (instance, seed) pairs; diff < 0 = Proposed better):
 
 * ours_rr vs greedy_rr: 4.62% vs 5.51%, diff -0.89 pp [-1.36, -0.44], Wilcoxon p = 0.0092, W/T/L = 35.9/32.2/31.9%
 * ours_rr vs greedy_tiebreak_rr: 4.62% vs 5.57%, diff -0.96 pp [-1.43, -0.51], Wilcoxon p = 0.0033, W/T/L = 36.1/32.2/31.7%
@@ -29,14 +29,14 @@ Paired tests, pooled (ours = seed mean; W/T/L over (instance, seed) pairs; diff 
 * ours_rr_ls vs greedy_lookahead_rr_ls: 2.29% vs 3.05%, diff -0.75 pp [-1.08, -0.44], Wilcoxon p < 1e-4, W/T/L = 28.9/51.0/20.1%
 * ours_rr_ls vs lp_rounding_rr_ls: 2.29% vs 1.93%, diff +0.36 pp [0.10, 0.63], Wilcoxon p < 1e-4, W/T/L = 18.9/52.9/28.2%
 
-Per scheme, ours vs greedy (same post-processing):
+Per scheme, Proposed vs Greedy (same post-processing):
 
 * ours_rr vs greedy_rr: degree 6.85 vs 9.94 (p < 1e-4, W/T/L 58/16/26); inverse 3.52 vs 2.79 (p = 0.0020, W/T/L 20/46/34); random 3.31 vs 3.26 (p = 0.0273, W/T/L 26/41/32); mixed 4.97 vs 6.36 (p = 0.0215, W/T/L 41/24/36)
 * ours_rr_ls vs greedy_rr_ls: degree 4.18 vs 5.84 (p < 1e-4, W/T/L 46/28/26); inverse 1.41 vs 1.35 (p = 0.4398, W/T/L 14/71/15); random 1.56 vs 1.36 (p = 0.0510, W/T/L 15/63/22); mixed 2.16 vs 2.73 (p = 0.0520, W/T/L 28/52/20)
 * ours_rr vs greedy_tiebreak_rr: degree 6.85 vs 9.94 (p < 1e-4, W/T/L 58/16/26); inverse 3.52 vs 2.89 (p = 0.0039, W/T/L 20/46/34); random 3.31 vs 3.42 (p = 0.1033, W/T/L 27/41/32); mixed 4.97 vs 6.38 (p = 0.0188, W/T/L 41/24/35)
 * ours_rr vs greedy_random_restart_rr: degree 6.85 vs 1.62 (p < 1e-4, W/T/L 9/22/69); inverse 3.52 vs 1.22 (p < 1e-4, W/T/L 6/47/47); random 3.31 vs 2.06 (p < 1e-4, W/T/L 12/40/47); mixed 4.97 vs 2.88 (p < 1e-4, W/T/L 16/27/57)
 
-Class x scheme cells (16): ours lower mean / significant for ours / significant for baseline (p < 0.05, raw; Holm in brackets):
+Class x scheme cells (16): Proposed lower mean / significant for Proposed / significant for baseline (p < 0.05, raw; Holm in brackets):
 
 * ours_rr vs greedy_rr: 9 / 4 (2) / 2 (0)
 * ours_rr_ls vs greedy_rr_ls: 11 / 2 (0) / 0 (0)
@@ -47,7 +47,7 @@ Class x scheme cells (16): ours lower mean / significant for ours / significant 
 
 ## 2. Fair Table III (`scripts/stats.py` -> `tables/table3_fair.tex`)
 
-| class | scheme | ours+RR [95% CI] | greedy+RR | p | W/T/L % | ours+RR+LS [95% CI] | greedy+RR+LS | p (LS) | W/T/L % (LS) |
+| class | scheme | Proposed + RR [95% CI] | Greedy + RR | p | W/T/L % | Proposed + RR + LS [95% CI] | Greedy + RR + LS | p (LS) | W/T/L % (LS) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ER | Degree | 7.64 [5.89, 9.55] | 11.55 | 0.0002 | 70/10/19 | 5.24 [3.93, 6.64] | 8.10 | 0.0045 | 56/19/24 |
 | ER | Inverse | 5.85 [4.64, 7.12] | 5.25 | 0.6016 | 32/27/41 | 3.01 [2.05, 4.07] | 3.46 | 0.6918 | 29/46/25 |
@@ -69,9 +69,9 @@ Class x scheme cells (16): ours lower mean / significant for ours / significant 
 
 ## 3. Fair exact cross-check, Table V format (`scripts/rev_greedy_ls_exact.py`, `scripts/rev_table_exact.py` -> `tables/exact_fair_n1000_degree.tex`, `exact_fair_final.tex`, `exact_fair_first.tex`)
 
-greedy + RR + LS added on the same 400 + 240 graphs x 5 weightings (2,000 + 1,200 new solutions). Ours = model seeds 0 and 1.
+greedy + RR + LS added on the same 400 + 240 graphs x 5 weightings (2,000 + 1,200 new solutions). Proposed = model seeds 0 and 1.
 
-| class | ours+RR | greedy+RR | ours+RR+LS | greedy+RR+LS | ours+RR better | ours+RR+LS better | p (LS, all n) |
+| class | Proposed + RR | Greedy + RR | Proposed + RR + LS | Greedy + RR + LS | Proposed + RR better | Proposed + RR + LS better | p (LS, all n) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Trees | 0.39 | 0.80 | 0.15 | 0.43 | 74% | 56% | <1e-4 |
 | Unit interval | 11.92 | 15.63 | 6.98 | 7.75 | 92% | 78% | <1e-4 |
@@ -83,116 +83,116 @@ greedy + RR + LS added on the same 400 + 240 graphs x 5 weightings (2,000 + 1,20
 
 Tests: `tests/test_greedy_plus.py` (200 random graphs, every variant valid).
 
-| ours | baseline | subset | inst | ours gap % | base gap % | diff (pp) | 95% CI diff | Wilcoxon p | W/T/L % |
+| Proposed | baseline | subset | inst | Proposed gap % | base gap % | diff (pp) | 95% CI diff | Wilcoxon p | W/T/L % |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| ours_rr | greedy_rr | pooled | 624 | 4.62 | 5.51 | -0.89 | [-1.36, -0.44] | 0.0092 | 35.9/32.2/31.9 |
-| ours_rr | greedy_rr | degree | 148 | 6.85 | 9.94 | -3.09 | [-4.41, -1.85] | <1e-4 | 58.1/16.2/25.7 |
-| ours_rr | greedy_rr | inverse | 159 | 3.52 | 2.79 | +0.73 | [0.27, 1.18] | 0.0020 | 20.0/46.3/33.7 |
-| ours_rr | greedy_rr | random | 160 | 3.31 | 3.26 | +0.04 | [-0.77, 0.77] | 0.0273 | 26.5/41.1/32.4 |
-| ours_rr | greedy_rr | mixed | 157 | 4.97 | 6.36 | -1.39 | [-2.30, -0.55] | 0.0215 | 40.5/23.9/35.5 |
-| ours_rr | greedy_tiebreak_rr | pooled | 624 | 4.62 | 5.57 | -0.96 | [-1.43, -0.51] | 0.0033 | 36.1/32.2/31.7 |
-| ours_rr | greedy_tiebreak_rr | degree | 148 | 6.85 | 9.94 | -3.09 | [-4.41, -1.85] | <1e-4 | 58.1/16.2/25.7 |
-| ours_rr | greedy_tiebreak_rr | inverse | 159 | 3.52 | 2.89 | +0.63 | [0.18, 1.09] | 0.0039 | 20.3/45.8/34.0 |
-| ours_rr | greedy_tiebreak_rr | random | 160 | 3.31 | 3.42 | -0.11 | [-0.96, 0.64] | 0.1033 | 26.9/41.2/31.9 |
-| ours_rr | greedy_tiebreak_rr | mixed | 157 | 4.97 | 6.38 | -1.41 | [-2.32, -0.57] | 0.0188 | 40.9/24.2/34.9 |
-| ours_rr | greedy_lookahead_rr | pooled | 624 | 4.62 | 9.98 | -5.36 | [-6.32, -4.43] | <1e-4 | 49.6/26.5/23.8 |
-| ours_rr | greedy_lookahead_rr | degree | 148 | 6.85 | 16.21 | -9.36 | [-11.75, -7.24] | <1e-4 | 74.3/12.0/13.6 |
-| ours_rr | greedy_lookahead_rr | inverse | 159 | 3.52 | 3.72 | -0.21 | [-0.89, 0.41] | 0.4643 | 25.2/43.6/31.2 |
-| ours_rr | greedy_lookahead_rr | random | 160 | 3.31 | 5.76 | -2.46 | [-4.06, -1.10] | 0.0188 | 37.6/34.8/27.6 |
-| ours_rr | greedy_lookahead_rr | mixed | 157 | 4.97 | 14.72 | -9.76 | [-12.23, -7.50] | <1e-4 | 63.4/14.4/22.2 |
-| ours_rr | lp_rounding_rr | pooled | 624 | 4.62 | 5.89 | -1.27 | [-1.94, -0.63] | 0.3389 | 33.9/28.1/38.0 |
-| ours_rr | lp_rounding_rr | degree | 148 | 6.85 | 12.53 | -5.68 | [-7.50, -3.92] | <1e-4 | 58.6/14.6/26.8 |
-| ours_rr | lp_rounding_rr | inverse | 159 | 3.52 | 3.00 | +0.52 | [-0.35, 1.31] | 0.0013 | 18.5/44.2/37.4 |
-| ours_rr | lp_rounding_rr | random | 160 | 3.31 | 1.77 | +1.54 | [0.90, 2.21] | <1e-4 | 16.0/34.1/49.9 |
-| ours_rr | lp_rounding_rr | mixed | 157 | 4.97 | 6.76 | -1.80 | [-3.25, -0.38] | 0.0263 | 44.3/18.5/37.2 |
-| ours_rr | greedy_random_restart_rr | pooled | 624 | 4.62 | 1.95 | +2.67 | [2.31, 3.03] | <1e-4 | 10.8/34.4/54.7 |
-| ours_rr | greedy_random_restart_rr | degree | 148 | 6.85 | 1.62 | +5.24 | [4.38, 6.13] | <1e-4 | 8.9/21.9/69.2 |
-| ours_rr | greedy_random_restart_rr | inverse | 159 | 3.52 | 1.22 | +2.29 | [1.80, 2.79] | <1e-4 | 5.8/47.2/47.0 |
-| ours_rr | greedy_random_restart_rr | random | 160 | 3.31 | 2.06 | +1.25 | [0.46, 1.92] | <1e-4 | 12.5/40.4/47.1 |
-| ours_rr | greedy_random_restart_rr | mixed | 157 | 4.97 | 2.88 | +2.08 | [1.44, 2.73] | <1e-4 | 16.1/27.3/56.7 |
-| ours_rr | greedy_rr_ls | pooled | 624 | 4.62 | 2.76 | +1.86 | [1.49, 2.23] | <1e-4 | 17.4/31.7/50.9 |
-| ours_rr | greedy_rr_ls | degree | 148 | 6.85 | 5.84 | +1.01 | [-0.04, 2.11] | 0.0510 | 35.1/18.1/46.8 |
-| ours_rr | greedy_rr_ls | inverse | 159 | 3.52 | 1.35 | +2.17 | [1.68, 2.67] | <1e-4 | 7.5/45.9/46.5 |
-| ours_rr | greedy_rr_ls | random | 160 | 3.31 | 1.36 | +1.94 | [1.40, 2.51] | <1e-4 | 10.6/36.5/52.9 |
-| ours_rr | greedy_rr_ls | mixed | 157 | 4.97 | 2.73 | +2.24 | [1.48, 3.05] | <1e-4 | 17.6/25.1/57.3 |
-| ours_rr_ls | greedy_rr_ls | pooled | 624 | 2.29 | 2.76 | -0.47 | [-0.75, -0.20] | 0.0174 | 25.4/54.0/20.7 |
-| ours_rr_ls | greedy_rr_ls | degree | 148 | 4.18 | 5.84 | -1.66 | [-2.43, -0.92] | <1e-4 | 46.2/28.2/25.5 |
-| ours_rr_ls | greedy_rr_ls | inverse | 159 | 1.41 | 1.35 | +0.06 | [-0.25, 0.35] | 0.4398 | 13.6/71.1/15.3 |
-| ours_rr_ls | greedy_rr_ls | random | 160 | 1.56 | 1.36 | +0.20 | [-0.35, 0.67] | 0.0510 | 14.9/62.8/22.4 |
-| ours_rr_ls | greedy_rr_ls | mixed | 157 | 2.16 | 2.73 | -0.57 | [-1.07, -0.08] | 0.0520 | 28.3/52.0/19.7 |
-| ours_rr_ls | greedy_tiebreak_rr_ls | pooled | 624 | 2.29 | 2.81 | -0.52 | [-0.81, -0.25] | 0.0070 | 25.5/53.9/20.6 |
-| ours_rr_ls | greedy_tiebreak_rr_ls | degree | 148 | 4.18 | 5.84 | -1.66 | [-2.43, -0.92] | <1e-4 | 46.2/28.2/25.5 |
-| ours_rr_ls | greedy_tiebreak_rr_ls | inverse | 159 | 1.41 | 1.43 | -0.02 | [-0.34, 0.28] | 0.8081 | 14.3/70.1/15.6 |
-| ours_rr_ls | greedy_tiebreak_rr_ls | random | 160 | 1.56 | 1.52 | +0.05 | [-0.58, 0.59] | 0.0898 | 14.6/63.9/21.5 |
-| ours_rr_ls | greedy_tiebreak_rr_ls | mixed | 157 | 2.16 | 2.69 | -0.53 | [-1.02, -0.05] | 0.0437 | 28.4/51.6/20.0 |
-| ours_rr_ls | greedy_lookahead_rr_ls | pooled | 624 | 2.29 | 3.05 | -0.75 | [-1.08, -0.44] | <1e-4 | 28.9/51.0/20.1 |
-| ours_rr_ls | greedy_lookahead_rr_ls | degree | 148 | 4.18 | 5.75 | -1.57 | [-2.60, -0.64] | 0.0002 | 46.5/25.3/28.2 |
-| ours_rr_ls | greedy_lookahead_rr_ls | inverse | 159 | 1.41 | 1.66 | -0.25 | [-0.73, 0.19] | 0.7498 | 17.1/66.7/16.2 |
-| ours_rr_ls | greedy_lookahead_rr_ls | random | 160 | 1.56 | 1.91 | -0.35 | [-0.86, 0.08] | 0.5380 | 21.4/60.5/18.1 |
-| ours_rr_ls | greedy_lookahead_rr_ls | mixed | 157 | 2.16 | 3.06 | -0.90 | [-1.53, -0.30] | 0.0066 | 32.1/49.6/18.3 |
-| ours_rr_ls | lp_rounding_rr_ls | pooled | 624 | 2.29 | 1.93 | +0.36 | [0.10, 0.63] | <1e-4 | 18.9/52.9/28.2 |
-| ours_rr_ls | lp_rounding_rr_ls | degree | 148 | 4.18 | 4.37 | -0.19 | [-1.03, 0.62] | 0.8614 | 34.9/27.8/37.3 |
-| ours_rr_ls | lp_rounding_rr_ls | inverse | 159 | 1.41 | 0.83 | +0.58 | [0.20, 0.95] | 0.0002 | 10.9/67.0/22.0 |
-| ours_rr_ls | lp_rounding_rr_ls | random | 160 | 1.56 | 0.89 | +0.67 | [0.33, 1.03] | <1e-4 | 10.0/63.5/26.5 |
-| ours_rr_ls | lp_rounding_rr_ls | mixed | 157 | 2.16 | 1.83 | +0.33 | [-0.12, 0.77] | 0.0440 | 20.9/51.5/27.6 |
+| Proposed + RR | Greedy + RR | pooled | 624 | 4.62 | 5.51 | -0.89 | [-1.36, -0.44] | 0.0092 | 35.9/32.2/31.9 |
+| Proposed + RR | Greedy + RR | degree | 148 | 6.85 | 9.94 | -3.09 | [-4.41, -1.85] | <1e-4 | 58.1/16.2/25.7 |
+| Proposed + RR | Greedy + RR | inverse | 159 | 3.52 | 2.79 | +0.73 | [0.27, 1.18] | 0.0020 | 20.0/46.3/33.7 |
+| Proposed + RR | Greedy + RR | random | 160 | 3.31 | 3.26 | +0.04 | [-0.77, 0.77] | 0.0273 | 26.5/41.1/32.4 |
+| Proposed + RR | Greedy + RR | mixed | 157 | 4.97 | 6.36 | -1.39 | [-2.30, -0.55] | 0.0215 | 40.5/23.9/35.5 |
+| Proposed + RR | greedy_tiebreak_rr | pooled | 624 | 4.62 | 5.57 | -0.96 | [-1.43, -0.51] | 0.0033 | 36.1/32.2/31.7 |
+| Proposed + RR | greedy_tiebreak_rr | degree | 148 | 6.85 | 9.94 | -3.09 | [-4.41, -1.85] | <1e-4 | 58.1/16.2/25.7 |
+| Proposed + RR | greedy_tiebreak_rr | inverse | 159 | 3.52 | 2.89 | +0.63 | [0.18, 1.09] | 0.0039 | 20.3/45.8/34.0 |
+| Proposed + RR | greedy_tiebreak_rr | random | 160 | 3.31 | 3.42 | -0.11 | [-0.96, 0.64] | 0.1033 | 26.9/41.2/31.9 |
+| Proposed + RR | greedy_tiebreak_rr | mixed | 157 | 4.97 | 6.38 | -1.41 | [-2.32, -0.57] | 0.0188 | 40.9/24.2/34.9 |
+| Proposed + RR | greedy_lookahead_rr | pooled | 624 | 4.62 | 9.98 | -5.36 | [-6.32, -4.43] | <1e-4 | 49.6/26.5/23.8 |
+| Proposed + RR | greedy_lookahead_rr | degree | 148 | 6.85 | 16.21 | -9.36 | [-11.75, -7.24] | <1e-4 | 74.3/12.0/13.6 |
+| Proposed + RR | greedy_lookahead_rr | inverse | 159 | 3.52 | 3.72 | -0.21 | [-0.89, 0.41] | 0.4643 | 25.2/43.6/31.2 |
+| Proposed + RR | greedy_lookahead_rr | random | 160 | 3.31 | 5.76 | -2.46 | [-4.06, -1.10] | 0.0188 | 37.6/34.8/27.6 |
+| Proposed + RR | greedy_lookahead_rr | mixed | 157 | 4.97 | 14.72 | -9.76 | [-12.23, -7.50] | <1e-4 | 63.4/14.4/22.2 |
+| Proposed + RR | lp_rounding_rr | pooled | 624 | 4.62 | 5.89 | -1.27 | [-1.94, -0.63] | 0.3389 | 33.9/28.1/38.0 |
+| Proposed + RR | lp_rounding_rr | degree | 148 | 6.85 | 12.53 | -5.68 | [-7.50, -3.92] | <1e-4 | 58.6/14.6/26.8 |
+| Proposed + RR | lp_rounding_rr | inverse | 159 | 3.52 | 3.00 | +0.52 | [-0.35, 1.31] | 0.0013 | 18.5/44.2/37.4 |
+| Proposed + RR | lp_rounding_rr | random | 160 | 3.31 | 1.77 | +1.54 | [0.90, 2.21] | <1e-4 | 16.0/34.1/49.9 |
+| Proposed + RR | lp_rounding_rr | mixed | 157 | 4.97 | 6.76 | -1.80 | [-3.25, -0.38] | 0.0263 | 44.3/18.5/37.2 |
+| Proposed + RR | greedy_random_restart_rr | pooled | 624 | 4.62 | 1.95 | +2.67 | [2.31, 3.03] | <1e-4 | 10.8/34.4/54.7 |
+| Proposed + RR | greedy_random_restart_rr | degree | 148 | 6.85 | 1.62 | +5.24 | [4.38, 6.13] | <1e-4 | 8.9/21.9/69.2 |
+| Proposed + RR | greedy_random_restart_rr | inverse | 159 | 3.52 | 1.22 | +2.29 | [1.80, 2.79] | <1e-4 | 5.8/47.2/47.0 |
+| Proposed + RR | greedy_random_restart_rr | random | 160 | 3.31 | 2.06 | +1.25 | [0.46, 1.92] | <1e-4 | 12.5/40.4/47.1 |
+| Proposed + RR | greedy_random_restart_rr | mixed | 157 | 4.97 | 2.88 | +2.08 | [1.44, 2.73] | <1e-4 | 16.1/27.3/56.7 |
+| Proposed + RR | Greedy + RR + LS | pooled | 624 | 4.62 | 2.76 | +1.86 | [1.49, 2.23] | <1e-4 | 17.4/31.7/50.9 |
+| Proposed + RR | Greedy + RR + LS | degree | 148 | 6.85 | 5.84 | +1.01 | [-0.04, 2.11] | 0.0510 | 35.1/18.1/46.8 |
+| Proposed + RR | Greedy + RR + LS | inverse | 159 | 3.52 | 1.35 | +2.17 | [1.68, 2.67] | <1e-4 | 7.5/45.9/46.5 |
+| Proposed + RR | Greedy + RR + LS | random | 160 | 3.31 | 1.36 | +1.94 | [1.40, 2.51] | <1e-4 | 10.6/36.5/52.9 |
+| Proposed + RR | Greedy + RR + LS | mixed | 157 | 4.97 | 2.73 | +2.24 | [1.48, 3.05] | <1e-4 | 17.6/25.1/57.3 |
+| Proposed + RR + LS | Greedy + RR + LS | pooled | 624 | 2.29 | 2.76 | -0.47 | [-0.75, -0.20] | 0.0174 | 25.4/54.0/20.7 |
+| Proposed + RR + LS | Greedy + RR + LS | degree | 148 | 4.18 | 5.84 | -1.66 | [-2.43, -0.92] | <1e-4 | 46.2/28.2/25.5 |
+| Proposed + RR + LS | Greedy + RR + LS | inverse | 159 | 1.41 | 1.35 | +0.06 | [-0.25, 0.35] | 0.4398 | 13.6/71.1/15.3 |
+| Proposed + RR + LS | Greedy + RR + LS | random | 160 | 1.56 | 1.36 | +0.20 | [-0.35, 0.67] | 0.0510 | 14.9/62.8/22.4 |
+| Proposed + RR + LS | Greedy + RR + LS | mixed | 157 | 2.16 | 2.73 | -0.57 | [-1.07, -0.08] | 0.0520 | 28.3/52.0/19.7 |
+| Proposed + RR + LS | greedy_tiebreak_rr_ls | pooled | 624 | 2.29 | 2.81 | -0.52 | [-0.81, -0.25] | 0.0070 | 25.5/53.9/20.6 |
+| Proposed + RR + LS | greedy_tiebreak_rr_ls | degree | 148 | 4.18 | 5.84 | -1.66 | [-2.43, -0.92] | <1e-4 | 46.2/28.2/25.5 |
+| Proposed + RR + LS | greedy_tiebreak_rr_ls | inverse | 159 | 1.41 | 1.43 | -0.02 | [-0.34, 0.28] | 0.8081 | 14.3/70.1/15.6 |
+| Proposed + RR + LS | greedy_tiebreak_rr_ls | random | 160 | 1.56 | 1.52 | +0.05 | [-0.58, 0.59] | 0.0898 | 14.6/63.9/21.5 |
+| Proposed + RR + LS | greedy_tiebreak_rr_ls | mixed | 157 | 2.16 | 2.69 | -0.53 | [-1.02, -0.05] | 0.0437 | 28.4/51.6/20.0 |
+| Proposed + RR + LS | greedy_lookahead_rr_ls | pooled | 624 | 2.29 | 3.05 | -0.75 | [-1.08, -0.44] | <1e-4 | 28.9/51.0/20.1 |
+| Proposed + RR + LS | greedy_lookahead_rr_ls | degree | 148 | 4.18 | 5.75 | -1.57 | [-2.60, -0.64] | 0.0002 | 46.5/25.3/28.2 |
+| Proposed + RR + LS | greedy_lookahead_rr_ls | inverse | 159 | 1.41 | 1.66 | -0.25 | [-0.73, 0.19] | 0.7498 | 17.1/66.7/16.2 |
+| Proposed + RR + LS | greedy_lookahead_rr_ls | random | 160 | 1.56 | 1.91 | -0.35 | [-0.86, 0.08] | 0.5380 | 21.4/60.5/18.1 |
+| Proposed + RR + LS | greedy_lookahead_rr_ls | mixed | 157 | 2.16 | 3.06 | -0.90 | [-1.53, -0.30] | 0.0066 | 32.1/49.6/18.3 |
+| Proposed + RR + LS | lp_rounding_rr_ls | pooled | 624 | 2.29 | 1.93 | +0.36 | [0.10, 0.63] | <1e-4 | 18.9/52.9/28.2 |
+| Proposed + RR + LS | lp_rounding_rr_ls | degree | 148 | 4.18 | 4.37 | -0.19 | [-1.03, 0.62] | 0.8614 | 34.9/27.8/37.3 |
+| Proposed + RR + LS | lp_rounding_rr_ls | inverse | 159 | 1.41 | 0.83 | +0.58 | [0.20, 0.95] | 0.0002 | 10.9/67.0/22.0 |
+| Proposed + RR + LS | lp_rounding_rr_ls | random | 160 | 1.56 | 0.89 | +0.67 | [0.33, 1.03] | <1e-4 | 10.0/63.5/26.5 |
+| Proposed + RR + LS | lp_rounding_rr_ls | mixed | 157 | 2.16 | 1.83 | +0.33 | [-0.12, 0.77] | 0.0440 | 20.9/51.5/27.6 |
 
 ## 5. Equal-time comparison (`scripts/rev_equal_time.py`, `scripts/rev_report.py` -> `tables/equal_time.tex`, `tables/equal_time_tests.tex`, `figures/equal_time_quality_vs_time.png|pdf`)
 
 | method | budget (s) | inst | gap % | 95% CI | mean time (s) | candidates | solution found |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| ours: rollouts+RR | 0.16 | 62 | 2.26 | [1.66, 2.89] | 0.236 | 10 | 310/310 |
-| ours: rollouts+RR | 1.0 | 62 | 1.08 | [0.74, 1.44] | 1.079 | 66 | 310/310 |
-| ours: rollouts+RR | 5.0 | 62 | 0.72 | [0.45, 1.01] | 5.077 | 336 | 310/310 |
-| ours: rollouts+RR+LS | 0.16 | 62 | 1.45 | [0.94, 2.00] | 0.238 | 9 | 310/310 |
-| ours: rollouts+RR+LS | 1.0 | 62 | 0.40 | [0.20, 0.64] | 1.074 | 55 | 310/310 |
-| ours: rollouts+RR+LS | 5.0 | 62 | 0.26 | [0.12, 0.42] | 5.068 | 270 | 310/310 |
+| Proposed (best-of-k) | 0.16 | 62 | 2.26 | [1.66, 2.89] | 0.236 | 10 | 310/310 |
+| Proposed (best-of-k) | 1.0 | 62 | 1.08 | [0.74, 1.44] | 1.079 | 66 | 310/310 |
+| Proposed (best-of-k) | 5.0 | 62 | 0.72 | [0.45, 1.01] | 5.077 | 336 | 310/310 |
+| Proposed (best-of-k) + LS | 0.16 | 62 | 1.45 | [0.94, 2.00] | 0.238 | 9 | 310/310 |
+| Proposed (best-of-k) + LS | 1.0 | 62 | 0.40 | [0.20, 0.64] | 1.074 | 55 | 310/310 |
+| Proposed (best-of-k) + LS | 5.0 | 62 | 0.26 | [0.12, 0.42] | 5.068 | 270 | 310/310 |
 | greedy restarts+RR | 0.16 | 62 | 1.34 | [0.90, 1.82] | 0.160 | 259 | 62/62 |
 | greedy restarts+RR | 1.0 | 62 | 1.22 | [0.81, 1.68] | 1.001 | 1592 | 62/62 |
 | greedy restarts+RR | 5.0 | 62 | 1.12 | [0.74, 1.54] | 5.000 | 7886 | 62/62 |
 | greedy restarts+RR+LS | 0.16 | 62 | 0.65 | [0.33, 1.02] | 0.160 | 56 | 62/62 |
 | greedy restarts+RR+LS | 1.0 | 62 | 0.35 | [0.15, 0.59] | 1.000 | 350 | 62/62 |
 | greedy restarts+RR+LS | 5.0 | 62 | 0.28 | [0.09, 0.51] | 5.001 | 1753 | 62/62 |
-| greedy+RR+LS | 0.16 | 62 | 1.78 | [1.08, 2.56] | 0.007 | 1 | 62/62 |
-| greedy+RR+LS | 1.0 | 62 | 1.78 | [1.08, 2.56] | 0.007 | 1 | 62/62 |
-| greedy+RR+LS | 5.0 | 62 | 1.78 | [1.08, 2.56] | 0.007 | 1 | 62/62 |
+| Greedy + RR + LS | 0.16 | 62 | 1.78 | [1.08, 2.56] | 0.007 | 1 | 62/62 |
+| Greedy + RR + LS | 1.0 | 62 | 1.78 | [1.08, 2.56] | 0.007 | 1 | 62/62 |
+| Greedy + RR + LS | 5.0 | 62 | 1.78 | [1.08, 2.56] | 0.007 | 1 | 62/62 |
 | LP rounding+RR+LS | 0.16 | 62 | 1.79 | [1.00, 2.67] | 0.039 | 1 | 62/62 |
 | LP rounding+RR+LS | 1.0 | 62 | 1.79 | [1.00, 2.67] | 0.015 | 1 | 62/62 |
 | LP rounding+RR+LS | 5.0 | 62 | 1.79 | [1.00, 2.67] | 0.013 | 1 | 62/62 |
-| CP-SAT (8 workers) | 0.16 | 62 | 0.60 | [0.12, 1.25] | 0.118 | 1 | 62/62 |
-| CP-SAT (8 workers) | 1.0 | 62 | 0.11 | [0.00, 0.27] | 0.127 | 1 | 62/62 |
-| CP-SAT (8 workers) | 5.0 | 62 | 0.00 | [0.00, 0.00] | 0.234 | 1 | 62/62 |
+| CP-SAT | 0.16 | 62 | 0.60 | [0.12, 1.25] | 0.118 | 1 | 62/62 |
+| CP-SAT | 1.0 | 62 | 0.11 | [0.00, 0.27] | 0.127 | 1 | 62/62 |
+| CP-SAT | 5.0 | 62 | 0.00 | [0.00, 0.00] | 0.234 | 1 | 62/62 |
 
 
-| budget (s) | vs method | inst | Wilcoxon p | ours W/T/L % |
+| budget (s) | vs method | inst | Wilcoxon p | Proposed W/T/L % |
 | --- | --- | --- | --- | --- |
-| 0.16 | ours: rollouts+RR | 62 | <1e-4 | 66/15/19 |
+| 0.16 | Proposed (best-of-k) | 62 | <1e-4 | 66/15/19 |
 | 0.16 | greedy restarts+RR | 62 | 0.3535 | 31/44/25 |
 | 0.16 | greedy restarts+RR+LS | 62 | 0.0004 | 12/50/37 |
-| 0.16 | greedy+RR+LS | 62 | 0.8780 | 29/48/22 |
+| 0.16 | Greedy + RR + LS | 62 | 0.8780 | 29/48/22 |
 | 0.16 | LP rounding+RR+LS | 62 | 0.4638 | 25/49/26 |
-| 0.16 | CP-SAT (8 workers) | 62 | <1e-4 | 5/55/41 |
-| 1.0 | ours: rollouts+RR | 62 | <1e-4 | 69/26/5 |
+| 0.16 | CP-SAT | 62 | <1e-4 | 5/55/41 |
+| 1.0 | Proposed (best-of-k) | 62 | <1e-4 | 69/26/5 |
 | 1.0 | greedy restarts+RR | 62 | <1e-4 | 48/47/5 |
 | 1.0 | greedy restarts+RR+LS | 62 | 0.3913 | 14/70/16 |
-| 1.0 | greedy+RR+LS | 62 | <1e-4 | 44/52/4 |
+| 1.0 | Greedy + RR + LS | 62 | <1e-4 | 44/52/4 |
 | 1.0 | LP rounding+RR+LS | 62 | 0.0036 | 31/61/8 |
-| 1.0 | CP-SAT (8 workers) | 62 | 0.0002 | 3/75/23 |
-| 5.0 | ours: rollouts+RR | 62 | <1e-4 | 60/33/6 |
+| 1.0 | CP-SAT | 62 | 0.0002 | 3/75/23 |
+| 5.0 | Proposed (best-of-k) | 62 | <1e-4 | 60/33/6 |
 | 5.0 | greedy restarts+RR | 62 | <1e-4 | 47/47/6 |
 | 5.0 | greedy restarts+RR+LS | 62 | 0.7088 | 14/73/13 |
-| 5.0 | greedy+RR+LS | 62 | <1e-4 | 45/52/3 |
+| 5.0 | Greedy + RR + LS | 62 | <1e-4 | 45/52/3 |
 | 5.0 | LP rounding+RR+LS | 62 | 0.0008 | 31/63/6 |
-| 5.0 | CP-SAT (8 workers) | 62 | 0.0001 | 0/81/19 |
+| 5.0 | CP-SAT | 62 | 0.0001 | 0/81/19 |
 
 
 ## 6. Alpha-sweep (`scripts/rev_alpha_sweep.py`, `scripts/rev_report.py` -> `tables/alpha_sweep.tex`, `figures/alpha_gap.png|pdf`, `figures/alpha_advantage.png|pdf`)
 
 Model seeds: [0, 1, 2, 3, 4]; ILP not proven: 11 of 720 (excluded).
-* Spearman(alpha, per-instance advantage greedy+RR - ours+RR), alpha pos: rho = 0.190, p = 0.0002
-* Spearman(alpha, per-instance advantage greedy+RR - ours+RR), alpha neg: rho = 0.056, p = 0.2666
-* Spearman(alpha, per-instance advantage greedy+RR - ours+RR), alpha all: rho = 0.234, p < 1e-4
+* Spearman(alpha, per-instance advantage Greedy + RR - Proposed + RR), alpha pos: rho = 0.190, p = 0.0002
+* Spearman(alpha, per-instance advantage Greedy + RR - Proposed + RR), alpha neg: rho = 0.056, p = 0.2666
+* Spearman(alpha, per-instance advantage Greedy + RR - Proposed + RR), alpha all: rho = 0.234, p < 1e-4
 
-| alpha | inst | ours+RR | greedy+RR | tie-break+RR | adv. vs greedy (pp) | p | W/T/L % | adv. vs tie-break | p (tb) | ours+RR+LS | greedy+RR+LS | p (LS) |
+| alpha | inst | Proposed + RR | Greedy + RR | tie-break+RR | adv. vs greedy (pp) | p | W/T/L % | adv. vs tie-break | p (tb) | Proposed + RR + LS | Greedy + RR + LS | p (LS) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | -1.00 | 80 | 4.20 | 3.27 | 3.05 | -0.93 | 0.0035 | 22/42/36 | -1.15 | 0.0006 | 1.57 | 1.80 | 0.8815 |
 | -0.75 | 80 | 4.01 | 3.28 | 3.49 | -0.73 | 0.0374 | 20/45/35 | -0.52 | 0.0510 | 1.86 | 1.78 | 0.0463 |
@@ -210,10 +210,10 @@ Unproven grid ILPs: 16 (`coverage_lb.json`, `tables/unproven_lb.tex`).
 
 | method | unproven inst | mean gap to LB % | max gap to LB % | all 640: gap to opt or LB % |
 | --- | --- | --- | --- | --- |
-| ours_rr | 16 | 34.70 | 45.40 | 5.37 |
-| ours_rr_ls | 16 | 32.23 | 43.21 | 3.04 |
-| greedy_rr | 16 | 37.58 | 51.42 | 6.31 |
-| greedy_rr_ls | 16 | 34.54 | 50.92 | 3.56 |
+| Proposed + RR | 16 | 34.70 | 45.40 | 5.37 |
+| Proposed + RR + LS | 16 | 32.23 | 43.21 | 3.04 |
+| Greedy + RR | 16 | 37.58 | 51.42 | 6.31 |
+| Greedy + RR + LS | 16 | 34.54 | 50.92 | 3.56 |
 | greedy_tiebreak_rr | 16 | 38.17 | 51.42 | 6.39 |
 | greedy_lookahead_rr | 16 | 41.79 | 58.20 | 10.77 |
 | lp_rounding_rr | 16 | 49.76 | 74.23 | 6.99 |

@@ -1,0 +1,30 @@
+\begin{table}[t]
+\centering
+\caption{Lattices, inverse weights: mean W(S) (ours = mean ± std over 5 model seeds; random/mixed also averaged over 3 weight seeds), gap (%) to the CP-SAT optimum (gap_ref = LB when some instance was not proven: gap to the lower bound).}
+\label{tab:lattices_inverse}
+\scriptsize
+\begin{tabular}{llrrrrrrrrrrrr}
+\toprule
+lattice & n & m & W\_exact & proven & ours\_rr & greedy\_rr & ours\_rr\_ls & greedy\_rr\_ls & gap\_ours\_rr & gap\_greedy\_rr & gap\_ours\_rr\_ls & gap\_greedy\_rr\_ls & gap\_ref \\
+\midrule
+Grid (square) & 25 & 40 & 518.0 & 1/1 & 518.0 $\pm$ 0.0 & 568.0 & 518.0 $\pm$ 0.0 & 518.0 & 0.00 & 9.65 & 0.00 & 0.00 & opt \\
+Grid (square) & 64 & 112 & 1136.0 & 1/1 & 1171.8 $\pm$ 7.9 & 1168.0 & 1155.2 $\pm$ 17.5 & 1168.0 & 3.15 & 2.82 & 1.69 & 2.82 & opt \\
+Grid (square) & 100 & 180 & 1704.0 & 1/1 & 1812.4 $\pm$ 32.9 & 1768.0 & 1769.0 $\pm$ 26.2 & 1768.0 & 6.36 & 3.76 & 3.81 & 3.76 & opt \\
+Grid (square) & 225 & 420 & 3573.0 & 1/1 & 3796.2 $\pm$ 47.3 & 3768.0 & 3766.4 $\pm$ 58.4 & 3768.0 & 6.25 & 5.46 & 5.41 & 5.46 & opt \\
+Grid (square) & 400 & 760 & 6044.0 & 0/1 & 6524.0 $\pm$ 119.4 & 6268.0 & 6484.2 $\pm$ 121.8 & 6268.0 & 10.56 & 6.22 & 9.88 & 6.22 & LB (some unproven) \\
+Grid (square) & 900 & 1740 & 12884.0 & 0/1 & 14532.4 $\pm$ 924.9 & 13268.0 & 14422.4 $\pm$ 884.9 & 13268.0 & 14.92 & 4.92 & 14.05 & 4.92 & LB (some unproven) \\
+Hexagonal & 26 & 31 & 1070.0 & 1/1 & 1076.6 $\pm$ 14.8 & 1070.0 & 1070.0 $\pm$ 0.0 & 1070.0 & 0.62 & 0.00 & 0.00 & 0.00 & opt \\
+Hexagonal & 62 & 82 & 1808.0 & 1/1 & 1848.0 $\pm$ 54.8 & 2076.0 & 1827.8 $\pm$ 29.5 & 1942.0 & 2.21 & 14.82 & 1.10 & 7.41 & opt \\
+Hexagonal & 98 & 133 & 2880.0 & 1/1 & 2893.2 $\pm$ 29.5 & 2947.0 & 2880.0 $\pm$ 0.0 & 2880.0 & 0.46 & 2.33 & 0.00 & 0.00 & opt \\
+Hexagonal & 222 & 312 & 6028.0 & 1/1 & 6081.6 $\pm$ 56.1 & 6833.0 & 6061.4 $\pm$ 58.0 & 6531.0 & 0.89 & 13.35 & 0.55 & 8.34 & opt \\
+Hexagonal & 390 & 558 & 10180.0 & 1/1 & 10308.2 $\pm$ 51.1 & 12461.0 & 10213.4 $\pm$ 58.0 & 11790.0 & 1.26 & 22.41 & 0.33 & 15.82 & opt \\
+Hexagonal & 880 & 1279 & 21098.0 & 1/1 & 21584.0 $\pm$ 358.8 & 28440.0 & 21278.8 $\pm$ 386.1 & 26560.0 & 2.30 & 34.80 & 0.86 & 25.89 & opt \\
+Triangular & 25 & 56 & 250.0 & 1/1 & 254.4 $\pm$ 7.0 & 250.0 & 250.0 $\pm$ 0.0 & 250.0 & 1.76 & 0.00 & 0.00 & 0.00 & opt \\
+Triangular & 64 & 161 & 556.0 & 1/1 & 584.8 $\pm$ 27.0 & 630.0 & 558.4 $\pm$ 3.3 & 590.0 & 5.18 & 13.31 & 0.43 & 6.12 & opt \\
+Triangular & 100 & 261 & 834.0 & 1/1 & 900.0 $\pm$ 43.4 & 936.0 & 878.4 $\pm$ 35.4 & 902.0 & 7.91 & 12.23 & 5.32 & 8.15 & opt \\
+Triangular & 225 & 616 & 1730.0 & 0/1 & 1936.4 $\pm$ 85.6 & 1832.0 & 1882.0 $\pm$ 67.3 & 1832.0 & 15.40 & 9.18 & 12.16 & 9.18 & LB (some unproven) \\
+Triangular & 400 & 1121 & 3062.0 & 0/1 & 3383.2 $\pm$ 42.0 & 3402.0 & 3280.0 $\pm$ 41.2 & 3368.0 & 23.84 & 24.52 & 20.06 & 23.28 & LB (some unproven) \\
+Triangular & 900 & 2581 & 6784.0 & 0/1 & 7685.2 $\pm$ 400.5 & 7030.0 & 7340.8 $\pm$ 167.9 & 7030.0 & 35.54 & 23.99 & 29.47 & 23.99 & LB (some unproven) \\
+\bottomrule
+\end{tabular}
+\end{table}

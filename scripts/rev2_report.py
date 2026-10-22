@@ -39,9 +39,9 @@ plt.rcParams.update({"font.size": 8, "axes.edgecolor": INK2, "axes.labelcolor": 
                      "axes.spines.top": False, "axes.spines.right": False, "legend.frameon": False,
                      "figure.facecolor": "#fcfcfb", "axes.facecolor": "#fcfcfb", "savefig.facecolor": "#fcfcfb"})
 # fixed slot per method (colour follows the entity across every figure)
-LABEL = {"guided": "ours: GNN-guided restarts", "random_prior": "random-prior restarts", "plain": "plain restarts",
-         "ours_bok_ls": "ours: sampled rollouts+RR+LS", "ours_greedy_ls": "ours: greedy rollout+RR+LS",
-         "greedy_ls": "greedy+RR+LS", "lp_ls": "LP rounding+RR+LS", "cpsat": "CP-SAT (8 workers)"}
+LABEL = {"guided": "Proposed (guided restarts)", "random_prior": "random-prior restarts", "plain": "plain restarts",
+         "ours_bok_ls": "Proposed (best-of-k) + LS", "ours_greedy_ls": "Proposed + RR + LS",
+         "greedy_ls": "Greedy + RR + LS", "lp_ls": "LP rounding+RR+LS", "cpsat": "CP-SAT"}
 SLOT = {m: i for i, m in enumerate(LABEL)}
 KEY = ["cls", "scheme", "n", "gidx"]
 SCH1 = ["degree", "inverse", "random", "mixed"]

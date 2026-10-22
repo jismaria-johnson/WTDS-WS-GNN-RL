@@ -26,6 +26,9 @@ import pandas as pd  # noqa: E402
 REV = ROOT / "results" / "revision"
 
 
+sys.path.insert(0, str(ROOT / "scripts"))
+from labels import DISP  # noqa: E402
+
 def part_lb():
     from stats import KEY, load_grid, tex_table, wide
     d, opt = load_grid()
@@ -47,13 +50,13 @@ def part_lb():
         g_all = 100 * (Wm - ref_all) / ref_all
         out[m] = dict(gap_lb_unproven=float(g_unp.mean()), gap_lb_unproven_max=float(g_unp.max()),
                       gap_all_640=float(g_all.mean()))
-        rows.append([m, int(unp.sum()), f"{g_unp.mean():.2f}", f"{g_unp.max():.2f}", f"{g_all.mean():.2f}"])
+        rows.append([DISP.get(m, m), int(unp.sum()), f"{g_unp.mean():.2f}", f"{g_unp.max():.2f}", f"{g_all.mean():.2f}"])
     df = pd.DataFrame(rows, columns=["method", "unproven inst", "mean gap to LB %", "max gap to LB %",
                                      "all 640: gap to opt or LB %"])
     tex_table(df, REV / "tables" / "unproven_lb.tex",
               "The 16 grid instances whose 30 s ILP was not proven optimal: gap to the CP-SAT lower bound (an upper "
               "bound on the true gap), and the mean over all 640 instances using the optimum where proven and the "
-              "lower bound otherwise. Ours = mean over model seeds.", "tab:unproven_lb")
+              "lower bound otherwise. Proposed = mean over model seeds.", "tab:unproven_lb")
     (REV / "coverage_lb.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
     print(df.to_string(index=False))
 

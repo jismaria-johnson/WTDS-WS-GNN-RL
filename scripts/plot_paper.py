@@ -12,7 +12,7 @@ Outputs (results/figures/paper/, 300 dpi PNG + vector PDF):
 Table: results/tables/paper_table.tex (n = 100, 500, 1000; degree weights).
 Summary of the box values: results/paper_beats_greedy.json.
 
-Text box "Ours beats Greedy in X% of graphs [(ties Y%)]": over all (graph, checkpoint) pairs of the panel (all n,
+Text box "Proposed beats Greedy in X% of graphs [(ties Y%)]": over all (graph, checkpoint) pairs of the panel (all n,
 both model seeds), X = share where ours + RR is STRICTLY better than greedy + RR on the same graph and weighting:
 smaller |S| in Plot 1 (unit weights), smaller W(S) in Plots 2, 3 and 5 (W is the objective, also in Plot 2).
 Ties = equal value. X is rounded DOWN to one decimal (never in our favour); ties are rounded to nearest.
@@ -88,7 +88,7 @@ def beats(pr, cls, scheme, by):
 
 
 def box_text(b, weight_word=False):
-    s = f"Ours beats Greedy{' (total weight)' if weight_word else ''} in {b['beats_pct']:.1f}% of graphs"
+    s = f"Proposed beats Greedy{' (total weight)' if weight_word else ''} in {b['beats_pct']:.1f}% of graphs"
     return s + (f" (ties {b['ties_pct']:.1f}%)" if b["ties_pct"] > 0 else "")
 
 
@@ -99,7 +99,7 @@ def panel(ax, pg, cls, scheme, metric, box, legend=True, title=None):
     for ser, col, mk, ls, dx in SERIES:
         g = d.groupby("n")[f"{metric}_{ser}"]
         m, s = g.mean().loc[ns].to_numpy(), g.std(ddof=0).loc[ns].to_numpy()
-        lab = {"exact": EXACT_LABEL[cls], "ours": "Ours (GNN+RL + RR, 2 seeds)", "greedy": "Greedy + RR"}[ser]
+        lab = {"exact": EXACT_LABEL[cls], "ours": "Proposed + RR (2 seeds)", "greedy": "Greedy + RR"}[ser]
         ax.errorbar([n + dx * step for n in ns], m, yerr=s, color=col, ls=ls, lw=2, marker=mk,
                     ms=6.5 if mk != "^" else 7.5, capsize=3, elinewidth=1.2, label=lab,
                     zorder=3 if ser != "greedy" else 2, markeredgecolor="white" if ser != "exact" else INK,
@@ -154,7 +154,7 @@ def paper_main(pg, pr):
             panel(axs[r, c], pg, cls, sch, metric, box_text(beats(pr, cls, sch, by)), legend=False,
                   title=f"{TITLE[cls]}\n{lab}" if r == 0 else lab)
     handles = [Line2D([], [], color=INK, ls="-", marker="o", lw=2, label="Exact (tree DP / interval DP / ILP)"),
-               Line2D([], [], color=TEAL, ls="-", marker="s", lw=2, mec="white", label="Ours (GNN+RL + RR, 2 seeds)"),
+               Line2D([], [], color=TEAL, ls="-", marker="s", lw=2, mec="white", label="Proposed + RR (2 seeds)"),
                Line2D([], [], color=GREY, ls="--", marker="^", lw=2, mec="white", label="Greedy + RR")]
     fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False, fontsize=13, bbox_to_anchor=(0.5, 0.995))
     fig.tight_layout(rect=(0, 0, 1, 0.965))
@@ -165,7 +165,7 @@ def table(pg, pr):
     short = {"tree": "Trees", "unit_interval": "Unit-interval", "convex_bip": "Convex bipartite", "two_tree": "2-trees"}
     lines = [r"\begin{tabular}{lr rrr rr r}", r"\toprule",
              r" & & \multicolumn{3}{c}{mean $W(S)$} & \multicolumn{2}{c}{mean $W/W_{\mathrm{exact}}$} & \\",
-             r"class & $n$ & Exact & Ours & Greedy+RR & Ours & Greedy+RR & Ours beats Greedy (\%) \\", r"\midrule"]
+             r"class & $n$ & Exact & Proposed + RR & Greedy + RR & Proposed + RR & Greedy + RR & Proposed beats Greedy (\%) \\", r"\midrule"]
     rows = []
     for cls in CLASSES:
         for n in (100, 500, 1000):
@@ -180,7 +180,7 @@ def table(pg, pr):
         if cls != CLASSES[-1]:
             lines.append(r"\midrule")
     lines += [r"\bottomrule", r"\end{tabular}",
-              r"% degree weights; 10 graphs per n; ours = mean of 2 checkpoints; Ours beats Greedy = share of "
+              r"% degree weights; 10 graphs per n; Proposed = mean of 2 checkpoints; Proposed beats Greedy = share of "
               r"(graph, checkpoint) pairs with strictly smaller W(S), rounded down; from results/exact_vs_ours_final.csv"]
     (RES / "tables" / "paper_table.tex").write_text("\n".join(lines) + "\n", encoding="utf-8")
     return rows

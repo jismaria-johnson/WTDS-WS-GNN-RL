@@ -458,3 +458,27 @@ R39. **Final push failed (authentication).** Commit 191c591 was made locally. `g
     "fatal: could not read Username for 'https://github.com': terminal prompts disabled". The cached GitHub credential
     used by the earlier pushes (497c40c, e358d2c) is no longer accepted or available. No credentials were entered.
     origin/main stays at e358d2c; local main is ahead (this entry is in a further local commit).
+
+## Pre-writing pass (2026-10-22, from 23:08 IST)
+R40. **Raw policy vs plain greedy** (`scripts/rvg_report.py`, results/raw_vs_greedy/). Greedy and Greedy + RR are
+    reused from results/raw_grid.csv (their stored sets re-checked with both checkers, W recomputed: 1,280 sets).
+    Proposed raw was not stored anywhere: seeds 0-1 come from results/ablations/eval_ref.csv (the ablation reference
+    evaluation, same code path), seeds 2-4 were computed with `abl_eval.py --variant ref --seeds 2,3,4` (raw and RR
+    sets checked, W recomputed). Proposed + RR from that evaluation equals the stored ours_rr rows on 3,200 / 3,200
+    (instance, seed) pairs (asserted). A first seeds-2-4 file was discarded: a mis-chained shell command had started
+    a second writer (one stray row); the file was deleted and recomputed in a single clean run. Main set = 624
+    proven instances; secondary table on all 640 with the CP-SAT bound for the 16 unproven. Proposed per instance =
+    mean of the 5 seeds; Wilcoxon on per-instance seed-mean W; W/T/L and "beats" are strict over (instance, seed)
+    pairs. Vertices removed by RR = |S| before - |S| after RR (greedy: greedy vs greedy_rr on the same instance; RR is
+    applied to the greedy set).
+R41. **Label change "Ours" -> "Proposed".** Display strings only (data keys such as ours_rr are unchanged); the
+    substitution list is scripts/labels.py, applied only to string literals of plot_paper, stats, rev_report,
+    rev_table_exact, rev_coverage, rev_summary, rev2_report, rev2_summary and lat_report (Python tokenizer, so no
+    code identifier was touched), plus explicit key -> label mappings where a method key was printed. "CP-SAT (8
+    workers)" became "CP-SAT" (the worker count stays in captions/decisions). Outputs regenerated from the stored
+    CSVs only (no solver, rollout or training; rev_coverage only with --part lb). The previous outputs are kept in
+    <dir>/archive/pre_proposed_labels/ for results/figures/paper (plus results/tables/paper_table.tex),
+    results/revision, results/revision2, results/ablations and results/lattices. Check (`scripts/relabel_check.py`):
+    after applying the same substitutions to each archived file, the sequence of numbers in all 75 regenerated
+    tex/csv/md/json files is identical to the archived one (0 differences); no "ours" label remains in any table.
+    results/ablations needed no label change (its rows are "Reference", "A1"...); it was regenerated and checked too.

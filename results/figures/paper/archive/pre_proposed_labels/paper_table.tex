@@ -1,0 +1,23 @@
+\begin{tabular}{lr rrr rr r}
+\toprule
+ & & \multicolumn{3}{c}{mean $W(S)$} & \multicolumn{2}{c}{mean $W/W_{\mathrm{exact}}$} & \\
+class & $n$ & Exact & Ours & Greedy+RR & Ours & Greedy+RR & Ours beats Greedy (\%) \\
+\midrule
+Trees & 100 & 2198.9 & 2206.6 & 2220.4 & 1.004 & 1.010 & 55.0 (ties 25.0) \\
+Trees & 500 & 9268.0 & 9307.8 & 9335.5 & 1.004 & 1.007 & 65.0 (ties 5.0) \\
+Trees & 1000 & 17869.9 & 17938.7 & 18014.8 & 1.004 & 1.008 & 100.0 \\
+\midrule
+Unit-interval & 100 & 1077.4 & 1157.8 & 1207.6 & 1.078 & 1.122 & 85.0 \\
+Unit-interval & 500 & 4609.6 & 5006.6 & 5213.7 & 1.087 & 1.131 & 95.0 \\
+Unit-interval & 1000 & 7938.4 & 8852.5 & 9161.3 & 1.119 & 1.156 & 90.0 \\
+\midrule
+Convex bipartite & 100 & 947.3 & 991.0 & 995.8 & 1.050 & 1.055 & 60.0 \\
+Convex bipartite & 500 & 2984.1 & 3181.7 & 3253.8 & 1.075 & 1.097 & 75.0 \\
+Convex bipartite & 1000 & 5502.2 & 5917.6 & 6078.7 & 1.090 & 1.113 & 80.0 \\
+\midrule
+2-trees & 100 & 587.1 & 609.0 & 638.7 & 1.036 & 1.089 & 80.0 (ties 5.0) \\
+2-trees & 500 & 1241.2 & 1292.1 & 1316.7 & 1.041 & 1.059 & 80.0 (ties 5.0) \\
+2-trees & 1000 & 2171.1 & 2268.7 & 2313.4 & 1.046 & 1.065 & 90.0 \\
+\bottomrule
+\end{tabular}
+% degree weights; 10 graphs per n; ours = mean of 2 checkpoints; Ours beats Greedy = share of (graph, checkpoint) pairs with strictly smaller W(S), rounded down; from results/exact_vs_ours_final.csv

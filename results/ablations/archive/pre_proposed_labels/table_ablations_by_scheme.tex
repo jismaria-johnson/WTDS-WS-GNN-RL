@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{Ablations by weight scheme: gap + RR (%) [95% CI] (Holm-adjusted Wilcoxon p vs the reference over the 20 variant x scheme tests).}
+\label{tab:ablations_scheme}
+\scriptsize
+\begin{tabular}{llrrr}
+\toprule
+variant & degree gap + RR \% & inverse gap + RR \% & random gap + RR \% & mixed gap + RR \% \\
+\midrule
+Reference (full model) & 8.87 [7.47, 10.36] & 3.43 [2.77, 4.17] & 3.28 [2.58, 4.04] & 5.42 [4.48, 6.47] \\
+A1 no action mask & 8.79 [7.35, 10.36] (p 1.0000) & 3.81 [3.09, 4.60] (p 1.0000) & 3.00 [2.46, 3.58] (p 1.0000) & 5.55 [4.61, 6.57] (p 1.0000) \\
+A2 degree-1 rule off & 10.19 [8.74, 11.71] (p $<$1e-4) & 5.14 [4.13, 6.22] (p 0.0003) & 3.70 [3.06, 4.37] (p 0.0756) & 6.63 [5.62, 7.71] (p 0.0008) \\
+A3 unit reward & 10.72 [9.16, 12.36] (p $<$1e-4) & 6.61 [5.28, 8.02] (p $<$1e-4) & 3.39 [2.67, 4.20] (p 1.0000) & 6.46 [5.39, 7.61] (p 0.0162) \\
+A4 sum readout & 7.12 [5.80, 8.55] (p 0.0351) & 2.93 [2.23, 3.72] (p 1.0000) & 3.66 [2.84, 4.55] (p 1.0000) & 4.55 [3.61, 5.61] (p 1.0000) \\
+A5 from scratch & 13.21 [11.15, 15.40] (p $<$1e-4) & 4.73 [3.74, 5.77] (p $<$1e-4) & 5.52 [4.30, 6.94] (p $<$1e-4) & 7.17 [5.87, 8.58] (p $<$1e-4) \\
+\bottomrule
+\end{tabular}
+\end{table}

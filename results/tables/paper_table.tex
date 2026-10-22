@@ -1,7 +1,7 @@
 \begin{tabular}{lr rrr rr r}
 \toprule
  & & \multicolumn{3}{c}{mean $W(S)$} & \multicolumn{2}{c}{mean $W/W_{\mathrm{exact}}$} & \\
-class & $n$ & Exact & Ours & Greedy+RR & Ours & Greedy+RR & Ours beats Greedy (\%) \\
+class & $n$ & Exact & Proposed + RR & Greedy + RR & Proposed + RR & Greedy + RR & Proposed beats Greedy (\%) \\
 \midrule
 Trees & 100 & 2198.9 & 2206.6 & 2220.4 & 1.004 & 1.010 & 55.0 (ties 25.0) \\
 Trees & 500 & 9268.0 & 9307.8 & 9335.5 & 1.004 & 1.007 & 65.0 (ties 5.0) \\
@@ -20,4 +20,4 @@ Convex bipartite & 1000 & 5502.2 & 5917.6 & 6078.7 & 1.090 & 1.113 & 80.0 \\
 2-trees & 1000 & 2171.1 & 2268.7 & 2313.4 & 1.046 & 1.065 & 90.0 \\
 \bottomrule
 \end{tabular}
-% degree weights; 10 graphs per n; ours = mean of 2 checkpoints; Ours beats Greedy = share of (graph, checkpoint) pairs with strictly smaller W(S), rounded down; from results/exact_vs_ours_final.csv
+% degree weights; 10 graphs per n; Proposed = mean of 2 checkpoints; Proposed beats Greedy = share of (graph, checkpoint) pairs with strictly smaller W(S), rounded down; from results/exact_vs_ours_final.csv

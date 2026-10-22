@@ -1,11 +1,11 @@
 \begin{table}[t]
 \centering
-\caption{Alpha-sweep: mean gap (\%) to the proven ILP optimum, w(v) tied to degree with exponent alpha (ER, BA, chordal, bipartite; n = 50, 100; 80 fresh graphs per alpha). Ours = mean of 5 seeds; advantage = greedy gap - ours gap; p = paired Wilcoxon.}
+\caption{Alpha-sweep: mean gap (\%) to the proven ILP optimum, w(v) tied to degree with exponent alpha (ER, BA, chordal, bipartite; n = 50, 100; 80 fresh graphs per alpha). Proposed = mean of 5 seeds; advantage = greedy gap - Proposed gap; p = paired Wilcoxon.}
 \label{tab:alpha_sweep}
 \scriptsize
 \begin{tabular}{llrrrrrrrrrrr}
 \toprule
-alpha & inst & ours+RR & greedy+RR & tie-break+RR & adv. vs greedy (pp) & p & W/T/L \% & adv. vs tie-break & p (tb) & ours+RR+LS & greedy+RR+LS & p (LS) \\
+alpha & inst & Proposed + RR & Greedy + RR & tie-break+RR & adv. vs greedy (pp) & p & W/T/L \% & adv. vs tie-break & p (tb) & Proposed + RR + LS & Greedy + RR + LS & p (LS) \\
 \midrule
 -1.00 & 80 & 4.20 & 3.27 & 3.05 & -0.93 & 0.0035 & 22/42/36 & -1.15 & 0.0006 & 1.57 & 1.80 & 0.8815 \\
 -0.75 & 80 & 4.01 & 3.28 & 3.49 & -0.73 & 0.0374 & 20/45/35 & -0.52 & 0.0510 & 1.86 & 1.78 & 0.0463 \\

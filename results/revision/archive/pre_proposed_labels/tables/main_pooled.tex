@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{Mean gap to the proven ILP optimum, all classes, schemes and n = 20--200 (624 instances). CIs: bootstrap over instances (10,000 resamples) and t-interval over model seeds.}
+\label{tab:main_pooled}
+\scriptsize
+\begin{tabular}{llrrrr}
+\toprule
+method & seeds & gap \% & 95\% CI (instances) & 95\% CI (seeds) & optimal \% \\
+\midrule
+ours+RR & 5 & 4.62 & [4.25, 4.99] & [3.95, 5.29] & 32.0 \\
+ours+RR+LS & 5 & 2.29 & [2.04, 2.56] & [1.89, 2.70] & 54.9 \\
+zero+RR & 2 & 6.02 & [5.48, 6.58] & [-2.79, 14.83] & 29.0 \\
+greedy\_rr & - & 5.51 & [4.96, 6.08] & - & 34.8 \\
+greedy\_rr\_ls & - & 2.76 & [2.41, 3.13] & - & 54.8 \\
+greedy\_tiebreak\_rr & - & 5.57 & [5.02, 6.15] & - & 34.9 \\
+greedy\_tiebreak\_rr\_ls & - & 2.81 & [2.45, 3.19] & - & 54.5 \\
+greedy\_lookahead\_rr & - & 9.98 & [8.96, 11.05] & - & 29.0 \\
+greedy\_lookahead\_rr\_ls & - & 3.05 & [2.67, 3.44] & - & 52.9 \\
+lp\_rounding\_rr & - & 5.89 & [5.18, 6.63] & - & 51.8 \\
+lp\_rounding\_rr\_ls & - & 1.93 & [1.63, 2.24] & - & 66.7 \\
+greedy\_random\_restart\_rr & - & 1.95 & [1.64, 2.28] & - & 53.5 \\
+\bottomrule
+\end{tabular}
+\end{table}

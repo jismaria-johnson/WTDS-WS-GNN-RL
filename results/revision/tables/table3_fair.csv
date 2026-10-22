@@ -1,4 +1,4 @@
-class,scheme,ours+RR [95% CI],greedy+RR,p,W/T/L %,ours+RR+LS [95% CI],greedy+RR+LS,p (LS),W/T/L % (LS)
+class,scheme,Proposed + RR [95% CI],Greedy + RR,p,W/T/L %,Proposed + RR + LS [95% CI],Greedy + RR + LS,p (LS),W/T/L % (LS)
 ER,Degree,"7.64 [5.89, 9.55]",11.55,0.0002,70/10/19,"5.24 [3.93, 6.64]",8.10,0.0045,56/19/24
 ER,Inverse,"5.85 [4.64, 7.12]",5.25,0.6016,32/27/41,"3.01 [2.05, 4.07]",3.46,0.6918,29/46/25
 ER,Random,"4.77 [3.49, 6.21]",4.54,0.2383,30/33/37,"2.74 [1.86, 3.67]",2.64,0.2848,22/47/30

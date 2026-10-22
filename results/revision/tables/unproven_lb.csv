@@ -1,8 +1,8 @@
 method,unproven inst,mean gap to LB %,max gap to LB %,all 640: gap to opt or LB %
-ours_rr,16,34.70,45.40,5.37
-ours_rr_ls,16,32.23,43.21,3.04
-greedy_rr,16,37.58,51.42,6.31
-greedy_rr_ls,16,34.54,50.92,3.56
+Proposed + RR,16,34.70,45.40,5.37
+Proposed + RR + LS,16,32.23,43.21,3.04
+Greedy + RR,16,37.58,51.42,6.31
+Greedy + RR + LS,16,34.54,50.92,3.56
 greedy_tiebreak_rr,16,38.17,51.42,6.39
 greedy_lookahead_rr,16,41.79,58.20,10.77
 lp_rounding_rr,16,49.76,74.23,6.99

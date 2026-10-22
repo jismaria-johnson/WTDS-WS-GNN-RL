@@ -4,7 +4,7 @@
 
 Reads results/revision/{equal_time_*.csv, alpha_sweep_*.csv, inference_*.json} and runs/ws_seed*/; writes
 results/revision/tables/*.tex|csv, results/revision/figures/*.png|pdf (300 dpi) and results/revision/report.json.
-Ours = per-instance mean over the model seeds present; CIs = bootstrap over instances (10,000) unless stated.
+Proposed = per-instance mean over the model seeds present; CIs = bootstrap over instances (10,000) unless stated.
 """
 import json
 import sys
@@ -46,9 +46,9 @@ def save(fig, name):
 
 
 # ------------------------------------------------------------------ equal time
-ET_LABEL = {"ours_bok": "ours: rollouts+RR", "ours_bok_ls": "ours: rollouts+RR+LS", "grr": "greedy restarts+RR",
-            "grr_ls": "greedy restarts+RR+LS", "greedy_rr_ls": "greedy+RR+LS", "lp_rr_ls": "LP rounding+RR+LS",
-            "cpsat": "CP-SAT (8 workers)"}
+ET_LABEL = {"ours_bok": "Proposed (best-of-k)", "ours_bok_ls": "Proposed (best-of-k) + LS", "grr": "greedy restarts+RR",
+            "grr_ls": "greedy restarts+RR+LS", "greedy_rr_ls": "Greedy + RR + LS", "lp_rr_ls": "LP rounding+RR+LS",
+            "cpsat": "CP-SAT"}
 
 
 def equal_time(rep):
@@ -94,10 +94,10 @@ def equal_time(rep):
     tex_table(pd.DataFrame(rows, columns=["method", "budget (s)", "inst", "gap %", "95% CI", "mean time (s)",
                                           "candidates", "solution found"]), TAB / "equal_time.tex",
               "Equal wall-clock budget per instance (main grid, n = 100 and 200, 2 graphs per class x scheme, proven "
-              "optima). Ours = mean over 5 model seeds, GNN on the GPU. Candidates = rollouts or restarts.",
+              "optima). Proposed = mean over 5 model seeds, GNN on the GPU. Candidates = rollouts or restarts.",
               "tab:equal_time")
-    tex_table(pd.DataFrame(ptab, columns=["budget (s)", "vs method", "inst", "Wilcoxon p", "ours W/T/L %"]),
-              TAB / "equal_time_tests.tex", "Ours (rollouts + RR + LS) vs each method at equal budget: paired "
+    tex_table(pd.DataFrame(ptab, columns=["budget (s)", "vs method", "inst", "Wilcoxon p", "Proposed W/T/L %"]),
+              TAB / "equal_time_tests.tex", "Proposed (best-of-k) + LS vs each method at equal budget: paired "
               "Wilcoxon (seed-mean W) and win/tie/loss over (instance, seed) pairs.", "tab:equal_time_tests")
     rep["equal_time"] = res
     # figure: gap vs budget, pooled + per scheme
@@ -121,13 +121,13 @@ def equal_time(rep):
         ax.set_xlabel("time budget per instance (s)")
     axs[0].set_ylabel("mean gap to optimum (%)")
     axs[0].legend(loc="upper center", bbox_to_anchor=(2.9, -0.28), ncol=7, fontsize=7.5)
-    fig.suptitle("Solution quality vs time budget (95% CI bands; ours: mean of 5 seeds, GPU)", color=INK, fontsize=10, y=1.06)
+    fig.suptitle("Solution quality vs time budget (95% CI bands; Proposed: mean of 5 seeds, GPU)", color=INK, fontsize=10, y=1.06)
     save(fig, "equal_time_quality_vs_time")
 
 
 # ------------------------------------------------------------------ alpha sweep
-AL_M = [("ours_rr", "ours+RR"), ("greedy_rr", "greedy+RR"), ("greedy_tiebreak_rr", "greedy tie-break+RR"),
-        ("greedy_rr_ls", "greedy+RR+LS"), ("ours_rr_ls", "ours+RR+LS")]
+AL_M = [("ours_rr", "Proposed + RR"), ("greedy_rr", "Greedy + RR"), ("greedy_tiebreak_rr", "greedy tie-break+RR"),
+        ("greedy_rr_ls", "Greedy + RR + LS"), ("ours_rr_ls", "Proposed + RR + LS")]
 
 
 def alpha(rep):
@@ -170,12 +170,12 @@ def alpha(rep):
                      f"{r['greedy_tiebreak_rr']['gap']:.2f}", f"{x['adv']:+.2f}", fmt_p(x["p"]),
                      f"{x['win']:.0f}/{x['tie']:.0f}/{x['loss']:.0f}", f"{y['adv']:+.2f}", fmt_p(y["p"]),
                      f"{r['ours_rr_ls']['gap']:.2f}", f"{r['greedy_rr_ls']['gap']:.2f}", fmt_p(z["p"])])
-    tex_table(pd.DataFrame(rows, columns=["alpha", "inst", "ours+RR", "greedy+RR", "tie-break+RR",
+    tex_table(pd.DataFrame(rows, columns=["alpha", "inst", "Proposed + RR", "Greedy + RR", "tie-break+RR",
                                           "adv. vs greedy (pp)", "p", "W/T/L %", "adv. vs tie-break", "p (tb)",
-                                          "ours+RR+LS", "greedy+RR+LS", "p (LS)"]), TAB / "alpha_sweep.tex",
+                                          "Proposed + RR + LS", "Greedy + RR + LS", "p (LS)"]), TAB / "alpha_sweep.tex",
               f"Alpha-sweep: mean gap (\\%) to the proven ILP optimum, w(v) tied to degree with exponent alpha (ER, "
-              f"BA, chordal, bipartite; n = 50, 100; 80 fresh graphs per alpha). Ours = mean of {len(seeds)} seeds; "
-              "advantage = greedy gap - ours gap; p = paired Wilcoxon.", "tab:alpha_sweep")
+              f"BA, chordal, bipartite; n = 50, 100; 80 fresh graphs per alpha). Proposed = mean of {len(seeds)} seeds; "
+              "advantage = greedy gap - Proposed gap; p = paired Wilcoxon.", "tab:alpha_sweep")
     # trend: Spearman correlation of per-instance advantage with alpha, alpha >= 0 and alpha <= 0
     adv_i = gap["greedy_rr"] - gap["ours_rr"]
     for lab, mk in (("pos", al_lvl >= 0), ("neg", al_lvl <= 0), ("all", al_lvl == al_lvl)):
@@ -195,13 +195,13 @@ def alpha(rep):
     ax.set_ylabel("mean gap to optimum (%)")
     ax.set_xticks(alphas)
     ax.legend(fontsize=7, ncol=2)
-    ax.set_title(f"Gap vs alpha (95% CI bands; ours: mean of {len(seeds)} seeds)", color=INK, fontsize=9)
+    ax.set_title(f"Gap vs alpha (95% CI bands; Proposed: mean of {len(seeds)} seeds)", color=INK, fontsize=9)
     save(fig, "alpha_gap")
     # plot 2: advantage
     fig, ax = plt.subplots(figsize=(5.2, 3.0))
-    for i, (k, lab) in enumerate([("ours_rr_vs_greedy_rr", "greedy+RR - ours+RR"),
-                                  ("ours_rr_vs_greedy_tiebreak_rr", "greedy tie-break+RR - ours+RR"),
-                                  ("ours_rr_ls_vs_greedy_rr_ls", "greedy+RR+LS - ours+RR+LS")]):
+    for i, (k, lab) in enumerate([("ours_rr_vs_greedy_rr", "Greedy + RR - Proposed + RR"),
+                                  ("ours_rr_vs_greedy_tiebreak_rr", "greedy tie-break+RR - Proposed + RR"),
+                                  ("ours_rr_ls_vs_greedy_rr_ls", "Greedy + RR + LS - Proposed + RR + LS")]):
         ys = [res["per_alpha"][str(a)][k]["adv"] for a in alphas]
         lo = [res["per_alpha"][str(a)][k]["adv_ci"][0] for a in alphas]
         hi = [res["per_alpha"][str(a)][k]["adv_ci"][1] for a in alphas]
@@ -210,9 +210,9 @@ def alpha(rep):
     ax.axhline(0, color=INK, lw=0.9)
     ax.set_xticks(alphas)
     ax.set_xlabel("alpha")
-    ax.set_ylabel("advantage of ours (pp of gap)")
+    ax.set_ylabel("advantage of Proposed (pp of gap)")
     ax.legend(fontsize=7)
-    ax.set_title("Advantage of ours over greedy vs alpha (> 0: ours better)", color=INK, fontsize=9)
+    ax.set_title("Advantage of Proposed over greedy vs alpha (> 0: Proposed better)", color=INK, fontsize=9)
     save(fig, "alpha_advantage")
 
 

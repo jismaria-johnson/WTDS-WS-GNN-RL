@@ -31,7 +31,7 @@ COLS = ["variant", "model_seed", "cls", "scheme", "n", "gidx", "ref_w", "proven"
 
 def ckpt(variant, seed):
     if variant == "ref":
-        return ROOT / {0: "checkpoints/best.pt", 1: "checkpoints/seed1_best.pt"}[seed]
+        return ROOT / {0: "checkpoints/best.pt", 1: "checkpoints/seed1_best.pt"}.get(seed, f"checkpoints/ws_seed{seed}/best.pt")
     return ROOT / "checkpoints" / "ablations" / f"{NAME[variant]}_seed{seed}" / "best.pt"
 
 

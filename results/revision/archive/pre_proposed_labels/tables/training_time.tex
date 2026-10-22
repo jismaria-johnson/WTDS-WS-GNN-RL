@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Fine-tuning time per model seed (RTX 3050 GPU).}
+\label{tab:training_time}
+\scriptsize
+\begin{tabular}{llrrr}
+\toprule
+seed & train min & steps & best step & val gap \% (+RR) \\
+\midrule
+0 & 20.5 & 78000 & 50000 & 4.69 \\
+1 & 25.9 & 78000 & 68000 & 5.18 \\
+2 & 32.0 & 78000 & 28000 & 4.50 \\
+3 & 23.8 & 78000 & 48000 & 5.43 \\
+4 & 23.5 & 78000 & 78000 & 4.38 \\
+\bottomrule
+\end{tabular}
+\end{table}

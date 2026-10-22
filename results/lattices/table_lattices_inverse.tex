@@ -1,11 +1,11 @@
 \begin{table}[t]
 \centering
-\caption{Lattices, inverse weights: mean W(S) (ours = mean ± std over 5 model seeds; random/mixed also averaged over 3 weight seeds), gap (%) to the CP-SAT optimum (gap_ref = LB when some instance was not proven: gap to the lower bound).}
+\caption{Lattices, inverse weights: mean W(S) (Proposed = mean ± std over 5 model seeds; random/mixed also averaged over 3 weight seeds), gap (%) to the CP-SAT optimum (gap_ref = LB when some instance was not proven: gap to the lower bound).}
 \label{tab:lattices_inverse}
 \scriptsize
 \begin{tabular}{llrrrrrrrrrrrr}
 \toprule
-lattice & n & m & W\_exact & proven & ours\_rr & greedy\_rr & ours\_rr\_ls & greedy\_rr\_ls & gap\_ours\_rr & gap\_greedy\_rr & gap\_ours\_rr\_ls & gap\_greedy\_rr\_ls & gap\_ref \\
+lattice & n & m & W exact & proven & Proposed + RR & Greedy + RR & Proposed + RR + LS & Greedy + RR + LS & gap Proposed + RR & gap Greedy + RR & gap Proposed + RR + LS & gap Greedy + RR + LS & gap\_ref \\
 \midrule
 Grid (square) & 25 & 40 & 518.0 & 1/1 & 518.0 $\pm$ 0.0 & 568.0 & 518.0 $\pm$ 0.0 & 518.0 & 0.00 & 9.65 & 0.00 & 0.00 & opt \\
 Grid (square) & 64 & 112 & 1136.0 & 1/1 & 1171.8 $\pm$ 7.9 & 1168.0 & 1155.2 $\pm$ 17.5 & 1168.0 & 3.15 & 2.82 & 1.69 & 2.82 & opt \\

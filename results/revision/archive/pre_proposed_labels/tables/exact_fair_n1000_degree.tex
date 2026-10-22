@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Fair Table V: exact cross-check under degree weights; gap (\%) at n = 1000 and share of (graph, seed) pairs over all n where ours is strictly cheaper than greedy with the same post-processing.}
+\label{tab:exact_fair_t5}
+\scriptsize
+\begin{tabular}{llrrrrrr}
+\toprule
+class & ours+RR & greedy+RR & ours+RR+LS & greedy+RR+LS & ours+RR better & ours+RR+LS better & p (LS, all n) \\
+\midrule
+Trees & 0.39 & 0.80 & 0.15 & 0.43 & 74\% & 56\% & $<$1e-4 \\
+Unit interval & 11.92 & 15.63 & 6.98 & 7.75 & 92\% & 78\% & $<$1e-4 \\
+Convex bip. & 8.96 & 11.35 & 2.66 & 2.67 & 79\% & 55\% & 0.0054 \\
+2-trees & 4.55 & 6.52 & 3.30 & 4.43 & 86\% & 72\% & $<$1e-4 \\
+\bottomrule
+\end{tabular}
+\end{table}

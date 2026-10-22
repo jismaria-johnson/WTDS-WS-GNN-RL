@@ -1,0 +1,4 @@
+tree {'ours_rr': 0.39, 'ours_rr_ls': 0.15} {'ours_rr': 0.8, 'ours_rr_ls': 0.43} win% all n: {'ours_rr': np.float64(74.0), 'ours_rr_ls': np.float64(56.5)} p LS: 1.3328365859354547e-07
+unit_interval {'ours_rr': 11.92, 'ours_rr_ls': 6.98} {'ours_rr': 15.63, 'ours_rr_ls': 7.75} win% all n: {'ours_rr': np.float64(92.0), 'ours_rr_ls': np.float64(77.5)} p LS: 1.6240155329551505e-11
+convex_bip {'ours_rr': 8.96, 'ours_rr_ls': 2.66} {'ours_rr': 11.35, 'ours_rr_ls': 2.67} win% all n: {'ours_rr': np.float64(79.0), 'ours_rr_ls': np.float64(55.0)} p LS: 0.005434073590502755
+two_tree {'ours_rr': 4.55, 'ours_rr_ls': 3.3} {'ours_rr': 6.52, 'ours_rr_ls': 4.43} win% all n: {'ours_rr': np.float64(86.0), 'ours_rr_ls': np.float64(72.0)} p LS: 1.3818518864703753e-10

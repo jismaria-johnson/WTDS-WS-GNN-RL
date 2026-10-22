@@ -7,9 +7,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 R2 = ROOT / "results" / "revision2"
-LAB = {"guided": "ours: GNN-guided restarts", "random_prior": "random-prior restarts", "plain": "plain restarts",
-       "ours_bok_ls": "ours: sampled rollouts+RR+LS", "ours_greedy_ls": "ours: greedy rollout+RR+LS",
-       "greedy_ls": "greedy+RR+LS", "lp_ls": "LP rounding+RR+LS", "cpsat": "CP-SAT (8 workers)"}
+LAB = {"guided": "Proposed (guided restarts)", "random_prior": "random-prior restarts", "plain": "plain restarts",
+       "ours_bok_ls": "Proposed (best-of-k) + LS", "ours_greedy_ls": "Proposed + RR + LS",
+       "greedy_ls": "Greedy + RR + LS", "lp_ls": "LP rounding+RR+LS", "cpsat": "CP-SAT"}
 
 
 def p(x):

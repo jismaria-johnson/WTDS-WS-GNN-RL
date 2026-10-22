@@ -1,4 +1,4 @@
-class,weights,inst,ours+RR,greedy+RR,p,W/T/L %,ours+RR+LS,greedy+RR+LS,p (LS),W/T/L % (LS)
+class,weights,inst,Proposed + RR,Greedy + RR,p,W/T/L %,Proposed + RR + LS,Greedy + RR + LS,p (LS),W/T/L % (LS)
 Trees,unit,100,0.14,0.21,0.0295,26/62/13,0.05,0.05,0.6056,8/84/9
 Trees,degree,100,0.44,0.85,<1e-4,74/7/19,0.19,0.36,<1e-4,56/20/24
 Trees,inverse,100,0.09,0.21,<1e-4,40/50/10,0.02,0.05,0.0008,16/80/3

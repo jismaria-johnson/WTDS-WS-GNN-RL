@@ -1,4 +1,4 @@
-class,ours+RR,greedy+RR,ours+RR+LS,greedy+RR+LS,ours+RR better,ours+RR+LS better,"p (LS, all n)"
+class,Proposed + RR,Greedy + RR,Proposed + RR + LS,Greedy + RR + LS,Proposed + RR better,Proposed + RR + LS better,"p (LS, all n)"
 Trees,0.39,0.80,0.15,0.43,74%,56%,<1e-4
 Unit interval,11.92,15.63,6.98,7.75,92%,78%,<1e-4
 Convex bip.,8.96,11.35,2.66,2.67,79%,55%,0.0054

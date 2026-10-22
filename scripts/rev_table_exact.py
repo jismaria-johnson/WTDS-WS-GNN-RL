@@ -2,7 +2,7 @@
 
     python scripts/rev_table_exact.py
 
-Inputs: results/exact_vs_ours_final.csv (400 fresh graphs, 5 weightings; ours = model seeds 0 and 1) and
+Inputs: results/exact_vs_ours_final.csv (400 fresh graphs, 5 weightings; Proposed = model seeds 0 and 1) and
 results/revision/greedy_rr_ls_final.csv (step 1, same instances); same for the first study (exact_vs_ours.csv /
 greedy_rr_ls_first.csv). Gap = 100 (W - W_exact) / W_exact over instances with a proven exact optimum.
 Outputs: results/revision/tables/exact_fair_<study>.tex|csv, exact_fair_n1000_degree.tex, exact_fair.json
@@ -69,11 +69,11 @@ def main():
                 rows.append([LAB[c], s, x["n"], f"{x['ours']:.2f}", f"{x['base']:.2f}", fmt_p(x["p"]),
                              f"{x['win']:.0f}/{x['tie']:.0f}/{x['loss']:.0f}", f"{y['ours']:.2f}", f"{y['base']:.2f}",
                              fmt_p(y["p"]), f"{y['win']:.0f}/{y['tie']:.0f}/{y['loss']:.0f}"])
-        cols = ["class", "weights", "inst", "ours+RR", "greedy+RR", "p", "W/T/L %", "ours+RR+LS", "greedy+RR+LS",
+        cols = ["class", "weights", "inst", "Proposed + RR", "Greedy + RR", "p", "W/T/L %", "Proposed + RR + LS", "Greedy + RR + LS",
                 "p (LS)", "W/T/L % (LS)"]
         tex_table(pd.DataFrame(rows, columns=cols), REV / "tables" / f"exact_fair_{study}.tex",
                   f"Exact cross-check ({study} study): mean gap (\\%) to the exact optimum, all n. Comparable pairs: "
-                  "ours+RR vs greedy+RR and ours+RR+LS vs greedy+RR+LS (same 1 s LS). Ours = model seeds 0 and 1; "
+                  "Proposed + RR vs Greedy + RR and Proposed + RR + LS vs Greedy + RR + LS (same 1 s LS). Proposed = model seeds 0 and 1; "
                   "p = paired Wilcoxon; W/T/L over (graph, seed) pairs.", f"tab:exact_fair_{study}")
         allres[study] = res
         if study == "final":                       # paper Table V format: degree weights, gap at n = 1000
@@ -87,11 +87,11 @@ def main():
                              f"{ball['ours_rr']['win']:.0f}%", f"{ball['ours_rr_ls']['win']:.0f}%",
                              fmt_p(ball["ours_rr_ls"]["p"])])
                 allres.setdefault("table5", {})[c] = dict(n1000=b, all_n=ball)
-            tex_table(pd.DataFrame(rows, columns=["class", "ours+RR", "greedy+RR", "ours+RR+LS", "greedy+RR+LS",
-                                                  "ours+RR better", "ours+RR+LS better", "p (LS, all n)"]),
+            tex_table(pd.DataFrame(rows, columns=["class", "Proposed + RR", "Greedy + RR", "Proposed + RR + LS", "Greedy + RR + LS",
+                                                  "Proposed + RR better", "Proposed + RR + LS better", "p (LS, all n)"]),
                       REV / "tables" / "exact_fair_n1000_degree.tex",
                       "Fair Table V: exact cross-check under degree weights; gap (\\%) at n = 1000 and share of "
-                      "(graph, seed) pairs over all n where ours is strictly cheaper than greedy with the same "
+                      "(graph, seed) pairs over all n where Proposed is strictly cheaper than greedy with the same "
                       "post-processing.", "tab:exact_fair_t5")
     (REV / "exact_fair.json").write_text(json.dumps(allres, indent=1, default=float), encoding="utf-8")
     t5 = allres["table5"]

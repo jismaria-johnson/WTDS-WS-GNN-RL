@@ -1,0 +1,62 @@
+\begin{table}[t]
+\centering
+\caption{Ours (mean over model seeds) vs each baseline on the main grid: mean gap, paired difference (negative = ours better) with bootstrap 95% CI, two-sided Wilcoxon signed-rank p, and win/tie/loss over (instance, seed) pairs.}
+\label{tab:ours_vs_baselines}
+\scriptsize
+\begin{tabular}{llrrrrrrrr}
+\toprule
+ours & baseline & subset & inst & ours gap \% & base gap \% & diff (pp) & 95\% CI diff & Wilcoxon p & W/T/L \% \\
+\midrule
+ours\_rr & greedy\_rr & pooled & 624 & 4.62 & 5.51 & -0.89 & [-1.36, -0.44] & 0.0092 & 35.9/32.2/31.9 \\
+ours\_rr & greedy\_rr & degree & 148 & 6.85 & 9.94 & -3.09 & [-4.41, -1.85] & $<$1e-4 & 58.1/16.2/25.7 \\
+ours\_rr & greedy\_rr & inverse & 159 & 3.52 & 2.79 & +0.73 & [0.27, 1.18] & 0.0020 & 20.0/46.3/33.7 \\
+ours\_rr & greedy\_rr & random & 160 & 3.31 & 3.26 & +0.04 & [-0.77, 0.77] & 0.0273 & 26.5/41.1/32.4 \\
+ours\_rr & greedy\_rr & mixed & 157 & 4.97 & 6.36 & -1.39 & [-2.30, -0.55] & 0.0215 & 40.5/23.9/35.5 \\
+ours\_rr & greedy\_tiebreak\_rr & pooled & 624 & 4.62 & 5.57 & -0.96 & [-1.43, -0.51] & 0.0033 & 36.1/32.2/31.7 \\
+ours\_rr & greedy\_tiebreak\_rr & degree & 148 & 6.85 & 9.94 & -3.09 & [-4.41, -1.85] & $<$1e-4 & 58.1/16.2/25.7 \\
+ours\_rr & greedy\_tiebreak\_rr & inverse & 159 & 3.52 & 2.89 & +0.63 & [0.18, 1.09] & 0.0039 & 20.3/45.8/34.0 \\
+ours\_rr & greedy\_tiebreak\_rr & random & 160 & 3.31 & 3.42 & -0.11 & [-0.96, 0.64] & 0.1033 & 26.9/41.2/31.9 \\
+ours\_rr & greedy\_tiebreak\_rr & mixed & 157 & 4.97 & 6.38 & -1.41 & [-2.32, -0.57] & 0.0188 & 40.9/24.2/34.9 \\
+ours\_rr & greedy\_lookahead\_rr & pooled & 624 & 4.62 & 9.98 & -5.36 & [-6.32, -4.43] & $<$1e-4 & 49.6/26.5/23.8 \\
+ours\_rr & greedy\_lookahead\_rr & degree & 148 & 6.85 & 16.21 & -9.36 & [-11.75, -7.24] & $<$1e-4 & 74.3/12.0/13.6 \\
+ours\_rr & greedy\_lookahead\_rr & inverse & 159 & 3.52 & 3.72 & -0.21 & [-0.89, 0.41] & 0.4643 & 25.2/43.6/31.2 \\
+ours\_rr & greedy\_lookahead\_rr & random & 160 & 3.31 & 5.76 & -2.46 & [-4.06, -1.10] & 0.0188 & 37.6/34.8/27.6 \\
+ours\_rr & greedy\_lookahead\_rr & mixed & 157 & 4.97 & 14.72 & -9.76 & [-12.23, -7.50] & $<$1e-4 & 63.4/14.4/22.2 \\
+ours\_rr & lp\_rounding\_rr & pooled & 624 & 4.62 & 5.89 & -1.27 & [-1.94, -0.63] & 0.3389 & 33.9/28.1/38.0 \\
+ours\_rr & lp\_rounding\_rr & degree & 148 & 6.85 & 12.53 & -5.68 & [-7.50, -3.92] & $<$1e-4 & 58.6/14.6/26.8 \\
+ours\_rr & lp\_rounding\_rr & inverse & 159 & 3.52 & 3.00 & +0.52 & [-0.35, 1.31] & 0.0013 & 18.5/44.2/37.4 \\
+ours\_rr & lp\_rounding\_rr & random & 160 & 3.31 & 1.77 & +1.54 & [0.90, 2.21] & $<$1e-4 & 16.0/34.1/49.9 \\
+ours\_rr & lp\_rounding\_rr & mixed & 157 & 4.97 & 6.76 & -1.80 & [-3.25, -0.38] & 0.0263 & 44.3/18.5/37.2 \\
+ours\_rr & greedy\_random\_restart\_rr & pooled & 624 & 4.62 & 1.95 & +2.67 & [2.31, 3.03] & $<$1e-4 & 10.8/34.4/54.7 \\
+ours\_rr & greedy\_random\_restart\_rr & degree & 148 & 6.85 & 1.62 & +5.24 & [4.38, 6.13] & $<$1e-4 & 8.9/21.9/69.2 \\
+ours\_rr & greedy\_random\_restart\_rr & inverse & 159 & 3.52 & 1.22 & +2.29 & [1.80, 2.79] & $<$1e-4 & 5.8/47.2/47.0 \\
+ours\_rr & greedy\_random\_restart\_rr & random & 160 & 3.31 & 2.06 & +1.25 & [0.46, 1.92] & $<$1e-4 & 12.5/40.4/47.1 \\
+ours\_rr & greedy\_random\_restart\_rr & mixed & 157 & 4.97 & 2.88 & +2.08 & [1.44, 2.73] & $<$1e-4 & 16.1/27.3/56.7 \\
+ours\_rr & greedy\_rr\_ls & pooled & 624 & 4.62 & 2.76 & +1.86 & [1.49, 2.23] & $<$1e-4 & 17.4/31.7/50.9 \\
+ours\_rr & greedy\_rr\_ls & degree & 148 & 6.85 & 5.84 & +1.01 & [-0.04, 2.11] & 0.0510 & 35.1/18.1/46.8 \\
+ours\_rr & greedy\_rr\_ls & inverse & 159 & 3.52 & 1.35 & +2.17 & [1.68, 2.67] & $<$1e-4 & 7.5/45.9/46.5 \\
+ours\_rr & greedy\_rr\_ls & random & 160 & 3.31 & 1.36 & +1.94 & [1.40, 2.51] & $<$1e-4 & 10.6/36.5/52.9 \\
+ours\_rr & greedy\_rr\_ls & mixed & 157 & 4.97 & 2.73 & +2.24 & [1.48, 3.05] & $<$1e-4 & 17.6/25.1/57.3 \\
+ours\_rr\_ls & greedy\_rr\_ls & pooled & 624 & 2.29 & 2.76 & -0.47 & [-0.75, -0.20] & 0.0174 & 25.4/54.0/20.7 \\
+ours\_rr\_ls & greedy\_rr\_ls & degree & 148 & 4.18 & 5.84 & -1.66 & [-2.43, -0.92] & $<$1e-4 & 46.2/28.2/25.5 \\
+ours\_rr\_ls & greedy\_rr\_ls & inverse & 159 & 1.41 & 1.35 & +0.06 & [-0.25, 0.35] & 0.4398 & 13.6/71.1/15.3 \\
+ours\_rr\_ls & greedy\_rr\_ls & random & 160 & 1.56 & 1.36 & +0.20 & [-0.35, 0.67] & 0.0510 & 14.9/62.8/22.4 \\
+ours\_rr\_ls & greedy\_rr\_ls & mixed & 157 & 2.16 & 2.73 & -0.57 & [-1.07, -0.08] & 0.0520 & 28.3/52.0/19.7 \\
+ours\_rr\_ls & greedy\_tiebreak\_rr\_ls & pooled & 624 & 2.29 & 2.81 & -0.52 & [-0.81, -0.25] & 0.0070 & 25.5/53.9/20.6 \\
+ours\_rr\_ls & greedy\_tiebreak\_rr\_ls & degree & 148 & 4.18 & 5.84 & -1.66 & [-2.43, -0.92] & $<$1e-4 & 46.2/28.2/25.5 \\
+ours\_rr\_ls & greedy\_tiebreak\_rr\_ls & inverse & 159 & 1.41 & 1.43 & -0.02 & [-0.34, 0.28] & 0.8081 & 14.3/70.1/15.6 \\
+ours\_rr\_ls & greedy\_tiebreak\_rr\_ls & random & 160 & 1.56 & 1.52 & +0.05 & [-0.58, 0.59] & 0.0898 & 14.6/63.9/21.5 \\
+ours\_rr\_ls & greedy\_tiebreak\_rr\_ls & mixed & 157 & 2.16 & 2.69 & -0.53 & [-1.02, -0.05] & 0.0437 & 28.4/51.6/20.0 \\
+ours\_rr\_ls & greedy\_lookahead\_rr\_ls & pooled & 624 & 2.29 & 3.05 & -0.75 & [-1.08, -0.44] & $<$1e-4 & 28.9/51.0/20.1 \\
+ours\_rr\_ls & greedy\_lookahead\_rr\_ls & degree & 148 & 4.18 & 5.75 & -1.57 & [-2.60, -0.64] & 0.0002 & 46.5/25.3/28.2 \\
+ours\_rr\_ls & greedy\_lookahead\_rr\_ls & inverse & 159 & 1.41 & 1.66 & -0.25 & [-0.73, 0.19] & 0.7498 & 17.1/66.7/16.2 \\
+ours\_rr\_ls & greedy\_lookahead\_rr\_ls & random & 160 & 1.56 & 1.91 & -0.35 & [-0.86, 0.08] & 0.5380 & 21.4/60.5/18.1 \\
+ours\_rr\_ls & greedy\_lookahead\_rr\_ls & mixed & 157 & 2.16 & 3.06 & -0.90 & [-1.53, -0.30] & 0.0066 & 32.1/49.6/18.3 \\
+ours\_rr\_ls & lp\_rounding\_rr\_ls & pooled & 624 & 2.29 & 1.93 & +0.36 & [0.10, 0.63] & $<$1e-4 & 18.9/52.9/28.2 \\
+ours\_rr\_ls & lp\_rounding\_rr\_ls & degree & 148 & 4.18 & 4.37 & -0.19 & [-1.03, 0.62] & 0.8614 & 34.9/27.8/37.3 \\
+ours\_rr\_ls & lp\_rounding\_rr\_ls & inverse & 159 & 1.41 & 0.83 & +0.58 & [0.20, 0.95] & 0.0002 & 10.9/67.0/22.0 \\
+ours\_rr\_ls & lp\_rounding\_rr\_ls & random & 160 & 1.56 & 0.89 & +0.67 & [0.33, 1.03] & $<$1e-4 & 10.0/63.5/26.5 \\
+ours\_rr\_ls & lp\_rounding\_rr\_ls & mixed & 157 & 2.16 & 1.83 & +0.33 & [-0.12, 0.77] & 0.0440 & 20.9/51.5/27.6 \\
+\bottomrule
+\end{tabular}
+\end{table}

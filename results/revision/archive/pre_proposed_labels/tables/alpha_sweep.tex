@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Alpha-sweep: mean gap (\%) to the proven ILP optimum, w(v) tied to degree with exponent alpha (ER, BA, chordal, bipartite; n = 50, 100; 80 fresh graphs per alpha). Ours = mean of 5 seeds; advantage = greedy gap - ours gap; p = paired Wilcoxon.}
+\label{tab:alpha_sweep}
+\scriptsize
+\begin{tabular}{llrrrrrrrrrrr}
+\toprule
+alpha & inst & ours+RR & greedy+RR & tie-break+RR & adv. vs greedy (pp) & p & W/T/L \% & adv. vs tie-break & p (tb) & ours+RR+LS & greedy+RR+LS & p (LS) \\
+\midrule
+-1.00 & 80 & 4.20 & 3.27 & 3.05 & -0.93 & 0.0035 & 22/42/36 & -1.15 & 0.0006 & 1.57 & 1.80 & 0.8815 \\
+-0.75 & 80 & 4.01 & 3.28 & 3.49 & -0.73 & 0.0374 & 20/45/35 & -0.52 & 0.0510 & 1.86 & 1.78 & 0.0463 \\
+-0.50 & 80 & 4.43 & 3.26 & 3.48 & -1.17 & 0.0208 & 22/35/42 & -0.95 & 0.0342 & 2.14 & 1.83 & 0.0849 \\
+-0.25 & 80 & 4.72 & 3.92 & 4.14 & -0.80 & 0.0278 & 20/28/51 & -0.58 & 0.0517 & 2.25 & 2.34 & 0.6248 \\
++0.00 & 80 & 4.80 & 4.50 & 6.33 & -0.30 & 0.7387 & 15/68/17 & +1.53 & 0.0292 & 3.17 & 2.69 & 0.0460 \\
++0.25 & 78 & 6.02 & 6.09 & 6.09 & +0.07 & 0.8647 & 37/16/46 & +0.07 & 0.8647 & 3.35 & 5.02 & 0.0054 \\
++0.50 & 77 & 5.62 & 7.08 & 7.08 & +1.46 & 0.0635 & 48/19/33 & +1.46 & 0.0635 & 4.05 & 4.94 & 0.1069 \\
++0.75 & 77 & 6.04 & 7.63 & 7.63 & +1.58 & 0.0061 & 50/19/31 & +1.58 & 0.0061 & 4.12 & 5.28 & 0.0051 \\
++1.00 & 77 & 6.83 & 9.79 & 9.79 & +2.96 & 0.0003 & 55/20/25 & +2.96 & 0.0003 & 4.89 & 6.13 & 0.0272 \\
+\bottomrule
+\end{tabular}
+\end{table}

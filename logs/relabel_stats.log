@@ -1,0 +1,59 @@
+model seeds available for Proposed: [0, 1, 2, 3, 4]; instances with all seeds: 640/640
+{
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "n_proven": 624,
+ "cell_counts": {
+  "ours_rr vs greedy_rr": {
+   "ours_lower": 9,
+   "sig_ours": 4,
+   "sig_base": 2,
+   "sig_ours_holm": 2,
+   "sig_base_holm": 0
+  },
+  "ours_rr_ls vs greedy_rr_ls": {
+   "ours_lower": 11,
+   "sig_ours": 2,
+   "sig_base": 0,
+   "sig_ours_holm": 0,
+   "sig_base_holm": 0
+  },
+  "ours_rr vs greedy_tiebreak_rr": {
+   "ours_lower": 10,
+   "sig_ours": 4,
+   "sig_base": 2,
+   "sig_ours_holm": 2,
+   "sig_base_holm": 0
+  },
+  "ours_rr vs greedy_lookahead_rr": {
+   "ours_lower": 13,
+   "sig_ours": 9,
+   "sig_base": 3,
+   "sig_ours_holm": 7,
+   "sig_base_holm": 0
+  },
+  "ours_rr vs lp_rounding_rr": {
+   "ours_lower": 7,
+   "sig_ours": 5,
+   "sig_base": 6,
+   "sig_ours_holm": 4,
+   "sig_base_holm": 5
+  },
+  "ours_rr vs greedy_random_restart_rr": {
+   "ours_lower": 0,
+   "sig_ours": 0,
+   "sig_base": 16,
+   "sig_ours_holm": 0,
+   "sig_base_holm": 16
+  }
+ }
+}
+ours_rr {'gap': np.float64(4.619), 'ci_inst': (np.float64(4.253487953571986), np.float64(4.989922687018567)), 'ci_seed': (np.float64(3.9495482024037165), np.float64(5.287846095746551)), 'per_seed': [3.881696417057909, 5.145643286229648, 4.468689693054666, 5.154777513806218, 4.442678835227227], 'opt': np.float64(32.019), 'seeds': [0, 1, 2, 3, 4]}
+ours_rr_ls {'gap': np.float64(2.292), 'ci_inst': (np.float64(2.0394824451507754), np.float64(2.5562048858634494)), 'ci_seed': (np.float64(1.8853406264058759), np.float64(2.6992803772378444)), 'per_seed': [1.9839766068188225, 2.4865183141838565, 2.100708539236962, 2.7718840849581503, 2.1184649639115087], 'opt': np.float64(54.872), 'seeds': [0, 1, 2, 3, 4]}
+greedy_rr {'gap': 5.505, 'ci_inst': (np.float64(4.96184214087538), np.float64(6.0771631274324625)), 'opt': 34.776}
+greedy_rr_ls {'gap': 2.763, 'ci_inst': (np.float64(2.4090899539021566), np.float64(3.1314205955240975)), 'opt': 54.808}

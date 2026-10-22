@@ -1,0 +1,87 @@
+\begin{table}[t]
+\centering
+\caption{GNN-guided restarts vs each method at equal budget (n = 100, 200): paired Wilcoxon on W(S) and win/tie/loss counts (instances). dW = mean W(guided) - W(other); < 0 = guided cheaper.}
+\label{tab:rev2_step1_tests}
+\scriptsize
+\begin{tabular}{llrrrrr}
+\toprule
+budget (s) & guided vs & scheme & inst & Wilcoxon p & guided W/T/L & mean dW \\
+\midrule
+0.16 & random-prior restarts & pooled & 153 & 0.8610 & 21/108/24 & -0.23 \\
+0.16 & random-prior restarts & degree & 34 & 0.2510 & 11/15/8 & -2.59 \\
+0.16 & random-prior restarts & inverse & 40 & 0.5879 & 2/35/3 & +0.25 \\
+0.16 & random-prior restarts & random & 40 & 0.6721 & 3/33/4 & +0.38 \\
+0.16 & random-prior restarts & mixed & 39 & 0.3964 & 5/25/9 & +0.72 \\
+0.16 & plain restarts & pooled & 153 & 0.0020 & 32/100/21 & -3.29 \\
+0.16 & plain restarts & degree & 34 & 0.0347 & 11/14/9 & -9.94 \\
+0.16 & plain restarts & inverse & 40 & 0.2349 & 6/31/3 & -0.65 \\
+0.16 & plain restarts & random & 40 & 0.1755 & 4/33/3 & -1.20 \\
+0.16 & plain restarts & mixed & 39 & 0.1623 & 11/22/6 & -2.33 \\
+0.16 & LP rounding+RR+LS & pooled & 153 & $<$1e-4 & 52/83/18 & -7.81 \\
+0.16 & LP rounding+RR+LS & degree & 34 & 0.0015 & 18/11/5 & -17.09 \\
+0.16 & LP rounding+RR+LS & inverse & 40 & 0.0436 & 11/25/4 & -2.38 \\
+0.16 & LP rounding+RR+LS & random & 40 & 0.1361 & 7/28/5 & -2.52 \\
+0.16 & LP rounding+RR+LS & mixed & 39 & 0.0054 & 16/19/4 & -10.72 \\
+0.16 & CP-SAT (8 workers) & pooled & 153 & 0.1620 & 13/101/39 & -0.95 \\
+0.16 & CP-SAT (8 workers) & degree & 34 & 0.1351 & 4/14/16 & +0.85 \\
+0.16 & CP-SAT (8 workers) & inverse & 40 & 0.6737 & 3/32/5 & -0.50 \\
+0.16 & CP-SAT (8 workers) & random & 40 & 0.0277 & 0/34/6 & +1.43 \\
+0.16 & CP-SAT (8 workers) & mixed & 39 & 0.8788 & 6/21/12 & -5.41 \\
+0.16 & ours: sampled rollouts+RR+LS & pooled & 153 & $<$1e-4 & 82/66/5 & -9.06 \\
+0.16 & ours: sampled rollouts+RR+LS & degree & 34 & 0.0006 & 20/11/3 & -14.84 \\
+0.16 & ours: sampled rollouts+RR+LS & inverse & 40 & 0.0010 & 17/23/0 & -5.92 \\
+0.16 & ours: sampled rollouts+RR+LS & random & 40 & $<$1e-4 & 24/16/0 & -8.11 \\
+0.16 & ours: sampled rollouts+RR+LS & mixed & 39 & 0.0013 & 21/16/2 & -8.28 \\
+1.0 & random-prior restarts & pooled & 153 & 0.4756 & 21/118/14 & -0.49 \\
+1.0 & random-prior restarts & degree & 34 & 0.8016 & 8/20/6 & -1.44 \\
+1.0 & random-prior restarts & inverse & 40 & 1.0000 & 4/34/2 & +0.05 \\
+1.0 & random-prior restarts & random & 40 & 0.0796 & 4/35/1 & -0.47 \\
+1.0 & random-prior restarts & mixed & 39 & 1.0000 & 5/29/5 & -0.23 \\
+1.0 & plain restarts & pooled & 153 & 0.0017 & 29/112/12 & -2.36 \\
+1.0 & plain restarts & degree & 34 & 0.0533 & 13/15/6 & -4.56 \\
+1.0 & plain restarts & inverse & 40 & 0.6698 & 4/33/3 & -0.28 \\
+1.0 & plain restarts & random & 40 & 0.5930 & 2/37/1 & -0.35 \\
+1.0 & plain restarts & mixed & 39 & 0.0120 & 10/27/2 & -4.64 \\
+1.0 & LP rounding+RR+LS & pooled & 153 & $<$1e-4 & 56/88/9 & -9.92 \\
+1.0 & LP rounding+RR+LS & degree & 34 & 0.0007 & 18/12/4 & -20.71 \\
+1.0 & LP rounding+RR+LS & inverse & 40 & 0.0082 & 12/25/3 & -3.10 \\
+1.0 & LP rounding+RR+LS & random & 40 & 0.0069 & 9/30/1 & -3.65 \\
+1.0 & LP rounding+RR+LS & mixed & 39 & 0.0003 & 17/21/1 & -13.95 \\
+1.0 & CP-SAT (8 workers) & pooled & 153 & 0.0001 & 5/119/29 & +1.83 \\
+1.0 & CP-SAT (8 workers) & degree & 34 & 0.0144 & 2/19/13 & +3.44 \\
+1.0 & CP-SAT (8 workers) & inverse & 40 & 0.0625 & 1/33/6 & +0.68 \\
+1.0 & CP-SAT (8 workers) & random & 40 & 0.1088 & 0/37/3 & +0.30 \\
+1.0 & CP-SAT (8 workers) & mixed & 39 & 0.0753 & 2/30/7 & +3.18 \\
+1.0 & ours: sampled rollouts+RR+LS & pooled & 153 & $<$1e-4 & 46/97/10 & -2.65 \\
+1.0 & ours: sampled rollouts+RR+LS & degree & 34 & 0.0348 & 16/12/6 & -4.97 \\
+1.0 & ours: sampled rollouts+RR+LS & inverse & 40 & 0.0280 & 7/32/1 & -1.15 \\
+1.0 & ours: sampled rollouts+RR+LS & random & 40 & 0.0096 & 11/28/1 & -2.17 \\
+1.0 & ours: sampled rollouts+RR+LS & mixed & 39 & 0.0156 & 12/25/2 & -2.67 \\
+5.0 & random-prior restarts & pooled & 153 & 0.3483 & 14/126/13 & -0.48 \\
+5.0 & random-prior restarts & degree & 34 & 0.4558 & 6/22/6 & -1.50 \\
+5.0 & random-prior restarts & inverse & 40 & 0.4004 & 2/34/4 & +0.23 \\
+5.0 & random-prior restarts & random & 40 & 0.1025 & 3/37/0 & -0.25 \\
+5.0 & random-prior restarts & mixed & 39 & 0.4631 & 3/33/3 & -0.56 \\
+5.0 & plain restarts & pooled & 153 & 0.0326 & 18/122/13 & -1.41 \\
+5.0 & plain restarts & degree & 34 & 0.0497 & 9/19/6 & -4.06 \\
+5.0 & plain restarts & inverse & 40 & 0.3441 & 1/34/5 & +0.25 \\
+5.0 & plain restarts & random & 40 & 0.6547 & 1/38/1 & +0.03 \\
+5.0 & plain restarts & mixed & 39 & 0.0355 & 7/31/1 & -2.26 \\
+5.0 & LP rounding+RR+LS & pooled & 153 & $<$1e-4 & 57/88/8 & -10.92 \\
+5.0 & LP rounding+RR+LS & degree & 34 & 0.0002 & 19/12/3 & -23.85 \\
+5.0 & LP rounding+RR+LS & inverse & 40 & 0.0075 & 12/25/3 & -3.17 \\
+5.0 & LP rounding+RR+LS & random & 40 & 0.0069 & 9/30/1 & -3.77 \\
+5.0 & LP rounding+RR+LS & mixed & 39 & 0.0003 & 17/21/1 & -14.90 \\
+5.0 & CP-SAT (8 workers) & pooled & 153 & $<$1e-4 & 1/123/29 & +1.73 \\
+5.0 & CP-SAT (8 workers) & degree & 34 & 0.0037 & 1/21/12 & +2.79 \\
+5.0 & CP-SAT (8 workers) & inverse & 40 & 0.0178 & 0/33/7 & +1.07 \\
+5.0 & CP-SAT (8 workers) & random & 40 & 0.1088 & 0/37/3 & +0.17 \\
+5.0 & CP-SAT (8 workers) & mixed & 39 & 0.0178 & 0/32/7 & +3.08 \\
+5.0 & ours: sampled rollouts+RR+LS & pooled & 153 & 0.0202 & 27/110/16 & -1.27 \\
+5.0 & ours: sampled rollouts+RR+LS & degree & 34 & 0.1293 & 11/17/6 & -3.21 \\
+5.0 & ours: sampled rollouts+RR+LS & inverse & 40 & 0.8119 & 4/31/5 & -0.17 \\
+5.0 & ours: sampled rollouts+RR+LS & random & 40 & 0.0654 & 7/31/2 & -0.72 \\
+5.0 & ours: sampled rollouts+RR+LS & mixed & 39 & 0.1829 & 5/31/3 & -1.28 \\
+\bottomrule
+\end{tabular}
+\end{table}

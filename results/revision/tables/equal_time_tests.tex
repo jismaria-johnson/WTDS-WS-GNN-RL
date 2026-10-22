@@ -1,30 +1,30 @@
 \begin{table}[t]
 \centering
-\caption{Ours (rollouts + RR + LS) vs each method at equal budget: paired Wilcoxon (seed-mean W) and win/tie/loss over (instance, seed) pairs.}
+\caption{Proposed (best-of-k) + LS vs each method at equal budget: paired Wilcoxon (seed-mean W) and win/tie/loss over (instance, seed) pairs.}
 \label{tab:equal_time_tests}
 \scriptsize
 \begin{tabular}{llrrr}
 \toprule
-budget (s) & vs method & inst & Wilcoxon p & ours W/T/L \% \\
+budget (s) & vs method & inst & Wilcoxon p & Proposed W/T/L \% \\
 \midrule
-0.16 & ours: rollouts+RR & 62 & $<$1e-4 & 66/15/19 \\
+0.16 & Proposed (best-of-k) & 62 & $<$1e-4 & 66/15/19 \\
 0.16 & greedy restarts+RR & 62 & 0.3535 & 31/44/25 \\
 0.16 & greedy restarts+RR+LS & 62 & 0.0004 & 12/50/37 \\
-0.16 & greedy+RR+LS & 62 & 0.8780 & 29/48/22 \\
+0.16 & Greedy + RR + LS & 62 & 0.8780 & 29/48/22 \\
 0.16 & LP rounding+RR+LS & 62 & 0.4638 & 25/49/26 \\
-0.16 & CP-SAT (8 workers) & 62 & $<$1e-4 & 5/55/41 \\
-1.0 & ours: rollouts+RR & 62 & $<$1e-4 & 69/26/5 \\
+0.16 & CP-SAT & 62 & $<$1e-4 & 5/55/41 \\
+1.0 & Proposed (best-of-k) & 62 & $<$1e-4 & 69/26/5 \\
 1.0 & greedy restarts+RR & 62 & $<$1e-4 & 48/47/5 \\
 1.0 & greedy restarts+RR+LS & 62 & 0.3913 & 14/70/16 \\
-1.0 & greedy+RR+LS & 62 & $<$1e-4 & 44/52/4 \\
+1.0 & Greedy + RR + LS & 62 & $<$1e-4 & 44/52/4 \\
 1.0 & LP rounding+RR+LS & 62 & 0.0036 & 31/61/8 \\
-1.0 & CP-SAT (8 workers) & 62 & 0.0002 & 3/75/23 \\
-5.0 & ours: rollouts+RR & 62 & $<$1e-4 & 60/33/6 \\
+1.0 & CP-SAT & 62 & 0.0002 & 3/75/23 \\
+5.0 & Proposed (best-of-k) & 62 & $<$1e-4 & 60/33/6 \\
 5.0 & greedy restarts+RR & 62 & $<$1e-4 & 47/47/6 \\
 5.0 & greedy restarts+RR+LS & 62 & 0.7088 & 14/73/13 \\
-5.0 & greedy+RR+LS & 62 & $<$1e-4 & 45/52/3 \\
+5.0 & Greedy + RR + LS & 62 & $<$1e-4 & 45/52/3 \\
 5.0 & LP rounding+RR+LS & 62 & 0.0008 & 31/63/6 \\
-5.0 & CP-SAT (8 workers) & 62 & 0.0001 & 0/81/19 \\
+5.0 & CP-SAT & 62 & 0.0001 & 0/81/19 \\
 \bottomrule
 \end{tabular}
 \end{table}

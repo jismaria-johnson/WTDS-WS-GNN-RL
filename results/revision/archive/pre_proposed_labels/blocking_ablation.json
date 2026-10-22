@@ -1,0 +1,18 @@
+{
+ "episodes": 3200,
+ "valid_pct": 0.0,
+ "mean_covered_frac_at_stop": 0.7311296875,
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "per_scheme": {
+  "degree": 0.0,
+  "inverse": 0.0,
+  "mixed": 0.0,
+  "random": 0.0
+ }
+}
