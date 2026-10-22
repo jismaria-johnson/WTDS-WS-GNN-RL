@@ -482,3 +482,6 @@ R41. **Label change "Ours" -> "Proposed".** Display strings only (data keys such
     after applying the same substitutions to each archived file, the sequence of numbers in all 75 regenerated
     tex/csv/md/json files is identical to the archived one (0 differences); no "ours" label remains in any table.
     results/ablations needed no label change (its rows are "Reference", "A1"...); it was regenerated and checked too.
+R42. **Push of 402469c failed (authentication)**: `git push origin main` with prompts disabled: "fatal: could not
+    read Username for 'https://github.com': terminal prompts disabled" (same as R39). origin/main stays at fa7b18b.
+    No credentials entered.
